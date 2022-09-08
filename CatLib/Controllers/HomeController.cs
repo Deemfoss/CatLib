@@ -19,9 +19,34 @@ namespace CatLib.Controllers
             _context=context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index( bool hueta)
         {
             return View(await _context.Cats.ToListAsync());
+        }
+
+        public async Task<IActionResult> Filter(bool hueta)
+        {
+            var res = hueta;
+            return View(await _context.Cats.ToListAsync());
+        }
+
+        public async Task<IActionResult> News()
+        {
+            return View(await _context.Cats.ToListAsync());
+        }
+
+        public async Task<IActionResult> CatDetail(int id)
+
+        {
+
+            var cat = await _context.Cats.Include(a=>a.MainSpecification).
+                FirstOrDefaultAsync(m => m.Id == id);
+
+            if (cat == null)
+            {
+                return NotFound();
+            }
+            return View(cat);
         }
     }
 }
