@@ -1,0 +1,92 @@
+﻿@model CatLib.Functionality.PaginatedList<CatLib.Models.News>
+
+
+@{
+    ViewData["Title"] = "News";
+    var firstNews = Model.FirstOrDefault();
+}
+
+<h1>News</h1>
+    <section class="news">
+        <div class="news-block-first">
+            <a class="news-block_card">
+                <img class="news-block_card_img--big" src="/img/assets/@firstNews.Img">
+                <div class="news-block_card_data">
+                    <p class="news-block_card_date">@firstNews.Date.ToShortDateString()</p>
+                    <h3 class="news-block_card_title">@firstNews.Title</h3>
+                    <p class="news-block_card_text">@firstNews.ShortDescription </p>
+                </div>
+                <div class="news-block_card_views">
+                    <img class="news-block_card_svg" src="/img/assets/Icon.svg">
+                    <p class="news-block_card_text">@firstNews.Views</p>
+                </div>
+            </a>
+            <div class="news-block-right">
+                <a class="news-block_card">
+                    <img class="news-block_card_img--medium" src="/img/assets/@Model.Skip(1).Take(1).First().Img">
+                    <div class="news-block_card_data">
+                        <p class="news-block_card_date">@Model.Skip(1).Take(1).First().Date</p>
+                        <h3 class="news-block_card_title">@Model.Skip(1).Take(1).First().Title</h3>
+                        <p class="news-block_card_text">@Model.Skip(1).Take(1).First().ShortDescription </p>
+                    </div>
+                    <div class="news-block_card_views">
+                        <img class="news-block_card_svg" src="/img/assets/Icon.svg">
+                        <p class="news-block_card_text">@Model.Skip(1).Take(1).First().Views</p>
+                    </div>
+                </a>
+                <a class="news-block_card">
+                    <img class="news-block_card_img--medium" src="/img/assets/@Model.Skip(2).Take(1).First().Img">
+                    <div class="news-block_card_data">
+                        <p class="news-block_card_date">@Model.Skip(2).Take(1).First().Date</p>
+                        <h3 class="news-block_card_title">@Model.Skip(2).Take(1).First().Title</h3>
+                        <p class="news-block_card_text">@Model.Skip(2).Take(1).First().ShortDescription </p>
+                    </div>
+                    <div class="news-block_card_views">
+                        <img class="news-block_card_svg" src="/img/assets/Icon.svg">
+                        <p class="news-block_card_text">@Model.Skip(2).Take(1).First().Views</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="news-block">
+            @foreach(var news in Model.Skip(3)) {
+            <a class="news-block_card--main">
+                <div class="news-block_card--container">
+                    <img class="news-block_card_img" src="/img/assets/@news.Img">
+                    <div class="news-block_card_views">
+                        <img class="news-block_card_svg" src="/img/assets/Icon.svg">
+                        <p class="news-block_card_text">@news.Views</p>
+                    </div>
+                </div>
+                <div class="news-block_card_data--main">
+                    <p class="news-block_card_date--black">@news.Date</p>
+                    <h3 class="news-block_card_title--black">@news.Title</h3>
+                    <p class="news-block_card_text--black">@news.ShortDescription</p>
+                </div>
+            </a>
+            }
+        </div>
+        
+    </section>
+<div class="pagination-container">
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="pagination-btn @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="pagination-btn @nextDisabled">
+        Next
+    </a>
+</div>
+
+

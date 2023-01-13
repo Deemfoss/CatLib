@@ -3,27 +3,50 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CatLib</title>
+    <meta name="description" content="Largest cats breed library that content detail information" />
+    <meta name="keywords" content="@ViewData["Title"]Cat, Breed, Best breed, Cats, Breeds, Cat Breed, cats breeding, Rex cat" />
+    <meta name="author" content="demfoss" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] @*- CatLib*@</title>
     <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/breedDetail.css" rel="stylesheet" type="text/css" />
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    @*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">*@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@500&family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
     <header>
         <div class="cat-header">
             <div class="header-container">
-                <img class="header-logo" srcset="/img/site/logo2.png" src="/img/site/logo2.png" />
+                <img class="header-logo" src="/img/site/catlib.png" />
                 <div class="header-nav">
-                    <a href="/" class="nav-link">Test</a>
-                    <a href="home/News" class="nav-link">Test2</a>
-                    <a href="/" class="nav-link">Test3</a>
-                    <a href="/" class="nav-link">Test4</a>
+                    <a href="/" class="nav-link-main">Home</a>
+                    <div class="nav-link-others">
+                        <a onclick="addSubMenu()" class="nav-link-href">Tools</a>
+                        <div class="nav-link-submenu">
+                            <a href="/tools/CalorieCalc" class="nav-link-href">News</a>
+                            <a href="/tools/CalcAge" class="nav-link-href">CalcAge</a>
+                            <a href="/News/NewsList" class="nav-link-href">Test3</a>
+                        </div>
+                    </div>
+
+                    <a href="/tools/CalorieCalc" class="nav-link-href">News</a>
+                    <a href="/tools/CalcAge" class="nav-link-href">CalcAge</a>
+                    <a href="/tools/CatNameGenerator" class="nav-link-href">NameGenerator</a>
+                    <a href="/News/NewsList" class="nav-link-href">Test3</a>
+                    <a href="/News/NewsDetail" class="nav-link-href">News Detail</a>
+                    <a href="/News/AdminPanel" class="nav-link-href">Admin Panel</a>
                 </div>
             </div>
         </div>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -33,14 +56,33 @@
 
     <footer>
         <div class="container container-footter">
-            &copy; 2022 - CatLib - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="footer-container-logo">
+
+            </div>
+            <div class="footer-container-description"> <span>&copy;2022 CatLib Corporation. All Rights Reserved</span></div>
+            <div class="footer-container-contacts">
+                <h3 class="footer-contact-us">Contact us</h3>
+                <div class="footer-social">
+                    <a href="/"><i class="fa-brands fa-telegram footer-icon"></i></a>
+                    <a href="/"><i class="fa-brands fa-google footer-icon"></i></i></a>
+                    <a href="/"><i class="fa-brands fa-instagram footer-icon"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/index.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/0bf8e254a5.js" crossorigin="anonymous"></script>
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>*@
     @await RenderSectionAsync("Scripts", required: false)
+    
+
+
 </body>
 </html>
+
+

@@ -1,0 +1,68 @@
+﻿
+<div class="left-filter-adv-container">
+    <div class="filter-container">
+        <div class="weight-filter">
+            <div class="header-filter">
+                <label class="checbox-name">Filter</label>
+                <label class="checbox-filter-button" onclick="clearFilter()"> Clear All </label>
+            </div>
+            <div class="filter-first">
+                <form method="post" asp-controller="Home" asp-action="Index">
+                    <div class="group-filter">
+                        <div class="name-filter"><h3 class="filter-header-name">Size</h3><i class="fa-sharp fa-solid fa-arrow-down arrow-filter-down"></i></div>
+                        <div class="checbox-list checbox-list-close">
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="size" value="Small" /><label class="subname-filter">Small</label>
+                            </div>
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="size" value="Medium" /><label class="subname-filter">Medium</label>
+                            </div>
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="size" value="High" /><label class="subname-filter">High</label>
+                            </div>
+                        </div>
+                        <div class="name-filter"><h3 class="filter-header-name">Activity</h3><i class="fa-sharp fa-solid fa-arrow-down arrow-filter-down"></i></div>
+                        <div class="checbox-list checbox-list-close">
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="activity" value="30" /><label class="subname-filter">Low</label>
+                            </div>
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="activity" value="50" /><label class="subname-filter">Medium</label>
+                            </div>
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="activity" value="70" /><label class="subname-filter">High</label>
+                            </div>
+                        </div>
+                        <div class="name-filter"><h3 class="filter-header-name">Coat</h3><i class="fa-sharp fa-solid fa-arrow-down arrow-filter-down"></i></div>
+                        <div class="checbox-list checbox-list-close">
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="coat" value="Long" /><label class="subname-filter">Long</label>
+                            </div>
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="coat" value="Medium" /><label class="subname-filter">Medium</label>
+                            </div>
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="coat" value="Short" /><label class="subname-filter">Short</label>
+                            </div>
+                        </div>
+                        <div class="name-filter"><h3 class="filter-header-name">Playfulness</h3><i class="fa-sharp fa-solid fa-arrow-down arrow-filter-down"></i></div>
+                        <div class="checbox-list checbox-list-close">
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="playfulness" value="Low" /><label class="subname-filter">Low</label>
+                            </div>
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="playfulness" value="Medium" /><label class="subname-filter">Medium</label>
+                            </div>
+                            <div class="checbox-container">
+                                <input type="checkbox" class="checbox-filter" name="playfulness" value="High" /><label class="subname-filter">High</label>
+                            </div>
+                        </div>
+                        <div class="filter-container-buttons">
+                            <input type="submit" class="filter-submit-button" value="search" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

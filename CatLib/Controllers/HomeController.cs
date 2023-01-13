@@ -1,4 +1,5 @@
-﻿using CatLib.Models;
+﻿using CatLib.Functionality;
+using CatLib.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -14,20 +15,59 @@ namespace CatLib.Controllers
     {
         private readonly CatLibContext _context;
 
+
         public HomeController(CatLibContext context)
         {
             _context=context;
         }
 
-        public async Task<IActionResult> Index( bool hueta)
+        public async Task<IActionResult> Index(int? pageNumber, string search, string sortOrder,string activity,string size, string playfulness, string coat)
         {
-            return View(await _context.Cats.ToListAsync());
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = search;
+            var cats = _context.Cats.ToList();
+            FiltrationList filtrationList=new FiltrationList(_context);
+
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                cats = _context.Cats.Where(s => s.Name.Contains(search.ToLower())).ToList();
+                                       
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    cats = cats.OrderByDescending(s => s.Name).ToList();
+                    break;
+                case "Date":
+                    cats = cats.OrderByDescending(s => s.Name).ToList();
+                    break;
+                case "date_desc":
+                    cats = cats.OrderByDescending(s => s.Name).ToList();
+                    break;
+                default:
+                    cats = cats.OrderBy(s => s.Name).ToList();
+                    break;
+            }
+
+            int pageSize = 20;
+
+            if (!String.IsNullOrEmpty(activity) || !String.IsNullOrEmpty(size) || !String.IsNullOrEmpty(playfulness) || !String.IsNullOrEmpty(coat))
+            {
+                cats = filtrationList.Filtration(activity, size, playfulness, coat);
+            }
+
+              
+            
+            return View(await PaginatedList<Cat>.CreateAsync(cats, pageNumber ?? 1, pageSize));
+           
         }
 
-        public async Task<IActionResult> Filter(bool hueta)
+        public PartialViewResult Filter()
         {
-            var res = hueta;
-            return View(await _context.Cats.ToListAsync());
+
+            return PartialView("FilterPartal");
         }
 
         public async Task<IActionResult> News()
@@ -38,9 +78,14 @@ namespace CatLib.Controllers
         public async Task<IActionResult> CatDetail(int id)
 
         {
-
-            var cat = await _context.Cats.Include(a=>a.MainSpecification).
-                FirstOrDefaultAsync(m => m.Id == id);
+           
+            var cat = await _context.Cats
+                .Include(main=>main.MainSpecification)
+                .Include(oth=>oth.OtherSpecification)
+                .Include(phys=>phys.PhysicalSpecification)
+                .Include(tmp => tmp.TemperamentDescription)
+                .Include(cmp => cmp.CompatibilityDescription)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (cat == null)
             {

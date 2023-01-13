@@ -1,0 +1,153 @@
+﻿@model IQueryable<CatLib.Models.NameGenerator.CatGeneratorName>
+
+@{
+    ViewData["Title"] = "Cat Name Generator";
+}
+
+<div class="generator-description">
+    <h1 class="main-topic-h1">Cat Name Generator</h1>
+    <p class="main-topic-description">We have collected the largest database of cat names on the Internet. Which will help you easily choose a name for your cat girl or male cat. If you find it difficult to choose, you can take our easy survey and use it to easily find the right name for your pet. </p>
+</div>
+<div class="container-generator">
+    @*<form asp-action="CatNameGenerator">*@
+        <div class="generator-filtration-container">
+            <h3 class="generator-h3">Gender</h3>
+            <div class="generator-filtration-gender">
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="gender" name="gender" value="Man" />
+                    <span class="label-radio">Male</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="gender" name="gender" value="Girl" />
+                    <span class="label-radio" tabindex="2">Female</span>
+                </label>
+            </div>
+            <h3 class="generator-h3">Color</h3>
+            <div class="generator-filtration-color">
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="color" name="color" value="Black" />
+                    <span class="label-radio">Black</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="color" name="color" value="White" />
+                    <span class="label-radio">White</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="color" name="color" value="Gray" />
+                    <span class="label-radio">Gray</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="color" name="color" value="Orange" />
+                    <span class="label-radio">Orange</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="color" name="color" value="Multi" />
+                    <span class="label-radio">Multi</span>
+                </label>
+            </div>
+            <h3 class="generator-h3">Hair</h3>
+            <div class="generator-filtration-color">
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="hair" name="hair" value="Short" />
+                    <span class="label-radio">Short</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="hair" name="hair" value="Long" />
+                    <span class="label-radio">Long</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="hair" name="hair" value="Fluffy" />
+                    <span class="label-radio">Fluffy</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="hair" name="hair" value="Standart" />
+                    <span class="label-radio">Standart</span>
+                </label>
+            </div>
+            <h3 class="generator-h3">Personality</h3>
+            <div class="generator-filtration-personality">
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="personality" name="personality" value="Fancy" />
+                    <span class="label-radio">Fancy</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="personality" name="personality" value="Chill" />
+                    <span class="label-radio">Chill</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="personality" name="personality" value="Cuddly" />
+                    <span class="label-radio">Cuddly</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="personality" name="personality" value="Independet" />
+                    <span class="label-radio">Independet</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="personality" name="personality" value="Happy" />
+                    <span class="label-radio">Happy</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="personality" name="personality" value="Grumpy" />
+                    <span class="label-radio">Grumpy</span>
+                </label>
+                <label class="radiobtn" tabindex="1">
+                    <input class="radio" type="radio" id="personality" name="personality" value="Sleppy" />
+                    <span class="label-radio">Sleppy</span>
+                </label>
+            </div>
+            <h3 class="generator-h3">Category</h3>
+            <div class="generator-filtration-types">
+                <input type="checkbox" name="category" value="Funnny"  id="category"/>
+                <label for="horns">Funnny</label>
+                <input type="checkbox" name="category" value="Comics"  id="category"/>
+                <label for="horns">Comics</label>
+                <input type="checkbox" name="category" value="Movies" id="category" />
+                <label for="horns">Movies</label>
+                <input type="checkbox" name="category" value="Books" id="category"/>
+                <label for="horns">Books</label>
+                <input type="checkbox" name="category" value="Geeky" id="category" />
+                <label for="horns">Geeky</label>
+                <input type="checkbox" name="category" value="TV" id="category" />
+                <label for="horns">TV</label>
+                <input type="checkbox" name="category" value="Sports" id="category" />
+                <label for="horns">Sports</label>
+            </div>
+            <input type="submit" value="Generate Names" class="btn btn-primary" onclick="return validateForm()" />
+    @*</form>*@
+</div>
+    </div>
+<div class="generaor-name-search-result" id="result">
+    </div>
+@section Scripts{
+    <script type="text/javascript">
+
+        function validateForm() {
+            let categorCheckboxes = new Array();
+            $("#category:checked").each(function () {
+                categorCheckboxes.push($(this).val());
+            });
+                $.ajax({
+                    type: "POST",
+                    url: "/Tools/CatNameGenerator",
+                    data: {
+                        "gender": $("#gender").val(),
+                        "hair": $("#hair").val(),
+                        "color": $("#color").val(),
+                        "personality": $("#personality").val(),
+                        "category": categorCheckboxes
+
+                    },
+                    success: function (response) {
+                        debugger;
+                        //  let res = JSON.parse(response);
+                        let res = response.join(" ");
+                        console.log(res);
+                        $("#result").html(res);
+                    }
+
+
+                });
+
+        }
+    </script>
+}

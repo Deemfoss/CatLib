@@ -1,5 +1,308 @@
 ﻿@model CatLib.Models.Cat
-
+@{
+    ViewData["Title"] = Model.Name + " : Cat Breed Profile, Characteristics, Appearance, Personality, History, Care, &Helpful Information for Pet Owners";
+}
 <div>
-    @Model.Name
+    <div class="cat-detail-header-name"><h1 class="cat-detail-header-name-value"></h1>@Model.Name</div>
+    <div class="cat-detail-header-name-short-description"><h2 class="cat-detail-description-name-value">@Model.OtherSpecification.Short_Description</h2></div>
+    <div class="cat-detail-header-container">
+        <div class="cat-detail-header-container-img">
+            <img class="cat-detail-breed-img" src="~/img/CatsProfile/@Model.Img" />
+        </div>
+        <div class="main-traits-container">
+            <div class="first-traits-container">
+                <div class="cat-detail-main-trait"><span class="cat-detail-main-trait-labels">Origin: </span><span class="cat-detail-main-trait-value">@Model.Origin</span></div>
+                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Weight: @Model.MainSpecification.Weight lbs</h3></div>
+                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Heigh: @Model.MainSpecification.Heigh inches</h3></div>
+                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Size: @Model.Size</h3></div>
+                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Hypoallergenic: @Model.Hypoallergenic</h3></div>
+            </div>
+            <div class="second-traits-container">
+                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Life Expectancy: @Model.MainSpecification.Life_Expectancy years</h3></div>
+                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Colors: @Model.MainSpecification.Litter</h3></div>
+                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Weight: @Model.OtherSpecification.Other_Names</h3></div>
+                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Coat: @Model.Coat</h3></div>
+                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Colors: @Model.MainSpecification.Colors</h3></div>
+            </div>
+        </div>
+    </div>
+    <div class="cat-detail-navigation-history-container">
+        <div class="cat-detail-article-list">
+            <a class="cat-detail-article-link" href="/">History</a>
+            <a class="cat-detail-article-link">Temperamet</a>
+            <a class="cat-detail-article-link">Description</a>
+        </div>
+        <div class="cat-detail-header-container-history">
+            <h2 class="cat-detail-description-name">History of @Model.Name</h2>
+            <p class="cat-detail-description-txt">@Model.History</p>
+        </div>
+    </div>
+    <div class="cat-detail-traits-container">
+        <h2 class="cat-detail-description-name">Temperament of @Model.Name</h2>
+        <div class="cat-detail-temperaments-container-list">
+            <div class="cat-detail-temperaments-container1">
+                <h3 class="cat-detail-temperaments-container-header">Affectionate</h3>
+                <div class="cat-detail-temperaments-container-procent">
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@Model.Affection" , 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@Model.Affection%</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cat-detail-temperaments-container-body">
+                    <p>@Model.TemperamentDescription.Affection_Description</p>
+                </div>
+            </div>
+            <div class="cat-detail-temperaments-container2">
+                <h3 class="cat-detail-temperaments-container-header">Intelligence</h3>
+                <div class="cat-detail-temperaments-container-procent">
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@Model.Intelligence" , 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@Model.Intelligence%</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cat-detail-temperaments-container-body">
+                    <p>@Model.TemperamentDescription.Intelligence_Description</p>
+                </div>
+            </div>
+            <div class="cat-detail-temperaments-container3">
+                <h3 class="cat-detail-temperaments-container-header">Playfulness</h3>
+                <div class="cat-detail-temperaments-container-procent">
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@Model.Playfulness" , 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@Model.Playfulness%</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cat-detail-temperaments-container-body">
+                    <p>@Model.TemperamentDescription.Playfulness_Description</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="cat-detail-header-container-history">
+        <h2 class="cat-detail-description-name">Description of @Model.Name</h2>
+        <p class="cat-detail-description-txt">@Model.Description</p>
+    </div>
+    <div class="cat-detail-traits-container">
+        <h2 class="cat-detail-description-name">Grooming and Vocality of @Model.Name</h2>
+        <div class="cat-detail-temperaments-container-list">
+            <div class="cat-detail-temperaments-container1">
+                <h3 class="cat-detail-temperaments-container-header">Activity</h3>
+                <div class="cat-detail-temperaments-container-procent">
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@Model.Activity" , 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@Model.Activity%</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cat-detail-temperaments-container-body">
+                    <p>@Model.TemperamentDescription.Activity_Description</p>
+                </div>
+            </div>
+            <div class="cat-detail-temperaments-container2">
+                <h3 class="cat-detail-temperaments-container-header">Vocality</h3>
+                <div class="cat-detail-temperaments-container-procent">
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@Model.OtherSpecification.Vocality" , 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Vocality%</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cat-detail-temperaments-container-body">
+                    <p>@Model.CompatibilityDescription.Vocality_Description</p>
+                </div>
+            </div>
+            <div class="cat-detail-temperaments-container3">
+                <h3 class="cat-detail-temperaments-container-header">Grooming</h3>
+                <div class="cat-detail-temperaments-container-procent">
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@Model.OtherSpecification.Grooming" , 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Grooming%</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cat-detail-temperaments-container-body">
+                    <p>@Model.CompatibilityDescription.Grooming_Description</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="cat-detail-navigation-history-container">
+        <div class="cat-detail-article-list">
+            <img src="~/img/CatsProfile/@Model.OtherSpecification.Kitty_Img"/>
+        </div>
+        <div class="cat-detail-header-container-history">
+            <h2 class="cat-detail-description-name">How to choose a kitten @Model.Name</h2>
+            <p class="cat-detail-description-txt">@Model.OtherSpecification.Choosing_Kitten</p>
+        </div>
+    </div>
+
+    <div class="cat-detail-traits-container">
+        <h2 class="cat-detail-description-name">Compability of @Model.Name</h2>
+        <div class="cat-detail-temperaments-container-list">
+            <div class="cat-detail-temperaments-container1">
+                <h3 class="cat-detail-temperaments-container-header">Friendliness To Cat</h3>
+                <div class="cat-detail-temperaments-container-procent">
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@Model.OtherSpecification.Friendliness_To_Cat" , 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Friendliness_To_Cat%</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cat-detail-temperaments-container-body">
+                    <p>@Model.CompatibilityDescription.Friendliness_To_Cat_Description</p>
+                </div>
+            </div>
+            <div class="cat-detail-temperaments-container2">
+                <h3 class="cat-detail-temperaments-container-header">Friendliness to childern</h3>
+                <div class="cat-detail-temperaments-container-procent">
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@Model.OtherSpecification.Friendliness_To_Childern" , 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Friendliness_To_Childern%</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cat-detail-temperaments-container-body">
+                    <p>@Model.CompatibilityDescription.Friendliness_To_Childern_Description</p>
+                </div>
+            </div>
+            <div class="cat-detail-temperaments-container3">
+                <h3 class="cat-detail-temperaments-container-header">Friendliness To Old</h3>
+                <div class="cat-detail-temperaments-container-procent">
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@Model.OtherSpecification.Friendliness_To_Old" , 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Friendliness_To_Old%</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cat-detail-temperaments-container-body">
+                    <p>@Model.CompatibilityDescription.Friendliness_To_Old_Description</p>
+                </div>
+            </div>
+            <div class="cat-detail-temperaments-container4">
+                <h3 class="cat-detail-temperaments-container-header">Friendliness To Dog</h3>
+                <div class="cat-detail-temperaments-container-procent">
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@Model.OtherSpecification.Friendliness_To_Dog" , 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Friendliness_To_Dog%</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cat-detail-temperaments-container-body">
+                    <p>@Model.CompatibilityDescription.Friendliness_To_Dog_Description</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="cat-detail-header-container-history">
+        <h2 class="cat-detail-description-name">Care of @Model.Name</h2>
+        <p class="cat-detail-description-txt">@Model.OtherSpecification.Care_Maintenance</p>
+    </div>
+    <div class="cat-detail-header-container-history">
+        <h2 class="cat-detail-description-name">Health of @Model.Name</h2>
+        <p class="cat-detail-description-txt">@Model.OtherSpecification.Health</p>
+    </div>
+    <div class="cat-detail-header-container-history">
+        <h2 class="cat-detail-description-name">Popular names of  @Model.Name</h2>
+        <p class="cat-detail-description-txt">@Model.OtherSpecification.Nicknames</p>
+    </div>
+    <div class="cat-detail-header-container-history">
+        <h2 class="cat-detail-description-name">Price</h2>
+        <p class="cat-detail-description-txt">Averge price of @Model.Name @Model.MainSpecification.Price</p>
+    </div>
 </div>

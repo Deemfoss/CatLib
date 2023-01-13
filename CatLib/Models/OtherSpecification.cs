@@ -8,17 +8,22 @@ namespace CatLib.Models
     public class OtherSpecification
     {
         public int Id { get; set; }
-        public int Playfulness{ get; set; }
-        public int Activity { get; set; }
-        public int Friendliness_To_Pets { get; set; }
-        public int Friendliness_To_Childern { get; set; }
-        public int Grooming { get; set; }
-        public int Vocality { get; set; }
-        public int Affection { get; set; }
-        public int Docility { get; set; }
-        public int Intelligence { get; set; }
-        public int Independence { get; set; }
-        public int Hardiness { get; set; }
+        public string Friendliness_To_Dog { get; set; }
+        public string Friendliness_To_Cat { get; set; }
+        public string Friendliness_To_Old { get; set; }
+        public string Friendliness_To_Childern { get; set; }
+        public string Grooming { get; set; }
+        public string Vocality { get; set; }
+        public string Choosing_Kitten { get; set; }
+        public string Health { get; set; }
+        public string Care_Maintenance { get; set; }
+
+        public string Short_Description { get; set; }
+        public string Other_Names { get; set; }
+        public string Nicknames { get; set; }
+
+        public string Kitty_Img { get; set; }
+
         public int CatId { get; set; }
         public Cat Cat { get; set; }
 

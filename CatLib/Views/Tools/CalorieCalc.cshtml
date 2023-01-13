@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div>
+    <div><h3>CALORIE CALCULATOR FOR CATS</h3></div>
+    <div>
+        <p>
+            Like with humans, a cat’s calorie requirements depend on many factors, such as ages, activity, sex,body condition and etc.
+            This tool was developed to quickly calculate calories for your pet.
+        </p>
+    </div>
+
+    <div class="calc-container">
+        <div class="calc-weight">
+            <div class="calc-weight-input-container">
+                <label class="calc-weight-label" for="calc-weight-input">Weight</label>
+                <input class="calc-weight-input" id="calc-weight-input" type="text" name="weight" />
+            </div>
+            <div class="calc-weight-select-container">
+                <label class="calc-weight-label">Unit</label>
+                <select class="calc-weight-select" id="weight_type" name="weight_type">
+                    <option value="lb">Pounds (lbs)</option>
+                    <option value="kg">Kilograms (kg)</option>
+                </select>
+            </div>
+
+        </div>
+        <div>
+            <select class="calc-weight-select" id="type" name="type">
+                <option value="neutered">neutered adult</option>
+                <option value="adult">non-neutered adult</option>
+                <option value="loss">Weight loss</option>
+                <option value="gain">Weight gain</option>
+                <option value="tooldkitten">0-4 months old kitten</option>
+                <option value="kittentodult">4 months to adult cat</option>
+            </select>
+        </div>
+        <div>
+            <button class="calc-weight-button" id="calc-weight-button" type="submit">Calculate</button>
+        </div>
+    </div>
+    <div class="result-container">
+        <h1 class="result-container-header">Estimated Initial Daily Calories</h1>
+        <div class="calc-result"><h3 id="calc_result"></h3></div>
+    </div>
+    <div>
+        <h3>Ideal Weight Means A Longer and Happier Life</h3>
+        <p>Achieving and maintaining healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.</p>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(function () {
+            $("#calc-weight-button").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Tools/CalorieAge",
+                    data: {
+                        "age": $("#calc-weight-input").val(),
+                        "month": $("#weight_type").val(),
+                        "type": $("#type").val()
+
+                    },
+                    success: function (response) {
+                        let res = JSON.stringify(response);
+                        $("#calc_result").html(res);
+                    }
+
+
+                });
+            });
+        });
+
+    </script>
+}
