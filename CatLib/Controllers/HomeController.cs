@@ -60,7 +60,7 @@ namespace CatLib.Controllers
 
               
             
-            return View(await PaginatedList<Cat>.CreateAsync(cats, pageNumber ?? 1, pageSize));
+            return View(PaginatedList<Cat>.Create(cats, pageNumber ?? 1, pageSize));
            
         }
 

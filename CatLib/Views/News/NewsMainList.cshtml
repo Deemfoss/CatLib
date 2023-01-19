@@ -1,0 +1,20 @@
+﻿@model CatLib.Functionality.PaginatedList<CatLib.Models.News>
+@{
+}
+@foreach (var news in Model.Skip(3))
+{
+    <a class="news-block_card--main">
+        <div class="news-block_card--container">
+            <img class="news-block_card_img" src="/img/assets/@news.Img">
+            <div class="news-block_card_views">
+                <img class="news-block_card_svg" src="/img/assets/Icon.svg">
+                <p class="news-block_card_text">@news.Views</p>
+            </div>
+        </div>
+        <div class="news-block_card_data--main">
+            <p class="news-block_card_date--black">@news.Date</p>
+            <h3 class="news-block_card_title--black">@news.Title</h3>
+            <p class="news-block_card_text--black">@news.ShortDescription</p>
+        </div>
+    </a>
+}

@@ -1,5 +1,6 @@
 ﻿using CatLib.Models;
 using CatLib.Models.NameGenerator;
+using CatLib.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -22,42 +23,17 @@ namespace CatLib.Controllers
             return View();
         }
 
-
         [HttpGet]
         public IActionResult CalorieCalc()
         {
             return View();
         }
 
-
         [HttpPost]
-        public JsonResult CalorieCalc(string weight, string weight_type, string type)
+        public JsonResult CaloriesCalc(string weight, string weight_type, string type)
         {
-            var res = (weight_type == "kg") ? Convert.ToDouble(weight) : (Convert.ToDouble(weight) / 2.2);
-            res = Math.Pow(res, 0.75) * 70;
-
-            switch (type)
-            {
-                case "neutered":
-                    res = res * 1.6;
-                    break;
-                case "adult":
-                    res = res * 1.8;
-                    break;
-                case "loss":
-                    res = res * 1;
-                    break;
-                case "gain":
-                    res = res * 1.7;
-                    break;
-                case "tooldkitten":
-                    res = res * 3;
-                    break;
-                case "kittentodult":
-                    res = res * 2;
-                    break;
-            }
-            return Json((int)res);
+            var ckcal = ToolServices.CaloriesCalc(weight, weight_type, type);
+            return Json(ckcal);
         }
 
         [HttpGet]
@@ -140,11 +116,8 @@ namespace CatLib.Controllers
                 }
 
             }
-
-
             return Json(fullAge);
         }
-
 
         [HttpGet]
         public IActionResult CatNameGenerator()
@@ -153,19 +126,11 @@ namespace CatLib.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult CatNameGenerator(string gender, string color, string hair, string personality, List<string> category)
-        //{
-        //    var catNames = _context.CatGeneratorNames.Where(x => x.Gender.Name == gender && x.Color.Name == color && x.Hair.Name == hair && x.Personality.Name == personality);
-        //    var test = catNames.Where(x => x.CatGeneratorTypes.Any(y => category.Any(z => z == y.Name)));
-        //    return View(test);
-        //}
-
         [HttpPost]
         public JsonResult CatNameGenerator(string gender, string color, string hair, string personality, string[] category)
         {
             var catNames = _context.CatGeneratorNames.Where(x => x.Gender.Name == gender && x.Color.Name == color && x.Hair.Name == hair && x.Personality.Name == personality);
-            var test = catNames.Where(x => x.CatGeneratorTypes.Any(y => category.Any(z => z == y.Name))).Select(n=>n.Name);
+            var test = catNames.Where(x => x.CatGeneratorTypes.Any(y => category.Any(z => z == y.Name))).Select(n => n.Name);
             return Json(test);
         }
     }
