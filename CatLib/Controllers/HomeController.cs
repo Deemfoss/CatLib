@@ -51,16 +51,17 @@ namespace CatLib.Controllers
                     break;
             }
 
-            int pageSize = 20;
+            int pageSize = 1;
+            string type = "load";
 
             if (!String.IsNullOrEmpty(activity) || !String.IsNullOrEmpty(size) || !String.IsNullOrEmpty(playfulness) || !String.IsNullOrEmpty(coat))
             {
                 cats = filtrationList.Filtration(activity, size, playfulness, coat);
             }
 
-              
-            
-            return View(PaginatedList<Cat>.Create(cats, pageNumber ?? 1, pageSize));
+         
+
+            return View(PaginatedList<Cat>.Create(cats, pageNumber ?? 1, pageSize, type));
            
         }
 

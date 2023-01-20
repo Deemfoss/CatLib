@@ -23,14 +23,28 @@ namespace CatLib.Functionality
 
         public bool HasNextPage => PageIndex < TotalPages;
 
-        public static PaginatedList<T> Create(IList<T> source, int pageIndex, int pageSize)
+        public static PaginatedList<T> Create(IList<T> source, int pageIndex, int pageSize, string type)
         {
             var count = source.Count();
-           // var items = source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            var load = (pageIndex) * 3;
-            var items = source.Take(load).ToList();
-            return new PaginatedList<T>(items, count, pageIndex, pageSize);
+            if (type == "load") {
+
+                var load = (pageIndex) * pageSize;
+                var items = source.Take(load).ToList();
+                return new PaginatedList<T>(items, count, pageIndex, pageSize);
+
+            }
+            else
+            {
+                var items = source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+                return new PaginatedList<T>(items, count, pageIndex, pageSize);
+
+            }
+          
+
+
+
         }
+
     }
 
 }

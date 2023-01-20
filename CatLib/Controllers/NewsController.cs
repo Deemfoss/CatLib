@@ -75,9 +75,9 @@ namespace CatLib.Controllers
         public async Task<IActionResult> NewsList(int? pageNumber)
         {
             var news = _context.News.OrderByDescending(x => x.Date).ToList();
-            int pageSize = 4;
-
-            return View(PaginatedList<News>.Create(news, pageNumber ?? 1, pageSize));
+            int pageSize = 11;
+            string type = "pagination";
+            return View(PaginatedList<News>.Create(news, pageNumber ?? 1, pageSize, type));
         }
 
         public IActionResult NewsDetail()
