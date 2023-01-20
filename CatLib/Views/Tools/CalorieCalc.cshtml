@@ -1,11 +1,9 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "CALORIE CALCULATOR FOR CATS";
 }
 
 <div>
-    <div><h3>CALORIE CALCULATOR FOR CATS</h3></div>
+    <div><h3 class="cat-detail-header-name-value">CALORIE CALCULATOR FOR CATS</h3></div>
     <div>
         <p>
             Like with humans, a cat’s calorie requirements depend on many factors, such as ages, activity, sex,body condition and etc.
@@ -30,12 +28,11 @@
         </div>
         <div>
             <select class="calc-weight-select" id="type" name="type">
-                <option value="neutered">neutered adult</option>
-                <option value="adult">non-neutered adult</option>
+                <option value="neutered">Neutered adult</option>
+                <option value="intact">Intact adult</option>
                 <option value="loss">Weight loss</option>
-                <option value="gain">Weight gain</option>
-                <option value="tooldkitten">0-4 months old kitten</option>
-                <option value="kittentodult">4 months to adult cat</option>
+                <option value="obesse">Obesse prone</option>
+                <option value="kitten">Growing kittens</option>
             </select>
         </div>
         <div>
@@ -50,6 +47,11 @@
         <h3>Ideal Weight Means A Longer and Happier Life</h3>
         <p>Achieving and maintaining healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.</p>
     </div>
+
+    <div>
+        <h3>How to calculate daily calorie for cat</h3>
+        <p>Achieving and maintaining healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.</p>
+    </div>
 </div>
 
 @section Scripts{
@@ -59,10 +61,10 @@
             $("#calc-weight-button").click(function () {
                 $.ajax({
                     type: "POST",
-                    url: "/Tools/CalorieAge",
+                    url: "/Tools/CaloriesCalc",
                     data: {
-                        "age": $("#calc-weight-input").val(),
-                        "month": $("#weight_type").val(),
+                        "weight": $("#calc-weight-input").val(),
+                        "weight_type": $("#weight_type").val(),
                         "type": $("#type").val()
 
                     },

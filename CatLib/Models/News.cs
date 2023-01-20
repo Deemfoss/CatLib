@@ -16,6 +16,7 @@ namespace CatLib.Models
         public DateTime Date { get; set; }
         public int Views { get; set; }
         public string ShortDescription { get; set; }
+        public string Tag { get; set; }
         [AllowHtml]
         public string Content { get; set; }
     }

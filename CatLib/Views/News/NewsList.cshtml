@@ -6,7 +6,7 @@
     var firstNews = Model.FirstOrDefault();
 }
 
-<h1>News</h1>
+<h1 class="main-topic-h1">Cats news</h1>
     <section class="news">
         <div class="news-block-first">
             <a class="news-block_card">
@@ -73,17 +73,13 @@
         var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.HasNextPage ? "disabled" : "";
     }
-    <a asp-action="Index"
-       asp-route-sortOrder="@ViewData["CurrentSort"]"
+    <a asp-action="NewsList"
        asp-route-pageNumber="@(Model.PageIndex - 1)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
        class="pagination-btn @prevDisabled">
         Previous
     </a>
-    <a asp-action="Index"
-       asp-route-sortOrder="@ViewData["CurrentSort"]"
+    <a asp-action="NewsList"
        asp-route-pageNumber="@(Model.PageIndex + 1)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
        class="pagination-btn @nextDisabled">
         Next
     </a>
