@@ -28,7 +28,7 @@ namespace CatLib
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-          
+
 
 
             //Connection to database
@@ -40,12 +40,6 @@ namespace CatLib
         options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/News/Login");
         options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/News/Login");
     });
-            //services.AddAuthorization(opts => {
-
-            //    opts.AddPolicy("admin", policy => {
-            //        policy.RequireClaim("Role", "admin");
-            //    });
-            //});
 
         }
 
@@ -65,7 +59,7 @@ namespace CatLib
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-           
+
             app.UseStaticFiles();
 
             app.UseRouting();

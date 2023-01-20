@@ -18,10 +18,6 @@ namespace CatLib.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         [HttpGet]
         public IActionResult CalorieCalc()
@@ -132,6 +128,11 @@ namespace CatLib.Controllers
             var catNames = _context.CatGeneratorNames.Where(x => x.Gender.Name == gender && x.Color.Name == color && x.Hair.Name == hair && x.Personality.Name == personality);
             var test = catNames.Where(x => x.CatGeneratorTypes.Any(y => category.Any(z => z == y.Name))).Select(n => n.Name);
             return Json(test);
+        }
+        public IActionResult DangerousProducts()
+        {
+            var dangerousProducts = _context.Products.Include(x => x.ProductCategory).ToList();
+            return View(dangerousProducts);
         }
     }
 }

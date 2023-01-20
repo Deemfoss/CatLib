@@ -1,0 +1,23 @@
+﻿
+@model List<CatLib.Models.Products.Product>
+
+@{
+        ViewData["Title"] = "Foodds that are toxic and not recomended for cats";
+}
+
+ <h2>Foodds that are toxic and not recomended for cats</h2>
+<p>description</p>
+@foreach(var product in Model){
+<div>
+    <div>@product.ProductCategory.Name</div>
+    <div>@product.Name</div>
+</div>
+}
+<p>if you think your cat eaten something toxic</p>
+<div>Do 
+    call your vet
+    keep other pets away from the problematic food
+    </div>
+<div>Dont
+    try to make your cat vomit
+    wait to see what happens</div>

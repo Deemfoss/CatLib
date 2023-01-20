@@ -1,4 +1,5 @@
 ﻿using CatLib.Models.NameGenerator;
+using CatLib.Models.Products;
 using Microsoft.EntityFrameworkCore;
 
 using System;
@@ -16,10 +17,11 @@ namespace CatLib.Models
         public DbSet<OtherSpecification> OtherSpecifications { get; set; }
         public DbSet<PhysicalSpecification> PhysicalSpecifications { get; set; }
 
+        //Generator Name
         public DbSet<CatGeneratorName> CatGeneratorNames { get; set; }
         public DbSet<CatGeneratorType> CatGeneratorTypes { get; set; }
        
-        //Generator Name
+       
         public DbSet<TemperamentDescription> TemperamentDescriptions { get; set; }
         public DbSet<CompatibilityDescription> CompatibilityDescription { get; set; }
         public DbSet<Gender> Gender { get; set; }
@@ -27,12 +29,11 @@ namespace CatLib.Models
         public DbSet<Personality> Personality { get; set; }
         public DbSet<Color> Color { get; set; }
         public DbSet<User> Users { get; set; }
-
         public DbSet<News> News { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
 
-
-      //  public DbSet<NewsDetailes> NewsDetail { get; set; } 
 
         public CatLibContext(DbContextOptions<CatLibContext> options) : base(options)
         {
