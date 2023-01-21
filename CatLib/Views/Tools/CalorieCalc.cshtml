@@ -2,61 +2,99 @@
     ViewData["Title"] = "CALORIE CALCULATOR FOR CATS";
 }
 
-<div>
-    <div><h3 class="cat-detail-header-name-value">CALORIE CALCULATOR FOR CATS</h3></div>
-    <div>
-        <p>
+<div class="calc-wrapper">
+    <div class="calc-header">
+        <h3 class="cat-detail-header-name-value">CALORIE CALCULATOR FOR CATS</h3>
+        <p class="calc-text">
             Like with humans, a cat’s calorie requirements depend on many factors, such as ages, activity, sex,body condition and etc.
             This tool was developed to quickly calculate calories for your pet.
         </p>
     </div>
-
-    <div class="calc-container">
-        <div class="calc-weight">
-            <div class="calc-weight-input-container">
-                <label class="calc-weight-label" for="calc-weight-input">Weight</label>
-                <input class="calc-weight-input" id="calc-weight-input" type="text" name="weight" />
+    <div class="calc-main">
+@*        <p class="calc-calories-title">
+            Like with humans, a cat’s calorie requirements depend on many factors, such as ages, activity, sex,body condition and etc.
+            This tool was developed to quickly calculate calories for your pet.
+            Like with humans, a cat’s calorie requirements depend on many factors, such as ages, activity, sex,body condition and etc.
+            This tool was developed to quickly calculate calories for your pet.
+        </p>*@
+        <div class="calc-container">
+            <h3 class="calc-container-title">Calculate calories for your cat</h3>
+            <div class="calc-data">
+                <div class="calc-weight-input-container">
+@*                    <label class="calc-weight-label" for="calc-weight-input">Weight</label>
+*@                    <input class="calc-input" id="calc-weight-input" placeholder="Enter Weight" type="text" name="weight" />
+                    <select class="calc-weight-select--small" id="weight_type" name="weight_type">
+                        <option class="calc-weight-select-option" value="lb" selected>Pounds (lbs)</option>
+                        <option class="calc-weight-select-option" value="kg">Kilograms (kg)</option>
+                    </select>
+                </div>
             </div>
-            <div class="calc-weight-select-container">
-                <label class="calc-weight-label">Unit</label>
-                <select class="calc-weight-select" id="weight_type" name="weight_type">
-                    <option value="lb">Pounds (lbs)</option>
-                    <option value="kg">Kilograms (kg)</option>
+                <select class="calc-weight-select" id="type" name="type">
+                    <option class="calc-weight-select-option" value="neutered">Neutered adult</option>
+                    <option class ="calc-weight-select-option" value="intact">Intact adult</option>
+                    <option class="calc-weight-select-option"  value="loss">Weight loss</option>
+                    <option class="calc-weight-select-option" value="obesse">Obesse prone</option>
+                    <option class="calc-weight-select-option" value="kitten">Growing kittens</option>
                 </select>
+            <div class="calc-button-block">
+                <button class="calc-weight-button" id="calc-weight-button" type="submit">Calculate</button>
             </div>
-
         </div>
-        <div>
-            <select class="calc-weight-select" id="type" name="type">
-                <option value="neutered">Neutered adult</option>
-                <option value="intact">Intact adult</option>
-                <option value="loss">Weight loss</option>
-                <option value="obesse">Obesse prone</option>
-                <option value="kitten">Growing kittens</option>
-            </select>
+        <div class="result-container">
+            <h1 class="result-container-header">Estimated Initial Daily Calories</h1>
+            <div class="circular-progress">
+                <p class="circular-progress-value">kcal/day</p>
+                <p class="circular-progress-kcal"></p>
+            </div>
         </div>
-        <div>
-            <button class="calc-weight-button" id="calc-weight-button" type="submit">Calculate</button>
         </div>
     </div>
-    <div class="result-container">
-        <h1 class="result-container-header">Estimated Initial Daily Calories</h1>
-        <div class="calc-result"><h3 id="calc_result"></h3></div>
-    </div>
-    <div>
-        <h3>Ideal Weight Means A Longer and Happier Life</h3>
-        <p>Achieving and maintaining healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.</p>
-    </div>
-
-    <div>
-        <h3>How to calculate daily calorie for cat</h3>
-        <p>Achieving and maintaining healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.</p>
-    </div>
+    <div class="calc-info">
+    <h3 class="calc-info-title">Ideal Weight Means A Longer and Happier Life</h3>
+    <p class="calc-info-text">Achieving and maintaining healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.</p>
+    <button class="calc-cal-info-open-block">
+        <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
+        <h3 class="calc-info-open">How to calculate daily calorie for cat</h3>
+        <span class="calc-info-span">+</span>
+    </button>
+    <p class="calc-cal-info-hidden">Achieving and maintaining healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.Achieving and maintaining healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.Achieving and maintaining healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.</p>
 </div>
 
 @section Scripts{
     <script type="text/javascript">
+        let res;
+        let buttonCalcCalories = document.querySelector(".calc-weight-button");
+let calories = document.getElementById("calc_result");
+let circularProgress = document.querySelector(".circular-progress"),
+    progressValue = document.querySelector(".circular-progress-value"),
+    progressKcal = document.querySelector(".circular-progress-kcal");
 
+let progressStartValue = 0,
+    progressEndValue = 100,
+    speed = 20;
+
+        const calcCaloriesBtn = document.querySelector('.calc-cal-info-open-block');
+        const calcCaloriesText = document.querySelector('.calc-cal-info-hidden');
+
+        calcCaloriesBtn.addEventListener('click', () => calcCaloriesText.classList.toggle("calc-cal-info-active"));
+
+function progress() {
+    let id = setInterval(() => {
+        progressStartValue++;
+
+        progressValue.textContent = `${res}`;
+        progressKcal.textContent = "kcal/day"
+        circularProgress.style.background = `conic-gradient(#108896 ${progressStartValue * 3.6}deg, #ededed 0deg)`
+
+        if (progressStartValue == progressEndValue) {
+            clearInterval(id);
+            progressStartValue = 0;
+
+        }
+    }, speed);
+
+}
+        buttonCalcCalories.addEventListener('click', progress);
         $(function () {
             $("#calc-weight-button").click(function () {
                 $.ajax({
@@ -69,8 +107,9 @@
 
                     },
                     success: function (response) {
-                        let res = JSON.stringify(response);
-                        $("#calc_result").html(res);
+                        res = JSON.stringify(response);
+                      
+                       // $("#calc_result").html(res);
                     }
 
 

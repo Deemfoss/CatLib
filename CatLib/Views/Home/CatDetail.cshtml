@@ -10,14 +10,14 @@
             <img class="cat-detail-breed-img" src="~/img/CatsProfile/@Model.Img" />
         </div>
         <div class="main-traits-container">
-            <div class="first-traits-container">
-                <div class="cat-detail-main-trait"><span class="cat-detail-main-trait-labels">Origin: </span><span class="cat-detail-main-trait-value">@Model.Origin</span></div>
+            <div class="traits-container">
+                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Origin: <span></span> @Model.Origin</h3></div>
                 <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Weight: @Model.MainSpecification.Weight lbs</h3></div>
                 <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Heigh: @Model.MainSpecification.Heigh inches</h3></div>
                 <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Size: @Model.Size</h3></div>
                 <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Hypoallergenic: @Model.Hypoallergenic</h3></div>
             </div>
-            <div class="second-traits-container">
+            <div class="traits-container">
                 <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Life Expectancy: @Model.MainSpecification.Life_Expectancy years</h3></div>
                 <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Colors: @Model.MainSpecification.Litter</h3></div>
                 <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels">Weight: @Model.OtherSpecification.Other_Names</h3></div>
