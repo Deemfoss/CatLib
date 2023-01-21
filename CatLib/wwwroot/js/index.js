@@ -30,4 +30,7 @@ function toggleSkills() {
 
             checkboxes[i].checked = false;
         }
-    }
+}
+
+
+

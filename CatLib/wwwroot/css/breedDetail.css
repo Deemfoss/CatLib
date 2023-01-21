@@ -17,67 +17,64 @@
 }
 .cat-detail-header-container {
     width: 100%;
-    height: 250px;
     background-color: #fff;
     display: flex;
     flex: 1 1 auto;
     justify-content: flex-start;
-    border: 1px solid #e2e2e2;
-    border-color: #108896;
-    border-radius: 10px;
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 25px -9px grey;
     background-color: #ffffff24;
+    border-radius: 15px;
 }
 .cat-detail-header-container-img {
-    margin: 10px;
+    margin-top: -30px;
     display: flex;
     align-items: center;
     align-content: center;
     align-self: center;
     justify-content: center;
     flex:1 1 auto;
+    border-radius: 15px;
 }
 
 .cat-detail-breed-img {
     width: 350px;
     min-height: 200px;
+    border-radius: 15px;
 }
 
 .cat-detail-description-name-value {
     font-weight: 500;
     font-size: 11px;
     text-transform: uppercase;
-    margin: 0;
     color: #8d8888;
     display: flex;
     flex: 1 1 auto;
     width: 800px;
-    padding: 0px 0px 5px 0px;
+    padding: 0px 0px 50px 0px;
 }
 .pb-3 {
     font-family: Karla,Arial,sans-serif;
 }
 .cat-detail-main-trait-labels {
-    display: inline-block;
-    padding: 5px;
+    display: flex;
     justify-content: start;
     align-items: center;
     align-content: center;
     font-size: 14px;
     text-transform: uppercase;
-    /* text-decoration: underline #e9a02e 1px; */
     text-underline-offset: 4px;
-    /* font-weight: 700; */
-    /* border: 1px solid black; */
     color: #3f4c48;
 }
 
-.first-traits-container {
+.traits-container {
     flex-direction: column;
     display: flex;
     flex: 1 1 auto;
     align-items: start;
     height: 100%;
     justify-content: center;
+    gap: 10px;
 }
 .main-traits-container {
     display: flex;
@@ -94,7 +91,9 @@
 }
 
 .cat-detail-main-trait{
-    width:100%
+    width:100%;
+    display: flex;
+    align-items: center;
 }
 
 .cat-detail-article-list {

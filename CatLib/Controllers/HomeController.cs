@@ -51,7 +51,7 @@ namespace CatLib.Controllers
                     break;
             }
 
-            int pageSize = 1;
+            int pageSize = 3;
             string type = "load";
 
             if (!String.IsNullOrEmpty(activity) || !String.IsNullOrEmpty(size) || !String.IsNullOrEmpty(playfulness) || !String.IsNullOrEmpty(coat))
