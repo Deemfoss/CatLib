@@ -62,11 +62,18 @@
     align-items: center;
     align-content: center;
     font-size: 14px;
+    font-weight:300;
     text-transform: uppercase;
     text-underline-offset: 4px;
-    color: #3f4c48;
+    color: gray;
 }
-
+.cat-detail-span {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: rgb(16, 136, 150);
+    padding-right: 8px;
+}
 .traits-container {
     flex-direction: column;
     display: flex;
@@ -95,127 +102,113 @@
     display: flex;
     align-items: center;
 }
-
+.cat-detail-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 20px;
+    gap: 20px;
+/*    background: url(../img/CatsProfile/curl.jpg) no-repeat left;
+    position: relative;
+    top: 50%;
+    z-index: 3;*/
+}
+.cat-detail-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 .cat-detail-article-list {
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
+    background-color: #e9a02e;
 }
 
 .cat-detail-article-link {
     text-decoration: none;
     padding-bottom: 5px;
     font-size: 20px;
-    color: #00727a;
+    color: white;
     border: 1px solid #ededed;
-    padding: 5px;
-    width: 250px;
-    margin: 10px;
     text-transform: uppercase;
+    cursor: pointer;
+    padding: 10px 25px;
+    transition: 0.3s;
 }
 
     .cat-detail-article-link:hover {
         color: #ffffff;
-        background-color: #a93447;
-        transition-duration: 1s;
+        background-color: #ef5030;
     }
-.cat-detail-navigation-history-container {
-    display: flex;
-    flex-direction: row;
-    flex: 1 1 auto;
-}
 
-.cat-detail-header-container-history {
+.cat-detail-container {
     display: flex;
     text-align: center;
-    width: 100%;
     flex-direction: column;
+    background-color: white;
+    padding: 20px 20px;
+    max-height: 400px;
+    overflow: clip;
 }
 .cat-detail-description-name {
     text-align: center;
-    font-weight: 500;
+    font-weight: bold;
     font-size: 25px;
     text-transform: uppercase;
-    text-decoration: underline #108896 2px;
-    padding-bottom: 5px;
-    text-underline-offset: 5px;
-    padding: 10px;
+    padding-bottom: 15px;
+    color: #e9a02e;
 }
-
 .cat-detail-description-txt {
     text-align: start;
-    padding: 5px;
     font-size: 16px;
     color: #626262;
+    line-height: 20px;
 }
 .cat-detail-temperaments-container-list {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
     flex: 1 1 auto;
     justify-content: center;
+    gap: 20px;
 }
 
-.cat-detail-temperaments-container1 {
+.cat-detail-temperaments-container {
     display: flex;
     flex-direction: column;
+    gap: 10px;
     height: 310px;
-   /* border: 1px solid #ffbb51;*/
-    width: 270px;
-    margin: 10px;
+    width: 250px;
     text-align: start;
     justify-content: start;
-    background-color: #c6a5e7;
+    background-color: rgb(16, 136, 150);
     border-radius: 5px;
+    padding: 20px 10px;
+    box-shadow: 0px 25px -9px rgb(16, 136, 150);
 }
-.cat-detail-temperaments-container2 {
+.cat-detail-traits-container {
+    background-color: white;
+    padding: 20px 20px;
+}
+.cat-detail-temperaments-header {
     display: flex;
-    flex-direction: column;
-    height: 310px;
-   /* border: 1px solid #ffbb51;*/
-    width: 270px;
-    margin: 10px;
-    text-align: start;
-    justify-content: start;
-    background-color: #e7c3a5;
-    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
-.cat-detail-temperaments-container3 {
-    display: flex;
-    flex-direction: column;
-    height: 310px;
-/*    border: 1px solid #ffbb51;*/
-    width: 270px;
-    margin: 10px;
-    text-align: start;
-    justify-content: start;
-    background-color: #e7a0a07a;
-    border-radius: 5px;
-}
-.cat-detail-temperaments-container4 {
-    display: flex;
-    flex-direction: column;
-    height: 310px;
-    /*    border: 1px solid #ffbb51;*/
-    width: 270px;
-    margin: 10px;
-    text-align: start;
-    justify-content: start;
-    background-color: #ab7676;
-    border-radius: 5px;
-}
-
-
 .cat-detail-temperaments-container-header {
     text-align: center;
     font-weight: 800;
     font-size: 15px;
     text-transform: uppercase;
-    padding: 10px;
-    /*color: white;*/
+    color: white;
 }
-
+.cat-detail-temperaments-container-img {
+    display: block;
+}
 .flex-wrapper {
     display: flex;
     flex-flow: row nowrap;
@@ -251,7 +244,7 @@
 }
 
 .circular-chart.orange .circle {
-    stroke: #f3825b;
+    stroke: #e9a02e;
 }
 
 .circular-chart.green .circle {
@@ -276,7 +269,6 @@
 
 .cat-detail-temperaments-container-body {
     text-align: center;
-    padding: 10px;
     color: white;
     font-size: 12px;
     text-transform: uppercase;

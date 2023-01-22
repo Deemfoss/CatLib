@@ -835,4 +835,37 @@ div.nav-link-submenu-show {
     width: 800px;
     padding: 0px 0px 5px 0px;
 }
-
+/*Admin panel*/
+.form-group-container {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    border-radius: 5px;
+    color: gray;
+    padding: 40px 25px;
+    background-color: gray;
+}
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.form-control {
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    padding: 15px;
+    color: gray;
+}
+.control-label {
+    color: gray;
+}
+.form-btn {
+    background-color: cadetblue;
+    color: white;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
