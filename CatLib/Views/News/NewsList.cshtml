@@ -9,7 +9,8 @@
 <h1 class="main-topic-h1">Cats news</h1>
     <section class="news">
         <div class="news-block-first">
-            <a class="news-block_card">
+            <a class="news-block_card"  href="@Url.Action("NewsDetail", "News", new { id = @firstNews.Id })">
+                @*@Html.ActionLink("", "NewsDetail", new { id = @firstNews.Id }, new { @class = "breed-container-link" })*@
                 <img class="news-block_card_img--big" src="/img/assets/@firstNews.Img">
                 <div class="news-block_card_data">
                     <p class="news-block_card_date">@firstNews.Date.ToShortDateString()</p>
@@ -22,7 +23,8 @@
                 </div>
             </a>
             <div class="news-block-right">
-                <a class="news-block_card">
+                <a class="news-block_card" action="NewsDetail" id="@Model.Skip(1).Take(1).First().Id">
+                    @*@Html.ActionLink("", "NewsDetail", new { id = @Model.Skip(1).Take(1).First().Id }, new { @class = "breed-container-link" })*@
                     <img class="news-block_card_img--medium" src="/img/assets/@Model.Skip(1).Take(1).First().Img">
                     <div class="news-block_card_data">
                         <p class="news-block_card_date">@Model.Skip(1).Take(1).First().Date</p>
@@ -34,7 +36,8 @@
                         <p class="news-block_card_text">@Model.Skip(1).Take(1).First().Views</p>
                     </div>
                 </a>
-                <a class="news-block_card">
+                <a class="news-block_card" action="NewsDetail" id="@Model.Skip(2).Take(1).First().Id">
+                    @*@Html.ActionLink("", "NewsDetail", new { @Model.Skip(2).Take(1).First().Id }, new { @class = "breed-container-link" })*@
                     <img class="news-block_card_img--medium" src="/img/assets/@Model.Skip(2).Take(1).First().Img">
                     <div class="news-block_card_data">
                         <p class="news-block_card_date">@Model.Skip(2).Take(1).First().Date</p>
@@ -50,7 +53,8 @@
         </div>
         <div class="news-block">
             @foreach(var news in Model.Skip(3)) {
-            <a class="news-block_card--main">
+            <a class="news-block_card--main" action="NewsDetail" id="@news.Id">
+                @*@Html.ActionLink("", "NewsDetail", new { id = news.Id }, new { @class = "breed-container-link" })*@
                 <div class="news-block_card--container">
                     <img class="news-block_card_img" src="/img/assets/@news.Img">
                     <div class="news-block_card_views">

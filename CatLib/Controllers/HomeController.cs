@@ -71,10 +71,10 @@ namespace CatLib.Controllers
             return PartialView("FilterPartal");
         }
 
-        public async Task<IActionResult> News()
-        {
-            return View(await _context.Cats.ToListAsync());
-        }
+        //public async Task<IActionResult> News()
+        //{
+        //    return View(await _context.Cats.ToListAsync());
+        //}
 
         public async Task<IActionResult> CatDetail(int id)
 
