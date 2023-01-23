@@ -134,7 +134,5 @@ namespace CatLib.Controllers
             var dangerousProducts = _context.Products.Include(x => x.ProductCategory).ToList();
             return View(dangerousProducts);
         }
-
-
     }
 }
