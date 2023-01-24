@@ -4,14 +4,16 @@ using CatLib.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CatLib.Migrations
 {
     [DbContext(typeof(CatLibContext))]
-    partial class CatLibContextModelSnapshot : ModelSnapshot
+    [Migration("20230124053022_add-questions")]
+    partial class addquestions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -481,7 +483,12 @@ namespace CatLib.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
 
                     b.ToTable("Questions");
                 });
@@ -561,7 +568,7 @@ namespace CatLib.Migrations
                         .IsRequired();
 
                     b.HasOne("CatLib.Models.Question", "Question")
-                        .WithMany("Answers")
+                        .WithMany()
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -661,6 +668,13 @@ namespace CatLib.Migrations
                     b.Navigation("ProductCategory");
                 });
 
+            modelBuilder.Entity("CatLib.Models.Question", b =>
+                {
+                    b.HasOne("CatLib.Models.Question", null)
+                        .WithMany("Questions")
+                        .HasForeignKey("QuestionId");
+                });
+
             modelBuilder.Entity("CatLib.Models.TemperamentDescription", b =>
                 {
                     b.HasOne("CatLib.Models.Cat", "Cat")
@@ -714,7 +728,7 @@ namespace CatLib.Migrations
 
             modelBuilder.Entity("CatLib.Models.Question", b =>
                 {
-                    b.Navigation("Answers");
+                    b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,160 @@
+﻿@{
+    ViewData["Title"] = "Cat food calculator";
+}
+
+<div class="calc-wrapper">
+    <div class="calc-header">
+        <h3 class="cat-detail-header-name-value">Cat food calculator</h3>
+        <p class="calc-text">
+            Cat food calculator can help you determine how much food your cat needs based on their weight, age, and activity level. This calculators will give you a rough estimate of how much food you should be feeding your cat, but it is always best to consult with your veterinarian to get a more accurate recommendation.
+        </p>
+    </div>
+    <div class="calc-main">
+        <div class="calc-container">
+            <h3 class="calc-container-title">Calculate weight producs</h3>
+            <div class="calc-data">
+                <div class="calc-weight-input-container">
+                    <input class="calc-input" id="calc-weight-input" placeholder="Enter Weight" type="text" name="weight" />
+                    <select class="calc-weight-select--small" id="weight_type" name="weight_type">
+                        <option class="calc-weight-select-option" value="lb" selected>Pounds (lbs)</option>
+                        <option class="calc-weight-select-option" value="kg">Kilograms (kg)</option>
+                    </select>
+                </div>
+            </div>
+            <select class="calc-weight-select" id="type" name="type">
+                <option class="calc-weight-select-option" value="neutered">Neutered adult</option>
+                <option class="calc-weight-select-option" value="intact">Intact adult</option>
+                <option class="calc-weight-select-option" value="loss">Weight loss</option>
+                <option class="calc-weight-select-option" value="obesse">Obesse prone</option>
+                <option class="calc-weight-select-option" value="kitten">Growing kittens</option>
+                <option class="calc-weight-select-option" value="over">Over 7 years old</option>
+                <option class="calc-weight-select-option" value="highActivity">High physical activity</option>
+                <option class="calc-weight-select-option" value="pregnancy">Pregnancy</option>
+            </select>
+
+            <div class="calc-weight-input-container">
+                <input class="calc-input" id="product-cal-input" placeholder=" Your cat food's calories per serving" type="text" name="catCal" />
+            </div>
+
+            <div class="calc-button-block">
+                <button class="calc-weight-button" id="calc-weight-button" type="submit">Calculate</button>
+            </div>
+        </div>
+    </div>
+    <div class="result-container">
+        <h1 class="result-container-header">Estimated Initial Daily Calories</h1>
+        <div class="circular-progress">
+            <p class="circular-progress-value">kcal/day</p>
+            <p class="circular-progress-kcal"></p>
+
+            <p class="circular-progress-cups-value">cups</p>
+            <p class="circular-progress-gram"></p>
+        </div>
+    </div>
+</div>
+<div class="calc-info">
+    <h3 class="calc-info-title">Why the Right cat Food Amount Matters ?</h3>
+    <p class="calc-info-text">
+        The right amount of cat food is important for several reasons. Feeding your cat too much or too little can lead to a variety of health problems.
+        Feeding your cat too much can lead to obesity, which can put your cat at risk for a number of health problems including diabetes, heart disease, and joint problems.
+        Feeding your cat too little can lead to malnutrition and lack of energy.
+        Additionally, feeding the right amount of food will help your cat maintain a healthy weight and will also help to prevent behavioral problems such as food aggression. Additionally, it's important to choose a high-quality cat food that provides all the necessary nutrients for your cat. Consulting with a veterinarian can help you determine the right amount of food for your cat based on their individual needs.
+    </p>
+</div>
+
+<div class="calc-info">
+    <h3 class="calc-info-title">How to Find the Right Amount of cat Food for Your cat ?</h3>
+    <p class="calc-info-text">
+        Finding the right amount of cat food for your cat can be a bit tricky, as different cats have different needs based on factors such as their weight, age, activity level, and any health conditions they may have. Here are a few steps you can take to find the right amount of cat food for your cat:
+
+        Consult with your veterinarian: Your veterinarian can help you determine the appropriate amount of food for your cat based on their individual needs.
+
+        Use feeding guidelines on the cat food packaging as a starting point: Most cat food packaging will include feeding guidelines based on your cat's weight and age.
+
+        Monitor your cat's weight: Keep an eye on your cat's weight and adjust their food intake as necessary. A healthy cat should have a slight waist and be able to feel their ribs without having to press hard.
+
+        Pay attention to your cat's activity level: Active cats may need more food than less active cats.
+
+        Observe their stools: If you are feeding your cat the right amount, their stools should be firm and not too moist.
+
+        Adjust as needed: Be prepared to adjust your cat's food intake as needed. As cats age, their food needs will change, so it's important to reassess their food intake periodically.
+
+    </p>
+</div>
+<div class="calc-info">
+    <h3 class="calc-info-title">
+        How much food does your cat really need? ?
+    </h3>
+    <p class="calc-info-text">
+        The amount of food a cat needs can vary depending on factors such as their weight, age, activity level, and any health conditions they may have. As a general guideline, adult cats should be fed 2-3% of their body weight in food per day, split into two or more meals.
+
+        For example, a 10-pound cat would need to eat around 5-7.5 ounces of food per day. However, it's important to note that these are just rough estimates and that individual cats may require more or less food based on their specific needs.
+
+        It's also important to consider the energy density of the food you are feeding your cat. Some cat food has more calories per gram than others, so you may need to feed less of a high-calorie food to meet your cat's daily energy requirements.
+
+        It's always best to consult with a veterinarian to determine the specific needs of your cat and to develop a feeding plan that is tailored to their individual needs.
+    </p>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        let kcal;
+        let cups;
+        let buttonCalcCalories = document.querySelector(".calc-weight-button");
+        let calories = document.getElementById("calc_result");
+        let circularProgress = document.querySelector(".circular-progress"),
+            progressValue = document.querySelector(".circular-progress-value"),
+            progressKcal = document.querySelector(".circular-progress-kcal");
+
+            progressCupsValue = document.querySelector(".circular-progress-cups-value"),
+            progressCups = document.querySelector(".circular-progress-gram");
+
+        let progressStartValue = 0,
+            progressEndValue = 100,
+            speed = 20;
+
+        const calcCaloriesBtn = document.querySelector('.calc-cal-info-open-block');
+        const calcCaloriesText = document.querySelector('.calc-cal-info-hidden');
+
+        function progress() {
+            let id = setInterval(() => {
+                progressStartValue++;
+
+                progressValue.textContent = `${kcal}`;
+                //progressValue.textContent = `${progressStartValue}`;
+                progressKcal.textContent = "gram/day";
+
+                progressCupsValue.textContent = `${kcal/250}`;
+                progressCups.textContent = "cups";
+                circularProgress.style.background = `conic-gradient(#108896 ${progressStartValue * 3.6}deg, #ededed 0deg)`
+
+                if (progressStartValue == progressEndValue) {
+                    clearInterval(id);
+                    progressStartValue = 0;
+
+                }
+            }, speed);
+
+        }
+        buttonCalcCalories.addEventListener('click', progress);
+        $(function () {
+            $("#calc-weight-button").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Tools/CalcFood",
+                    data: {
+                        "productCal": $("#product-cal-input").val(),
+                        "catWeight": $("#calc-weight-input").val(),
+                        "weight_type": $("#weight_type").val(),
+                        "type": $("#type").val(),
+                    },
+                    success: function (response) {
+                        let res = JSON.stringify(response);
+                        kcal = parseInt(res)
+                    }
+                });
+            });
+        });
+
+    </script>
+}

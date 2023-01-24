@@ -31,5 +31,7 @@ namespace CatLib.Models
 
         public CompatibilityDescription CompatibilityDescription { get; set; }
 
+        public List<Answer> Answers { get; set; } = new();
+
     }
 }

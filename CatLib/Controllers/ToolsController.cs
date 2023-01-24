@@ -26,7 +26,7 @@ namespace CatLib.Controllers
         }
 
         [HttpPost]
-        public JsonResult CaloriesCalc(string weight, string weight_type, string type)
+        public JsonResult CaloriesCalc(int weight, string weight_type, string type)
         {
             var ckcal = ToolServices.CaloriesCalc(weight, weight_type, type);
             return Json(ckcal);
@@ -41,77 +41,21 @@ namespace CatLib.Controllers
         [HttpPost]
         public JsonResult CalcAge(string age, string month)
         {
+            int ageValue, monthValue, fullAge = 0;
+            bool ageNumber = int.TryParse(age, out ageValue);
+            bool monthNumber = int.TryParse(month, out monthValue);
+            if (ageNumber || monthNumber)
+            {
+                fullAge = ToolServices.CalcAge(ageValue, monthValue);
+            }
+            else
+                ModelState.AddModelError("age", "Type correct value");
 
-            if (System.Convert.ToInt32(month) > 11)
+            if (System.Convert.ToInt32(monthValue) > 11)
             {
                 ModelState.AddModelError("month", "Type correct months");
             }
-
-            int ages = System.Convert.ToInt32(age);
-            int months = System.Convert.ToInt32(month);
-            int fullAge = 0;
-
-            if (ages == 1)
-            {
-                fullAge = 15;
-                return Json(fullAge);
-            }
-            if (ages == 2)
-            {
-                fullAge = 24;
-                return Json(fullAge);
-            }
-
-            var middleAges = 0;
-            int oldAges = 0;
-
-            if (ages > 2)
-            {
-                for (int i = 0; i < ages; i++)
-                {
-                    if (i > 2 && i < 16)
-                    {
-                        middleAges++;
-
-                    }
-
-                    if (i >= 16)
-                    {
-                        oldAges++;
-                    }
-
-                }
-
-                middleAges = (middleAges + 1) * 4;
-                oldAges = oldAges * 3;
-
-
-                if (months > 0)
-                {
-                    months = Convert.ToInt32(months * 1.3);
-                }
-
-                fullAge = middleAges + oldAges + 24 + months;
-            }
-
-            if (ages == 0 && months > 0)
-            {
-                if (months <= 1)
-                {
-                    fullAge = 1;
-                }
-
-                if (months == 2)
-                {
-                    fullAge = 2;
-                }
-
-                if (months > 2)
-                {
-                    fullAge = System.Convert.ToInt32(months * 1.6);
-                }
-
-            }
+        
             return Json(fullAge);
         }
 
@@ -133,6 +77,20 @@ namespace CatLib.Controllers
         {
             var dangerousProducts = _context.Products.Include(x => x.ProductCategory).ToList();
             return View(dangerousProducts);
+        }
+
+        [HttpGet]
+        public IActionResult CalcFood()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult CalcFood(int productCal, int catWeight, string weight_type, string type)
+        {
+            var kCal = ToolServices.CaloriesCalc(catWeight, weight_type, type);
+            var foodWeight= ToolServices.CalcFood(productCal, kCal);
+            return Json(foodWeight);
         }
     }
 }

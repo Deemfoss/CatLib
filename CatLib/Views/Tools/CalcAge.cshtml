@@ -1,26 +1,25 @@
 ﻿@{
-    ViewData["Title"] = "Calculate Your Cat's Age in Human Years";
+    ViewData["Title"] = "Converting a cat's age to human years";
 }
 <div class="calc-wrapper">
     <div class="calc-header">
-        <h3 class="cat-detail-header-name-value">Calculate Your Cat's Age in Human Years</h3>
+        <h3 class="cat-detail-header-name-value">Converting a cat's age to human years</h3>
         <p class="calc-text">
-            Like with humans, a cat’s calorie requirements depend on many factors, such as ages, activity, sex,body condition and etc.
-            This tool was developed to quickly calculate calories for your pet.
+            The main reason for having a tool to convert a cat's age to human years is to better understand the cat's age and life stage, which can help with making decisions about their health and care.
+
+            Cats age faster than humans in their first couple of years, so by the time a cat is 2 years old, it is already an adult. Understanding their age in human years can help you to identify when they are reaching important milestones in their life such as the age at which they should be spayed or neutered or when they may be considered a senior cat.
+
+            Also, understanding your cat's age in human years can help you to identify when they may be at increased risk for certain diseases or health problems. For example, a cat that is considered "senior" in human years may be at a higher risk for certain age-related health problems such as arthritis or kidney disease.
+
+            Therefore, it is important to know the age of your cat in human years to properly care for them.
         </p>
     </div>
     <div class="calc-main">
-        @*        <p class="calc-calories-title">
-        Like with humans, a cat’s calorie requirements depend on many factors, such as ages, activity, sex,body condition and etc.
-        This tool was developed to quickly calculate calories for your pet.
-        Like with humans, a cat’s calorie requirements depend on many factors, such as ages, activity, sex,body condition and etc.
-        This tool was developed to quickly calculate calories for your pet.
-        </p>*@
         <div class="calc-container-age">
-            <h3 class="calc-container-title">Calculate Your Cat's Age</h3>
+            <h3 class="calc-container-title">Calculate Cat's Age to human years</h3>
             <div class="calc-data">
                 <input class="calc-input" id="calc-age-input" type="text" name="Age" placeholder="Enter Age" />
-                <input class="calc-input" id="calc-month-input" type="text" name="month" placeholder="Enter Month" />
+                <input class="calc-input" id="calc-month-input" type="text" name="month"  placeholder="Enter Month" />
             </div>
             <div class="calc-button-block">
                 <button class="calc-age-button" id="calc-age-button" type="submit">Calculate</button>
@@ -29,55 +28,83 @@
         <div class="result-container">
             <h1 class="result-container-header-age">Age of your cat</h1>
             <div class="circular-progress-age">
-                <p class="circular-progress-value-age">kg</p>
+                <p class="circular-progress-value-age">Years</p>
                 <p class="circular-progress-kg"></p>
             </div>
         </div>
     </div>
 </div>
 <div class="calc-info">
-    <h3 class="calc-info-title-age">Ideal Weight Means A Longer and Happier Life</h3>
-    <p class="calc-info-text">Achieving and maintaining healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.</p>
+    <h3 class="calc-info-title-age">Converting a cat's age to human years</h3>
+    <p class="calc-info-text">
+        Converting a cat's age to human years can be helpful in a variety of ways. For one, it allows pet owners to better understand the aging process of their cat and what to expect as they get older. For example, a cat that is 7 years old in cat years is considered middle-aged, while a cat that is 14 years old in cat years is considered senior. Knowing this information can help pet owners to provide proper care and attention to their aging cat.
+        Additionally, converting a cat's age to human years can also be helpful in determining a cat's life expectancy. A cat's life expectancy can vary greatly depending on factors such as breed, genetics, and overall health, but on average, cats can live for around 15-20 years. By converting a cat's age to human years, pet owners can get a better idea of how much time they have left with their beloved companion.
+        Lastly, converting a cat's age to human years can also be helpful for veterinarians, as it allows them to better understand a cat's health and any age-related issues that may arise. This can be helpful in determining a treatment plan and determining if any age-related conditions are present.
+    </p>
     <button class="calc-age-info-open-block">
         <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
-        <h3 class="calc-info-open">How to calculate daily calorie for cat</h3>
+        <h3 class="calc-info-open">How to calculate Cat's Age to human years ?</h3>
         <span class="calc-info-span-age">+</span>
     </button>
-    <p class="calc-age-info-hidden">Hu healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.Achieving and maintaining healthy body condition scores in pets has been proven to reduce the risk of illness and add to the longevity and general well-being of the animal.</p>
+    <p class="calc-age-info-hidden">
+        The process of calculating a cat's age in human years is not an exact science. However, one common method is to use a conversion factor of 15 human years for the first year of a cat's life, The second year is equal to an additional 9.  and then add 4 human years for each additional year. Therefore, a 2-year-old cat would be considered 24 in human years (15+9). A 3-year-old cat would be considered 28 in human years (15+9+4) and so on.
+        It is important to note that this is a rough estimate and actual cats age can vary depending on their breed, genetics, and overall health.
+    </p>
 </div>
 
 @section Scripts{
     <script type="text/javascript">
+        let buttonCalcAge = document.querySelector(".calc-age-button");
+        let circularProgress = document.querySelector(".circular-progress-age"),
+            progressValue = document.querySelector(".circular-progress-value-age"),
+            progressAge = document.querySelector(".circular-progress-kg");
+
+        let progressStartValue = 0,
+            progressEndValue = 100,
+            speed = 20;
+        let res;
         const calcAgeBtn = document.querySelector('.calc-age-info-open-block');
         const calcAgeText = document.querySelector('.calc-age-info-hidden');
+        function progress() {
+            let id = setInterval(() => {
+                progressStartValue++;
+                progressValue.textContent = `${res}`;
+                progressKcal.textContent = "Year";
+                circularProgress.style.background = `conic-gradient(#108896 ${progressStartValue * 3.6}deg, #ededed 0deg)`;
+
+                if (progressStartValue == progressEndValue) {
+                    clearInterval(id);
+                    progressStartValue = 0;
+                }
+            }, speed);
+
+        }
+
+        buttonCalcAge.addEventListener('click', progress);
+
+        $(function () {
+            $("#calc-age-button").click(function () {
+                let validate = $("#calc-month-input").val();
+                if (validate > 11) {
+                    alert("Value must be less than 12 months")
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Tools/CalcAge",
+                        data: {
+                            "age": $("#calc-age-input").val(),
+                            "month": $("#calc-month-input").val()
+                        },
+                        success: function (response) {
+                            res = JSON.stringify(response);
+                        }
+                    });
+                }
+            });
+        });
 
         calcAgeBtn.addEventListener('click', () => calcAgeText.classList.toggle("calc-age-info-active"));
-        
-        function validateForm() {
-            debugger;
-            let res = $("#calc-month-input").val();
-            if (res > 11) {
-                alert("Value must be less than 12 months")
-                return false;
-            }
-            else {
-
-                $.ajax({
-                    type: "POST",
-                    url: "/Tools/CalcAge",
-                    data: {
-                        "age": $("#calc-age-input").val(),
-                        "month": $("#calc-month-input").val()
-                    },
-                    success: function (response) {
-                        let res = JSON.stringify(response);
-                        //$("#calc_result").html(res);
-                    }
-
-
-                });
-
-            }
-        }
     </script>
 }

@@ -86,6 +86,7 @@ namespace CatLib.Controllers
                 .Include(phys=>phys.PhysicalSpecification)
                 .Include(tmp => tmp.TemperamentDescription)
                 .Include(cmp => cmp.CompatibilityDescription)
+                .Include(quest=>quest.Answers)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (cat == null)

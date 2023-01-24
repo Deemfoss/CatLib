@@ -33,6 +33,8 @@ namespace CatLib.Models
 
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
 
 
         public CatLibContext(DbContextOptions<CatLibContext> options) : base(options)
