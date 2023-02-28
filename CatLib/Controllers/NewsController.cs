@@ -3,73 +3,29 @@ using CatLib.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using CatLib.Models.Product_Reviews;
 
 namespace CatLib.Controllers
 {
     public class NewsController : Controller
     {
-
+        private IHostingEnvironment Environment;
         private readonly CatLibContext _context;
 
-        public NewsController(CatLibContext context)
+        public NewsController(CatLibContext context, IHostingEnvironment _environment)
         {
+            Environment = _environment;
             _context = context;
-        }
-
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        //  [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(User model)
-        {
-            if (ModelState.IsValid)
-            {
-                User user = await _context.Users.FirstOrDefaultAsync(u => u.Name == model.Name && u.Password == model.Password);
-                if (user != null)
-                {
-                    await Authenticate(user);
-
-                    return RedirectToAction("AdminPanel", "News");
-                }
-                ModelState.AddModelError("", "wrong password");
-            }
-            return View(model);
-        }
-
-        [HttpPost]
-        [Authorize(Roles = "admin")]
-        [ValidateAntiForgeryToken]
-        public IActionResult AdminPanel(News news)
-        {
-            if (news != null)
-            {
-                _context.News.Add(news);
-                _context.SaveChanges();
-            }
-
-            return View();
-        }
-
-
-        [HttpGet]
-        [Authorize(Roles = "admin")]
-
-        // [Authorize(Policy = "admin")]
-        // [ValidateAntiForgeryToken]
-        public IActionResult AdminPanel()
-        {
-            return View();
         }
 
         public async Task<IActionResult> NewsList(int? pageNumber)
@@ -80,20 +36,17 @@ namespace CatLib.Controllers
             return View(PaginatedList<News>.Create(news, pageNumber ?? 1, pageSize, type));
         }
 
-        public IActionResult NewsDetail()
+        public async Task<IActionResult> NewsDetail(int id)
         {
-            return View();
+            var news = await _context.News.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (news == null)
+            {
+                return NotFound();
+            }
+            return View(news);
         }
 
-        private async Task Authenticate(User user)
-        {
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
-            };
-            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
-        }
     }
+
 }

@@ -18,33 +18,40 @@ namespace CatLib.Controllers
 
         public HomeController(CatLibContext context)
         {
-            _context=context;
+            _context = context;
         }
 
-        public async Task<IActionResult> Index(int? pageNumber, string search, string sortOrder,string activity,string size, string playfulness, string coat)
+        public async Task<IActionResult> Index(int? pageNumber, string search, string sortOrder, string activity, string size, string playfulness, string coat)
         {
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["SheddingSortParm"] = sortOrder == "shedding" ? "shedding_desc" : "shedding";
+            ViewData["ActivitySortParm"] = sortOrder == "activity" ? "activity_desc" : "activity";
             ViewData["CurrentFilter"] = search;
             var cats = _context.Cats.ToList();
-            FiltrationList filtrationList=new FiltrationList(_context);
+            FiltrationList filtrationList = new FiltrationList(_context);
 
 
             if (!String.IsNullOrEmpty(search))
             {
                 cats = _context.Cats.Where(s => s.Name.Contains(search.ToLower())).ToList();
-                                       
+
             }
             switch (sortOrder)
             {
                 case "name_desc":
                     cats = cats.OrderByDescending(s => s.Name).ToList();
                     break;
-                case "Date":
-                    cats = cats.OrderByDescending(s => s.Name).ToList();
+                case "shedding_desc":
+                    cats = cats.OrderByDescending(s => s.Shedding).ToList();
                     break;
-                case "date_desc":
-                    cats = cats.OrderByDescending(s => s.Name).ToList();
+                case "shedding":
+                    cats = cats.OrderBy(s => s.Shedding).ToList();
+                    break;
+                case "activity_desc":
+                    cats = cats.OrderByDescending(s => s.Activity).ToList();
+                    break;
+                case "activity":
+                    cats = cats.OrderBy(s => s.Activity).ToList();
                     break;
                 default:
                     cats = cats.OrderBy(s => s.Name).ToList();
@@ -59,10 +66,10 @@ namespace CatLib.Controllers
                 cats = filtrationList.Filtration(activity, size, playfulness, coat);
             }
 
-         
+
 
             return View(PaginatedList<Cat>.Create(cats, pageNumber ?? 1, pageSize, type));
-           
+
         }
 
         public PartialViewResult Filter()
@@ -77,19 +84,22 @@ namespace CatLib.Controllers
         }
 
         public async Task<IActionResult> CatDetail(int id)
-
         {
-           
+
+            // ViewData["Cats"] = _context.Cats.ToList();
+
+            ViewData["Cats"] = _context.News.ToList();
+
             var cat = await _context.Cats
-                .Include(main=>main.MainSpecification)
-                .Include(oth=>oth.OtherSpecification)
-                .Include(phys=>phys.PhysicalSpecification)
+                .Include(main => main.MainSpecification)
+                .Include(oth => oth.OtherSpecification)
+                .Include(phys => phys.PhysicalSpecification)
                 .Include(tmp => tmp.TemperamentDescription)
                 .Include(cmp => cmp.CompatibilityDescription)
-                .Include(quest=>quest.Answers)
+                .Include(quest => quest.Answers).ThenInclude(q => q.Question)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (cat == null)
+                    if (cat == null)
             {
                 return NotFound();
             }

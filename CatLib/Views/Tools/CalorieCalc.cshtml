@@ -14,7 +14,7 @@
             <h3 class="calc-container-title">Calculate calories for your cat</h3>
             <div class="calc-data">
                 <div class="calc-weight-input-container">
-                   <input class="calc-input" id="calc-weight-input" placeholder="Enter Weight" type="text" name="weight" />
+                    <input class="calc-input" id="calc-weight-input" placeholder="Enter Weight" type="text" name="weight" />
                     <select class="calc-weight-select--small" id="weight_type" name="weight_type">
                         <option class="calc-weight-select-option" value="lb" selected>Pounds (lbs)</option>
                         <option class="calc-weight-select-option" value="kg">Kilograms (kg)</option>
@@ -42,10 +42,42 @@
                 <p class="circular-progress-kcal"></p>
             </div>
         </div>
-        </div>
     </div>
-    <div class="calc-info">
-        <h3 class="calc-info-title">Why is it important to use a calorie calculator?</h3>
+</div>
+<div class="calc-info">
+    <h3 class="calc-info-title">
+        Cat Diet
+    </h3>
+    <p class="calc-info-text">
+        Cats are obligate carnivores, which means that they require a diet that is high in animal protein. The ideal diet for a cat should consist of:
+
+        Meat, poultry, or fish: This should make up the majority of a cat's diet, as cats require high levels of protein to maintain their health.
+
+        Taurine: This is an amino acid that is essential for a cat's health, as they cannot produce it on their own. Taurine is found in meat, poultry, and fish.
+
+        Fat: Cats also require a source of fat in their diet to provide them with energy and to maintain a healthy skin and coat.
+
+        Vitamins and minerals: A balanced diet for a cat should also include vitamins and minerals, such as vitamins A and D, and calcium.
+
+        It is best to feed cats a balanced and complete commercial cat food diet formulated to meet their specific nutritional requirements, rather than feeding them a diet based solely on human food. However, it's important to choose a high-quality cat food that meets the nutritional needs of your cat, and to avoid giving them foods that are toxic to them, such as onions, chocolate, or grapes.
+
+        It's also important to monitor your cat's food intake and to adjust their diet as needed to maintain a healthy weight. If you have any concerns about your cat's diet, it's best to consult with a veterinarian.
+    </p>
+</div>
+<div class="calc-info">
+    <h3 class="calc-info-title">
+        how heavy should my cat be ?
+    </h3>
+    <p class="calc-info-text">
+        The ideal weight for a cat can vary depending on its breed, age, and activity level. In general, a healthy weight for an adult cat ranges from 8 to 10 pounds for a small breed, to 15 to 20 pounds for a larger breed. However, this is just a rough estimate, and it's best to consult with a veterinarian to determine the ideal weight for your cat.
+
+        A veterinarian can perform a physical examination and take into consideration other factors, such as your cat's body condition, overall health, and muscle tone, to determine if your cat is at a healthy weight. Additionally, a veterinarian can advise you on how much food to feed your cat and how to adjust their diet as needed to maintain a healthy weight.
+
+        It's important to monitor your cat's weight and to address any weight gain or loss promptly, as carrying excess weight can lead to a number of health problems, such as diabetes, joint problems, and decreased mobility.
+    </p>
+</div>
+<div class="calc-info">
+    <h3 class="calc-info-title">Why is it important to use a calorie calculator?</h3>
     <p class="calc-info-text">Сalorie calculator for cats helps to ensure that they are getting the proper amount of nutrition. Cats have specific dietary needs, and overfeeding or underfeeding can lead to health problems such as obesity or malnutrition. A calorie calculator can help to determine the appropriate amount of food to give a cat based on their weight, age, and activity level, which can help to keep them healthy and at a healthy weight. Additionally, using a calorie calculator can help to create a customized diet plan that meets the individual needs of each cat, which can help to improve their overall health and well-being.</p>
     <button class="calc-cal-info-open-block">
         <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
@@ -67,36 +99,17 @@
         let buttonCalcCalories = document.querySelector(".calc-weight-button");
         let calories = document.getElementById("calc_result");
         let circularProgress = document.querySelector(".circular-progress"),
-        progressValue = document.querySelector(".circular-progress-value"),
-        progressKcal = document.querySelector(".circular-progress-kcal");
+            progressValue = document.querySelector(".circular-progress-value"),
+            progressKcal = document.querySelector(".circular-progress-kcal");
 
-        let progressStartValue = 0,
-            progressEndValue = 100,
-        speed = 20;
+      
 
         const calcCaloriesBtn = document.querySelector('.calc-cal-info-open-block');
         const calcCaloriesText = document.querySelector('.calc-cal-info-hidden');
 
         calcCaloriesBtn.addEventListener('click', () => calcCaloriesText.classList.toggle("calc-cal-info-active"));
-
-function progress() {
-    let id = setInterval(() => {
-        progressStartValue++;
-
-        progressValue.textContent = `${kcal}`;
-        //progressValue.textContent = `${progressStartValue}`;
-        progressKcal.textContent = "kcal/day"
-        circularProgress.style.background = `conic-gradient(#108896 ${progressStartValue * 3.6}deg, #ededed 0deg)`
-
-        if (progressStartValue == progressEndValue) {
-            clearInterval(id);
-            progressStartValue = 0;
-
-        }
-    }, speed);
-
-}
-        buttonCalcCalories.addEventListener('click', progress);
+       
+        //buttonCalcCalories.addEventListener('click', progress);
         $(function () {
             $("#calc-weight-button").click(function () {
                 $.ajax({
@@ -110,10 +123,35 @@ function progress() {
                     success: function (response) {
                         let res = JSON.stringify(response);
                         kcal = parseInt(res)
+                       // setTimeout(progress, 10);
+                        progress()
                     }
                 });
             });
         });
+
+        function progress() {
+
+            let test = kcal - 10;
+            let progressStartValue = test,
+                progressEndValue = kcal,
+                speed = 20;
+            
+            let id = setInterval(() => {
+                progressStartValue++;
+                //progressValue.textContent = `${kcal}`;
+                progressValue.textContent = `${progressStartValue}`;
+                progressKcal.textContent = "kcal/day"
+                circularProgress.style.background = `conic-gradient(#108896 ${progressStartValue * 3.6}deg, #ededed 0deg)`
+                debugger;
+                if (progressStartValue == progressEndValue) {
+                    clearInterval(id);
+                    progressStartValue = 0;
+                }
+            }, speed);
+
+        }
+       
 
     </script>
 }

@@ -1,0 +1,103 @@
+﻿@model List<CatLib.Models.NameGenerator.CategoryName>
+
+
+@{
+    ViewData["Title"] = "Cate names by category";
+}
+
+<h1 class="main-topic-h1">Cats news</h1>
+
+<section>
+    <div class="news-block">
+        @foreach (var category in Model)
+        {
+            <h3>@category.Name</h3>
+            <div class="cat-name-category-container">
+                @foreach (var subCategory in category.Personalities)
+                {
+                    <a class="news-block_card--main" action="NewsDetail" id="@subCategory.Id" href="@Url.Action("SpecificCatNames", "Tools", new { id = subCategory.Id})">
+                        <div class="news-block_card--container">
+                            <img class="news-block_card_img" src="/img/Presonality-img/@subCategory.Img">
+                        </div>
+                        <div class="news-block_card_data--main">
+                            <h3 class="news-block_card_title--black">@subCategory.Name</h3>
+                            <p class="news-block_card_text--black">@subCategory.Desctiption</p>
+                        </div>
+                    </a>
+                }
+            </div>
+
+        }
+    </div>
+
+    <div class="calc-info">
+        <h3 class="calc-info-title">Why is it important to use a calorie calculator?</h3>
+        <p class="calc-info-text">Сalorie calculator for cats helps to ensure that they are getting the proper amount of nutrition. Cats have specific dietary needs, and overfeeding or underfeeding can lead to health problems such as obesity or malnutrition. A calorie calculator can help to determine the appropriate amount of food to give a cat based on their weight, age, and activity level, which can help to keep them healthy and at a healthy weight. Additionally, using a calorie calculator can help to create a customized diet plan that meets the individual needs of each cat, which can help to improve their overall health and well-being.</p>
+        <button class="calc-cal-info-open-block">
+            <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
+            <h3 class="calc-info-open">How to calculate daily calorie for cat</h3>
+            <span class="calc-info-span">+</span>
+        </button>
+        <p class="calc-cal-info-hidden">
+            To correctly determine how many calories your pet needs, you first need to take into account his lifestyle, age, activity level, and many other factors.
+            All these parameters are calculated using RER (Resting Energy Requirement).
+            Let's take an intact adult neutered cat as an example.
+            using the following formula, we calculate RER = 70 x (ideal weight in kilograms) 3/4.
+            Then you must multiply the resulting razulatate by 1.4, which is the multiplier for a neutered cat. However, in order not to count calories manually, our calculator will do it automatically for you.
+        </p>
+    </div>
+
+    <div>
+        <div class="calc-info">
+            <h3 class="calc-info-title">Why is it important to use a calorie calculator?</h3>
+            <p class="calc-info-text">Сalorie calculator for cats helps to ensure that they are getting the proper amount of nutrition. Cats have specific dietary needs, and overfeeding or underfeeding can lead to health problems such as obesity or malnutrition. A calorie calculator can help to determine the appropriate amount of food to give a cat based on their weight, age, and activity level, which can help to keep them healthy and at a healthy weight. Additionally, using a calorie calculator can help to create a customized diet plan that meets the individual needs of each cat, which can help to improve their overall health and well-being.</p>
+            <button class="calc-cal-info-open-block">
+                <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
+                <h3 class="calc-info-open">How to calculate daily calorie for cat</h3>
+                <span class="calc-info-span">+</span>
+            </button>
+            <p class="calc-cal-info-hidden">
+                To correctly determine how many calories your pet needs, you first need to take into account his lifestyle, age, activity level, and many other factors.
+                All these parameters are calculated using RER (Resting Energy Requirement).
+                Let's take an intact adult neutered cat as an example.
+                using the following formula, we calculate RER = 70 x (ideal weight in kilograms) 3/4.
+                Then you must multiply the resulting razulatate by 1.4, which is the multiplier for a neutered cat. However, in order not to count calories manually, our calculator will do it automatically for you.
+            </p>
+        </div>
+        <div class="calc-info">
+            <h3 class="calc-info-title">Why is it important to use a calorie calculator?</h3>
+            <p class="calc-info-text">Сalorie calculator for cats helps to ensure that they are getting the proper amount of nutrition. Cats have specific dietary needs, and overfeeding or underfeeding can lead to health problems such as obesity or malnutrition. A calorie calculator can help to determine the appropriate amount of food to give a cat based on their weight, age, and activity level, which can help to keep them healthy and at a healthy weight. Additionally, using a calorie calculator can help to create a customized diet plan that meets the individual needs of each cat, which can help to improve their overall health and well-being.</p>
+            <button class="calc-cal-info-open-block">
+                <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
+                <h3 class="calc-info-open">How to calculate daily calorie for cat</h3>
+                <span class="calc-info-span">+</span>
+            </button>
+            <p class="calc-cal-info-hidden">
+                To correctly determine how many calories your pet needs, you first need to take into account his lifestyle, age, activity level, and many other factors.
+                All these parameters are calculated using RER (Resting Energy Requirement).
+                Let's take an intact adult neutered cat as an example.
+                using the following formula, we calculate RER = 70 x (ideal weight in kilograms) 3/4.
+                Then you must multiply the resulting razulatate by 1.4, which is the multiplier for a neutered cat. However, in order not to count calories manually, our calculator will do it automatically for you.
+            </p>
+        </div>
+        <div class="calc-info">
+            <h3 class="calc-info-title">Why is it important to use a calorie calculator?</h3>
+            <p class="calc-info-text">Сalorie calculator for cats helps to ensure that they are getting the proper amount of nutrition. Cats have specific dietary needs, and overfeeding or underfeeding can lead to health problems such as obesity or malnutrition. A calorie calculator can help to determine the appropriate amount of food to give a cat based on their weight, age, and activity level, which can help to keep them healthy and at a healthy weight. Additionally, using a calorie calculator can help to create a customized diet plan that meets the individual needs of each cat, which can help to improve their overall health and well-being.</p>
+            <button class="calc-cal-info-open-block">
+                <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
+                <h3 class="calc-info-open">How to calculate daily calorie for cat</h3>
+                <span class="calc-info-span">+</span>
+            </button>
+            <p class="calc-cal-info-hidden">
+                To correctly determine how many calories your pet needs, you first need to take into account his lifestyle, age, activity level, and many other factors.
+                All these parameters are calculated using RER (Resting Energy Requirement).
+                Let's take an intact adult neutered cat as an example.
+                using the following formula, we calculate RER = 70 x (ideal weight in kilograms) 3/4.
+                Then you must multiply the resulting razulatate by 1.4, which is the multiplier for a neutered cat. However, in order not to count calories manually, our calculator will do it automatically for you.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+

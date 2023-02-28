@@ -1,6 +1,6 @@
 ﻿@model CatLib.Models.Cat
 @{
-    ViewData["Title"] = Model.Name + " : Cat Breed Profile, Characteristics, Appearance, Personality, History, Care, &Helpful Information for Pet Owners";
+    ViewData["Title"] = Model.Name + " : Cat Breed Profile, Desctiption, Characteristics, Appearance, Personality, History, Care, and other helpful Information for pet Owners";
 }
 <div>
     <div class="cat-detail-header-name"><h1 class="cat-detail-header-name-value"></h1>@Model.Name</div>
@@ -19,8 +19,7 @@
             </div>
             <div class="traits-container">
                 <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Life Expectancy </span> @Model.MainSpecification.Life_Expectancy years</h3></div>
-                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Hypoallergenic </span>@Model.MainSpecification.Litter</h3></div>
-                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Weight </span>@Model.OtherSpecification.Other_Names</h3></div>
+                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Litter </span>@Model.MainSpecification.Litter</h3></div>
                 <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Coat </span> @Model.Coat</h3></div>
                 <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Colors </span> @Model.MainSpecification.Colors</h3></div>
             </div>
@@ -33,17 +32,22 @@
             <a class="cat-detail-article-link" href="#description">Description</a>
         </div>
         <div class="cat-detail-blocks">
-            <div class="cat-detail-container" id="history">
-                <h2 class="cat-detail-description-name">History of @Model.Name</h2>
+            <div class="cat-detail-container" id="summary">
+                <h2 class="cat-detail-description-name">@Model.Name cat Summary</h2>
                 <p class="cat-detail-description-txt">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                    containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
-                    including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, when an unknown printer took a gaindustry. Lorem Ipsum has been the
-                    @Model.History
+                    @Model.OtherSpecification.Summary_desc
+                </p>
+            </div>
+            <div class="cat-detail-container" id="history">
+                <h2 class="cat-detail-description-name">@Model.Name cat History</h2>
+                <p class="cat-detail-description-txt">
+                    @Model.OtherSpecification.History_desc
+                </p>
+            </div>
+            <div class="cat-detail-container" id="charasteristics">
+                <h2 class="cat-detail-description-name">@Model.Name cat Charasteristics</h2>
+                <p class="cat-detail-description-txt">
+                    @Model.OtherSpecification.Characteristics_desc
                 </p>
             </div>
             <div class="cat-detail-traits-container" id="temperament">
@@ -127,17 +131,10 @@
 
                 </div>
             </div>
-            <div class="cat-detail-container" id="description">
-                <h2 class="cat-detail-description-name">Description of @Model.Name</h2>
+            <div class="cat-detail-container" id="personality">
+                <h2 class="cat-detail-description-name">@Model.Name cat Personality</h2>
                 <p class="cat-detail-description-txt">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                    containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
-                    including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, when an unknown printer took a gaindustry. Lorem Ipsum has been the
-                    @Model.Description
+                    @Model.OtherSpecification.Persinality_desc
                 </p>
             </div>
             <div class="cat-detail-traits-container">
@@ -222,10 +219,16 @@
                 </div>
 
             </div>
+            <div class="cat-detail-container" id="health">
+                <h2 class="cat-detail-header-container-history">How long do @Model.Name cats Live</h2>
+                <p class="cat-detail-description-txt">
+                    @Model.OtherSpecification.Live_desc
+                </p>
+            </div>
             <div class="cat-detail-container">
                 <div class="cat-detail-header-container-history">
                     <h2 class="cat-detail-description-name">How to choose a kitten @Model.Name</h2>
-                    <p class="cat-detail-description-txt">@Model.OtherSpecification.Choosing_Kitten</p>
+                    <p class="cat-detail-description-txt">@Model.OtherSpecification.Choosing_Kitten_desc</p>
                 </div>
             </div>
             <div class="cat-detail-traits-container">
@@ -335,30 +338,72 @@
 
             </div>
             <div class="cat-detail-container">
-                <h2 class="cat-detail-description-name">Care of @Model.Name</h2>
-                <p class="cat-detail-description-txt">@Model.OtherSpecification.Care_Maintenance</p>
+                <h2 class="cat-detail-container">@Model.Name health</h2>
+                <p class="cat-detail-description-txt">@Model.OtherSpecification.Health_desc</p>
             </div>
             <div class="cat-detail-container">
-                <h2 class="cat-detail-description-name">Health of @Model.Name</h2>
-                <p class="cat-detail-description-txt">@Model.OtherSpecification.Health</p>
+                <h2 class="cat-detail-description-name">@Model.Name cats care</h2>
+                <p class="cat-detail-description-txt">@Model.OtherSpecification.Care_desc</p>
             </div>
             <div class="cat-detail-container">
-                <h2 class="cat-detail-description-name">Popular names of  @Model.Name</h2>
+                <h2 class="cat-detail-description-name">@Model.Name cats popular names</h2>
                 <p class="cat-detail-description-txt">@Model.OtherSpecification.Nicknames</p>
             </div>
             <div class="cat-detail-container">
-                <h2 class="cat-detail-description-name">Price</h2>
-                <p class="cat-detail-description-txt">Averge price of @Model.Name @Model.MainSpecification.Price</p>
+                <h2 class="cat-detail-description-name">@Model.Name cats colors  </h2>
+                <p class="cat-detail-description-txt">@Model.Name @Model.OtherSpecification.Color_desc</p>
             </div>
-            
-            @foreach (var question in Model.Answers)
-            {
-                <div class="cat-detail-container">
-                    <h2 class="cat-detail-description-name">qqq @question.Name</h2>
-                    <p class="cat-detail-description-txt">qq @question.Question</p>
-                </div>
-            }
-
+            <div class="cat-detail-container">
+                <h2 class="cat-detail-description-name">@Model.Name cats size </h2>
+                <p class="cat-detail-description-txt">@Model.OtherSpecification.Size_desc</p>
+            </div>
+            <div class="cat-detail-container">
+                <h2 class="cat-detail-description-name">@Model.Name cats other names</h2>
+                <p class="cat-detail-description-txt">@Model.OtherSpecification.Other_Names</p>
+            </div>
+            <div class="cat-detail-container">
+                <h2 class="cat-detail-description-name">@Model.Name cats price</h2>
+                <p class="cat-detail-description-txt">@Model.OtherSpecification.Price_desc/p>
+            </div>
+            <div class="">
+                <h2 class="cat-detail-description-name">Frequently asked questions about @Model.Name cats</h2>
+                @foreach (var question in Model.Answers)
+                {<div class="cat-detail-container">
+                        <h2 class="cat-detail-description-name">@question.Question.Name</h2>
+                        <p class="cat-detail-description-txt">@question.Name</p>
+                    </div>
+                }
+            </div>
         </div>
     </div>
+    <div class="owl-carousel owl-theme">
+        @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+        {
+            <div><img src="/img/assets/@cats.Img"></div>
+        }
+    </div>
 </div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            (function ($) {
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 5
+                        }
+                    }
+                });
+            })(jQuery);
+        });
+    </script>
+   } 

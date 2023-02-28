@@ -24,6 +24,7 @@
     display: flex;
     flex: 1 1 auto;
     max-width: 600px;
+
 }
 .calc-main {
     display: flex;
@@ -222,14 +223,16 @@
     padding: 20px 40px 20px 40px;
     gap: 5px;
     background-color: white;
+    margin-bottom:20px;
 }
 .calc-info-title, .calc-info-title-age, .calc-info-title-name {
-    font-size: 18px;
-    font-weight: bold;
     text-transform: uppercase;
     text-align: center;
     width: 100%;
     letter-spacing: 2px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.214;
 }
 .calc-info-title {
     color: #108896;
@@ -239,12 +242,16 @@
 }
 .calc-info-title-name {
     color: #ef5030;
+
 }
 .calc-info-text {
-    font-weight: 500;
-    font-size: 16px;
     color: gray;
     text-align: justify;
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: .1px;
+    line-height: 1.632;
+    margin-bottom: 24px;
 }
 .calc-cal-info-open-block {
     display: flex;

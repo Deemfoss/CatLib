@@ -21,15 +21,28 @@
 </p>
 <p>We coolect 1 million products that dangerous for cat</p>
 
-
- <h2>Foodds that are toxic and not recomended for cats</h2>
-<p>description</p>
-@foreach(var product in Model){
-<div>
-    <div>@product.ProductCategory.Name</div>
-    <div>@product.Name</div>
+<div class="toxic-products-container">
+    <h2>Foodds that are toxic and not recomended for cats</h2>
+    @foreach (var product in Model)
+    {
+        <div>
+            <div>@product.ProductCategory.Name</div>
+            <div>@product.Name</div>
+        </div>
+    }
 </div>
-}
+<div class="toxic-products-container">
+    <h2>Foodds that are toxic and not recomended for cats</h2>
+    @foreach (var product in Model)
+    {
+        <div>
+            <div>@product.ProductCategory.Name</div>
+            <div>@product.Name</div>
+        </div>
+    }
+</div>
+
+
 <p>if you think your cat eaten something toxic</p>
 <p>
     If you suspect that your cat has ingested a toxic product, it is important to act quickly to minimize the risk of injury or death. Here are some steps you should take:

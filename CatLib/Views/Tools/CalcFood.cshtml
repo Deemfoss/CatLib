@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Cat food calculator";
+    ViewData["Title"] = "daily feed calculation";
 }
 
 <div class="calc-wrapper">
@@ -9,9 +9,20 @@
             Cat food calculator can help you determine how much food your cat needs based on their weight, age, and activity level. This calculators will give you a rough estimate of how much food you should be feeding your cat, but it is always best to consult with your veterinarian to get a more accurate recommendation.
         </p>
     </div>
+    <div class="calc-info">
+        <h3 class="calc-info-title">Why the Right cat Food Amount Matters ?</h3>
+        <p class="calc-info-text">
+            The right amount of cat food is important for several reasons. Feeding your cat too much or too little can lead to a variety of health problems.
+            Feeding your cat too much can lead to obesity, which can put your cat at risk for a number of health problems including diabetes, heart disease, and joint problems.
+            Feeding your cat too little can lead to malnutrition and lack of energy.
+            Additionally, feeding the right amount of food will help your cat maintain a healthy weight and will also help to prevent behavioral problems such as food aggression. Additionally, it's important to choose a high-quality cat food that provides all the necessary nutrients for your cat. Consulting with a veterinarian can help you determine the right amount of food for your cat based on their individual needs.
+        </p>
+    </div>
     <div class="calc-main">
         <div class="calc-container">
-            <h3 class="calc-container-title">Calculate weight producs</h3>
+            <h3 class="calc-container-title">
+                daily feed calculation
+            </h3>
             <div class="calc-data">
                 <div class="calc-weight-input-container">
                     <input class="calc-input" id="calc-weight-input" placeholder="Enter Weight" type="text" name="weight" />
@@ -31,20 +42,24 @@
                 <option class="calc-weight-select-option" value="highActivity">High physical activity</option>
                 <option class="calc-weight-select-option" value="pregnancy">Pregnancy</option>
             </select>
-
             <div class="calc-weight-input-container">
                 <input class="calc-input" id="product-cal-input" placeholder=" Your cat food's calories per serving" type="text" name="catCal" />
             </div>
-
+            <select class="calc-weight-select" id="times" name="times">
+                <option class="calc-weight-select-option" selected value="1">One times a day</option>
+                <option class="calc-weight-select-option" value="2">Two times a day</option>
+                <option class="calc-weight-select-option" value="3">Three times a day</option>
+                <option class="calc-weight-select-option" value="4">Four times a day</option>
+            </select>
             <div class="calc-button-block">
                 <button class="calc-weight-button" id="calc-weight-button" type="submit">Calculate</button>
             </div>
         </div>
     </div>
     <div class="result-container">
-        <h1 class="result-container-header">Estimated Initial Daily Calories</h1>
+        <h1 class="result-container-header">Estimated Initial Daily food amount</h1>
         <div class="circular-progress">
-            <p class="circular-progress-value">kcal/day</p>
+            <p class="circular-progress-value">G/Day</p>
             <p class="circular-progress-kcal"></p>
 
             <p class="circular-progress-cups-value">cups</p>
@@ -53,12 +68,9 @@
     </div>
 </div>
 <div class="calc-info">
-    <h3 class="calc-info-title">Why the Right cat Food Amount Matters ?</h3>
+    <h3 class="calc-info-title">How many times a day should a cat be fed ?</h3>
     <p class="calc-info-text">
-        The right amount of cat food is important for several reasons. Feeding your cat too much or too little can lead to a variety of health problems.
-        Feeding your cat too much can lead to obesity, which can put your cat at risk for a number of health problems including diabetes, heart disease, and joint problems.
-        Feeding your cat too little can lead to malnutrition and lack of energy.
-        Additionally, feeding the right amount of food will help your cat maintain a healthy weight and will also help to prevent behavioral problems such as food aggression. Additionally, it's important to choose a high-quality cat food that provides all the necessary nutrients for your cat. Consulting with a veterinarian can help you determine the right amount of food for your cat based on their individual needs.
+        It is generally recommended that adult cats be fed two to three times a day. Kittens, on the other hand, may need to be fed more frequently, around four to six times a day, as they require more frequent feedings to support their growth and development. It's important to note that this is a general guideline and individual cats may have different feeding schedules depending on their dietary needs, activity level, and other factors. Consult with a veterinarian to determine the appropriate feeding schedule for your specific cat.
     </p>
 </div>
 
@@ -83,7 +95,7 @@
 </div>
 <div class="calc-info">
     <h3 class="calc-info-title">
-        How much food does your cat really need? ?
+        How much food does your cat really need ?
     </h3>
     <p class="calc-info-text">
         The amount of food a cat needs can vary depending on factors such as their weight, age, activity level, and any health conditions they may have. As a general guideline, adult cats should be fed 2-3% of their body weight in food per day, split into two or more meals.
@@ -95,6 +107,29 @@
         It's always best to consult with a veterinarian to determine the specific needs of your cat and to develop a feeding plan that is tailored to their individual needs.
     </p>
 </div>
+
+<div class="calc-info">
+    <h3 class="calc-info-title">
+        HOW TO UNDERSTAND THAT THE CAT ENOUGH FOOD ?
+    </h3>
+    <p class="calc-info-text">
+        There are a few signs that a cat may have enough food:
+
+        Maintaining a healthy weight: A cat that is at a healthy weight is likely getting enough food.
+
+        Eating regularly: A cat that is eating regularly and finishing their meals is likely getting enough food.
+
+        Bright eyes and a shiny coat: A cat that is getting enough nutrition will have bright eyes and a shiny coat.
+
+        Good energy levels: A cat that is getting enough food will have good energy levels and be active and playful.
+
+        Regular bowel movements: A cat that is getting enough food will have regular bowel movements.
+
+        It's important to note that every cat is different, and some may have different needs. If you have any concerns about your cat's diet, you should consult your veterinarian.
+    </p>
+</div>
+
+
 
 @section Scripts{
     <script type="text/javascript">
@@ -136,7 +171,7 @@
             }, speed);
 
         }
-        buttonCalcCalories.addEventListener('click', progress);
+       // buttonCalcCalories.addEventListener('click', progress);
         $(function () {
             $("#calc-weight-button").click(function () {
                 $.ajax({
@@ -146,11 +181,13 @@
                         "productCal": $("#product-cal-input").val(),
                         "catWeight": $("#calc-weight-input").val(),
                         "weight_type": $("#weight_type").val(),
+                        "times": $("#times").val(),
                         "type": $("#type").val(),
                     },
                     success: function (response) {
                         let res = JSON.stringify(response);
                         kcal = parseInt(res)
+                        progress()
                     }
                 });
             });

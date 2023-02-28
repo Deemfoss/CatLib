@@ -17,8 +17,7 @@ namespace CatLib.Models.NameGenerator
         public Color Color { get; set; }
         public int HairId { get; set; }
         public Hair Hair { get; set; }
-        public int PersonalityId { get; set; }
-        public Personality Personality { get; set; }
+        public List<Personality> Personalities { get; set; } = new();
         public string Description { get; set; }
         public List<CatGeneratorType> CatGeneratorTypes { get; set; }
 

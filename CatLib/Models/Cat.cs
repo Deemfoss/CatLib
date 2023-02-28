@@ -13,8 +13,6 @@ namespace CatLib.Models
         public string Origin { get; set; }
         public string Name { get; set; }
         public string Img { get; set; }
-        public string Description { get; set; }
-        public string History { get; set; }
         public string Coat { get; set; }
         public string Size { get; set; }
         public string Shedding { get; set; }
@@ -23,14 +21,11 @@ namespace CatLib.Models
         public string Affection { get; set; }
         public string Intelligence { get; set; }
         public string Hypoallergenic { get; set; }
-
         public MainSpecification MainSpecification { get; set; }
         public OtherSpecification OtherSpecification { get; set; }
         public PhysicalSpecification PhysicalSpecification { get; set; }
         public TemperamentDescription TemperamentDescription { get; set; }
-
         public CompatibilityDescription CompatibilityDescription { get; set; }
-
         public List<Answer> Answers { get; set; } = new();
 
     }

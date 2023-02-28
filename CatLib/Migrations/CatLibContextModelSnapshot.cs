@@ -34,6 +34,21 @@ namespace CatLib.Migrations
                     b.ToTable("CatGeneratorNameCatGeneratorType");
                 });
 
+            modelBuilder.Entity("CatGeneratorNamePersonality", b =>
+                {
+                    b.Property<int>("CatGeneratorNamesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PersonalitiesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CatGeneratorNamesId", "PersonalitiesId");
+
+                    b.HasIndex("PersonalitiesId");
+
+                    b.ToTable("CatGeneratorNamePersonality");
+                });
+
             modelBuilder.Entity("CatLib.Models.Answer", b =>
                 {
                     b.Property<int>("Id")
@@ -75,12 +90,6 @@ namespace CatLib.Migrations
                     b.Property<string>("Coat")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("History")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Hypoallergenic")
                         .HasColumnType("nvarchar(max)");
 
@@ -108,6 +117,135 @@ namespace CatLib.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cats");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Cat_Health.Disease", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Causes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Diagnosis")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Living_Management")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other_Names")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prevention")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Summary")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Symptoms")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Treatment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Diseases");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Cat_Health.Disease_Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DiseaseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Question")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DiseaseId");
+
+                    b.ToTable("Disease_Questions");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Cat_Wariors_Generator.WariorColor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("WariorColorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ColorId");
+
+                    b.ToTable("WariorColores");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Cat_Wariors_Generator.WariorPrefix", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("WariorColorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WariorColorId");
+
+                    b.ToTable("WariorPrefixes");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Cat_Wariors_Generator.WariorSuffix", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WariorSuffixes");
                 });
 
             modelBuilder.Entity("CatLib.Models.CompatibilityDescription", b =>
@@ -204,9 +342,6 @@ namespace CatLib.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonalityId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ColorId");
@@ -214,8 +349,6 @@ namespace CatLib.Migrations
                     b.HasIndex("GenderId");
 
                     b.HasIndex("HairId");
-
-                    b.HasIndex("PersonalityId");
 
                     b.ToTable("CatGeneratorNames");
                 });
@@ -236,6 +369,24 @@ namespace CatLib.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CatGeneratorTypes");
+                });
+
+            modelBuilder.Entity("CatLib.Models.NameGenerator.CategoryName", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoryNames");
                 });
 
             modelBuilder.Entity("CatLib.Models.NameGenerator.Color", b =>
@@ -290,10 +441,24 @@ namespace CatLib.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryNameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Desctiption")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsCharacter")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryNameId");
 
                     b.ToTable("Personality");
                 });
@@ -338,13 +503,19 @@ namespace CatLib.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Care_Maintenance")
+                    b.Property<string>("Care_desc")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CatId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Choosing_Kitten")
+                    b.Property<string>("Characteristics_desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Choosing_Kitten_desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Color_desc")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Friendliness_To_Cat")
@@ -362,10 +533,19 @@ namespace CatLib.Migrations
                     b.Property<string>("Grooming")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Health")
+                    b.Property<string>("Grooming_desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Health_desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("History_desc")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Kitty_Img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Live_desc")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nicknames")
@@ -374,7 +554,19 @@ namespace CatLib.Migrations
                     b.Property<string>("Other_Names")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Persinality_desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Price_desc")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Short_Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Size_desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Summary_desc")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Vocality")
@@ -430,7 +622,7 @@ namespace CatLib.Migrations
                     b.ToTable("PhysicalSpecifications");
                 });
 
-            modelBuilder.Entity("CatLib.Models.Products.Product", b =>
+            modelBuilder.Entity("CatLib.Models.Product_Reviews.ProductArticle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -446,8 +638,100 @@ namespace CatLib.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductArticles");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Product_Reviews.ProductReview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Cons")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Price")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductArticleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Pros")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductArticleId");
+
+                    b.ToTable("ProductReviews");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Products.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Allergenic")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Appropriate")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Good_for_Cats")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("How_Much_to_Feed")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("How_Much_to_Feed_description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("How_Often_to_Feed")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nutrition_Stats")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nutritional_Benefits")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProductCategoryId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Risks_for_Cats")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Summary")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Toxic")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Used_in_Commercial_Food")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -469,6 +753,29 @@ namespace CatLib.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Products.ProductQuestion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Question")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductQuestions");
                 });
 
             modelBuilder.Entity("CatLib.Models.Question", b =>
@@ -552,6 +859,21 @@ namespace CatLib.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CatGeneratorNamePersonality", b =>
+                {
+                    b.HasOne("CatLib.Models.NameGenerator.CatGeneratorName", null)
+                        .WithMany()
+                        .HasForeignKey("CatGeneratorNamesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CatLib.Models.NameGenerator.Personality", null)
+                        .WithMany()
+                        .HasForeignKey("PersonalitiesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CatLib.Models.Answer", b =>
                 {
                     b.HasOne("CatLib.Models.Cat", "Cat")
@@ -569,6 +891,33 @@ namespace CatLib.Migrations
                     b.Navigation("Cat");
 
                     b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Cat_Health.Disease_Question", b =>
+                {
+                    b.HasOne("CatLib.Models.Cat_Health.Disease", "Disease")
+                        .WithMany("Disease_Questions")
+                        .HasForeignKey("DiseaseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Disease");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Cat_Wariors_Generator.WariorColor", b =>
+                {
+                    b.HasOne("CatLib.Models.Cat_Wariors_Generator.WariorColor", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId");
+
+                    b.Navigation("Color");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Cat_Wariors_Generator.WariorPrefix", b =>
+                {
+                    b.HasOne("CatLib.Models.Cat_Wariors_Generator.WariorColor", null)
+                        .WithMany("WariorPrefix")
+                        .HasForeignKey("WariorColorId");
                 });
 
             modelBuilder.Entity("CatLib.Models.CompatibilityDescription", b =>
@@ -613,19 +962,22 @@ namespace CatLib.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CatLib.Models.NameGenerator.Personality", "Personality")
-                        .WithMany("CatGeneratorNames")
-                        .HasForeignKey("PersonalityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Color");
 
                     b.Navigation("Gender");
 
                     b.Navigation("Hair");
+                });
 
-                    b.Navigation("Personality");
+            modelBuilder.Entity("CatLib.Models.NameGenerator.Personality", b =>
+                {
+                    b.HasOne("CatLib.Models.NameGenerator.CategoryName", "CategoryName")
+                        .WithMany("Personalities")
+                        .HasForeignKey("CategoryNameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CategoryName");
                 });
 
             modelBuilder.Entity("CatLib.Models.OtherSpecification", b =>
@@ -650,6 +1002,15 @@ namespace CatLib.Migrations
                     b.Navigation("Cat");
                 });
 
+            modelBuilder.Entity("CatLib.Models.Product_Reviews.ProductReview", b =>
+                {
+                    b.HasOne("CatLib.Models.Product_Reviews.ProductArticle", "ProductArticle")
+                        .WithMany("ProductReviews")
+                        .HasForeignKey("ProductArticleId");
+
+                    b.Navigation("ProductArticle");
+                });
+
             modelBuilder.Entity("CatLib.Models.Products.Product", b =>
                 {
                     b.HasOne("CatLib.Models.Products.ProductCategory", "ProductCategory")
@@ -659,6 +1020,17 @@ namespace CatLib.Migrations
                         .IsRequired();
 
                     b.Navigation("ProductCategory");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Products.ProductQuestion", b =>
+                {
+                    b.HasOne("CatLib.Models.Products.Product", "Product")
+                        .WithMany("ProductQuestions")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("CatLib.Models.TemperamentDescription", b =>
@@ -687,6 +1059,21 @@ namespace CatLib.Migrations
                     b.Navigation("TemperamentDescription");
                 });
 
+            modelBuilder.Entity("CatLib.Models.Cat_Health.Disease", b =>
+                {
+                    b.Navigation("Disease_Questions");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Cat_Wariors_Generator.WariorColor", b =>
+                {
+                    b.Navigation("WariorPrefix");
+                });
+
+            modelBuilder.Entity("CatLib.Models.NameGenerator.CategoryName", b =>
+                {
+                    b.Navigation("Personalities");
+                });
+
             modelBuilder.Entity("CatLib.Models.NameGenerator.Color", b =>
                 {
                     b.Navigation("CatGeneratorNames");
@@ -702,9 +1089,14 @@ namespace CatLib.Migrations
                     b.Navigation("CatGeneratorNames");
                 });
 
-            modelBuilder.Entity("CatLib.Models.NameGenerator.Personality", b =>
+            modelBuilder.Entity("CatLib.Models.Product_Reviews.ProductArticle", b =>
                 {
-                    b.Navigation("CatGeneratorNames");
+                    b.Navigation("ProductReviews");
+                });
+
+            modelBuilder.Entity("CatLib.Models.Products.Product", b =>
+                {
+                    b.Navigation("ProductQuestions");
                 });
 
             modelBuilder.Entity("CatLib.Models.Products.ProductCategory", b =>

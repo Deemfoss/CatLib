@@ -55,7 +55,7 @@ namespace CatLib.Controllers
             {
                 ModelState.AddModelError("month", "Type correct months");
             }
-        
+
             return Json(fullAge);
         }
 
@@ -67,30 +67,60 @@ namespace CatLib.Controllers
         }
 
         [HttpPost]
-        public JsonResult CatNameGenerator(string gender, string color, string hair, string personality, string[] category)
+        public JsonResult CatNameGenerator(string gender, string color, string hair, string[] personality, string[] category)
         {
-            var catNames = _context.CatGeneratorNames.Where(x => x.Gender.Name == gender && x.Color.Name == color && x.Hair.Name == hair && x.Personality.Name == personality);
-            var test = catNames.Where(x => x.CatGeneratorTypes.Any(y => category.Any(z => z == y.Name))).Select(n => n.Name);
-            return Json(test);
+            var catNames = _context.CatGeneratorNames.Where(x => x.Gender.Name == gender).ToList();
+            var colorNames = catNames.Select(x => x.Color.Name == color).ToList();
+            var hairNames = catNames.Select(x => x.Hair.Name == hair).ToList();
+            var personalityNames = catNames.Where(x => x.CatGeneratorTypes.Any(y => personality.Any(z => z == y.Name))).Select(n => n.Name).ToList();
+            var categoryNames = catNames.Where(x => x.CatGeneratorTypes.Any(y => category.Any(z => z == y.Name))).Select(n => n.Name).ToList();
+
+            return Json(catNames);
         }
-        public IActionResult DangerousProducts()
+        public IActionResult DangerousProduct(int id )
         {
-            var dangerousProducts = _context.Products.Include(x => x.ProductCategory).ToList();
-            return View(dangerousProducts);
+            var dangerousProduct = _context.Products.Include(x => x.ProductCategory).FirstOrDefault(x=>x.Id==id);
+            return View(dangerousProduct);
+        }
+
+
+
+        public IActionResult DangerousProductsList()
+        {
+            var dangerousProductsList = _context.Products.Include(x => x.ProductCategory).ToList();
+            return View(dangerousProductsList);
         }
 
         [HttpGet]
         public IActionResult CalcFood()
         {
+          
             return View();
         }
 
         [HttpPost]
-        public JsonResult CalcFood(int productCal, int catWeight, string weight_type, string type)
+        public JsonResult CalcFood(int productCal, int catWeight, string weight_type, string type, int times )
         {
             var kCal = ToolServices.CaloriesCalc(catWeight, weight_type, type);
-            var foodWeight= ToolServices.CalcFood(productCal, kCal);
-            return Json(foodWeight);
+            var foodWeight = ToolServices.CalcFood(productCal, kCal);
+            var partional = (double)foodWeight /(double)times;
+            return Json(foodWeight,(int)partional);
+        }
+
+        [HttpGet]
+        public IActionResult CatNamesCategories()
+        {
+            var categories = _context.CategoryNames.Include(x=>x.Personalities).ToList();
+            return View(categories);
+        }
+
+        [HttpGet]
+        public IActionResult SpecificCatNames(int id)
+        {
+            var specificNemes = _context.Personality.Include(x=>x.CatGeneratorNames).
+                FirstOrDefault(a => a.Id == id);
+                
+            return View(specificNemes);
         }
     }
 }

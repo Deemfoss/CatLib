@@ -1,4 +1,7 @@
-﻿using CatLib.Models.NameGenerator;
+﻿using CatLib.Models.Cat_Health;
+using CatLib.Models.Cat_Wariors_Generator;
+using CatLib.Models.NameGenerator;
+using CatLib.Models.Product_Reviews;
 using CatLib.Models.Products;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +23,12 @@ namespace CatLib.Models
         //Generator Name
         public DbSet<CatGeneratorName> CatGeneratorNames { get; set; }
         public DbSet<CatGeneratorType> CatGeneratorTypes { get; set; }
-       
+        public DbSet<CategoryName> CategoryNames{ get; set; }
+
+        //Warior cat Generator
+        public DbSet<WariorColor> WariorColores { get; set; }
+        public DbSet<WariorPrefix> WariorPrefixes {get; set; }
+        public DbSet<WariorSuffix> WariorSuffixes { get; set; }
        
         public DbSet<TemperamentDescription> TemperamentDescriptions { get; set; }
         public DbSet<CompatibilityDescription> CompatibilityDescription { get; set; }
@@ -33,8 +41,18 @@ namespace CatLib.Models
 
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductQuestion> ProductQuestions { get; set; }
+
+        public DbSet<Disease> Diseases { get; set; }
+        public DbSet<Disease_Question> Disease_Questions { get; set; }
+        
+
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
+
+        //product reviews
+        public DbSet<ProductReview> ProductReviews { get; set; }
+        public DbSet<ProductArticle> ProductArticles { get; set; }
 
 
         public CatLibContext(DbContextOptions<CatLibContext> options) : base(options)

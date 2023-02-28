@@ -16,9 +16,7 @@ namespace CatLib.Models
         public string Price { get; set; }
         public string Weight { get; set; }
         public string Heigh { get; set; }
-
         public string Litter { get; set; }
-
         public int CatId { get; set; }
         public Cat Cat { get; set; }
     }

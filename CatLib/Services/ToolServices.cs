@@ -110,8 +110,8 @@ namespace CatLib.Services
         }
         public static int CalcFood(int productCal, int kCal)
         {
-            var foodWeight = 100 * productCal / kCal;
-            return foodWeight;
+            double foodWeight = ((double)kCal / (double)productCal)*100;
+            return (int)foodWeight;
         }
 
     }

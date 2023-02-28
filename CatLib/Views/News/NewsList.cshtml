@@ -1,56 +1,60 @@
 ﻿@model CatLib.Functionality.PaginatedList<CatLib.Models.News>
 
-
 @{
-    ViewData["Title"] = "News";
+    ViewData["Title"] = "Cats: The Complete Guide to Pet Life and Care";
     var firstNews = Model.FirstOrDefault();
+    bool IsAlotNews = Model.Count > 3;
+    var lastNews = IsAlotNews ? Model.Skip(3) : Model;
 }
 
 <h1 class="main-topic-h1">Cats news</h1>
-    <section class="news">
-        <div class="news-block-first">
-            <a class="news-block_card">
-                <img class="news-block_card_img--big" src="/img/assets/@firstNews.Img">
+<section class="news">
+    @if (IsAlotNews) {
+    <div class="news-block-first">
+        <a class="news-block_card" href="@Url.Action("NewsDetail", "News", new { id = @firstNews.Id })">
+            <img class="news-block_card_img--big" src="/img/assets/@firstNews.Img">
+            <div class="news-block_card_data">
+                <p class="news-block_card_date">@firstNews.Date.ToShortDateString()</p>
+                <h3 class="news-block_card_title">@firstNews.Title</h3>
+                <p class="news-block_card_text">@firstNews.ShortDescription </p>
+            </div>
+            <div class="news-block_card_views">
+                <img class="news-block_card_svg" src="/img/assets/Icon.svg">
+                <p class="news-block_card_text">@firstNews.Views</p>
+            </div>
+        </a>
+        <div class="news-block-right">
+            <a class="news-block_card" action="NewsDetail" id="@Model.Skip(1).Take(1).First().Id" href="@Url.Action("NewsDetail", "News", new { id = Model.Skip(1).Take(1).First().Id })">
+                <img class="news-block_card_img--medium" src="/img/assets/@Model.Skip(1).Take(1).First().Img">
                 <div class="news-block_card_data">
-                    <p class="news-block_card_date">@firstNews.Date.ToShortDateString()</p>
-                    <h3 class="news-block_card_title">@firstNews.Title</h3>
-                    <p class="news-block_card_text">@firstNews.ShortDescription </p>
+                    <p class="news-block_card_date">@Model.Skip(1).Take(1).First().Date</p>
+                    <h3 class="news-block_card_title">@Model.Skip(1).Take(1).First().Title</h3>
+                    <p class="news-block_card_text">@Model.Skip(1).Take(1).First().ShortDescription </p>
                 </div>
                 <div class="news-block_card_views">
                     <img class="news-block_card_svg" src="/img/assets/Icon.svg">
-                    <p class="news-block_card_text">@firstNews.Views</p>
+                    <p class="news-block_card_text">@Model.Skip(1).Take(1).First().Views</p>
                 </div>
             </a>
-            <div class="news-block-right">
-                <a class="news-block_card">
-                    <img class="news-block_card_img--medium" src="/img/assets/@Model.Skip(1).Take(1).First().Img">
-                    <div class="news-block_card_data">
-                        <p class="news-block_card_date">@Model.Skip(1).Take(1).First().Date</p>
-                        <h3 class="news-block_card_title">@Model.Skip(1).Take(1).First().Title</h3>
-                        <p class="news-block_card_text">@Model.Skip(1).Take(1).First().ShortDescription </p>
-                    </div>
-                    <div class="news-block_card_views">
-                        <img class="news-block_card_svg" src="/img/assets/Icon.svg">
-                        <p class="news-block_card_text">@Model.Skip(1).Take(1).First().Views</p>
-                    </div>
-                </a>
-                <a class="news-block_card">
-                    <img class="news-block_card_img--medium" src="/img/assets/@Model.Skip(2).Take(1).First().Img">
-                    <div class="news-block_card_data">
-                        <p class="news-block_card_date">@Model.Skip(2).Take(1).First().Date</p>
-                        <h3 class="news-block_card_title">@Model.Skip(2).Take(1).First().Title</h3>
-                        <p class="news-block_card_text">@Model.Skip(2).Take(1).First().ShortDescription </p>
-                    </div>
-                    <div class="news-block_card_views">
-                        <img class="news-block_card_svg" src="/img/assets/Icon.svg">
-                        <p class="news-block_card_text">@Model.Skip(2).Take(1).First().Views</p>
-                    </div>
-                </a>
-            </div>
+            <a class="news-block_card" action="NewsDetail" id="@Model.Skip(2).Take(1).First().Id" href="@Url.Action("NewsDetail", "News", new { id = Model.Skip(2).Take(2).First().Id })">
+                <img class="news-block_card_img--medium" src="/img/assets/@Model.Skip(2).Take(1).First().Img">
+                <div class="news-block_card_data">
+                    <p class="news-block_card_date">@Model.Skip(2).Take(1).First().Date</p>
+                    <h3 class="news-block_card_title">@Model.Skip(2).Take(1).First().Title</h3>
+                    <p class="news-block_card_text">@Model.Skip(2).Take(1).First().ShortDescription </p>
+                </div>
+                <div class="news-block_card_views">
+                    <img class="news-block_card_svg" src="/img/assets/Icon.svg">
+                    <p class="news-block_card_text">@Model.Skip(2).Take(1).First().Views</p>
+                </div>
+            </a>
         </div>
-        <div class="news-block">
-            @foreach(var news in Model.Skip(3)) {
-            <a class="news-block_card--main">
+    </div>
+    }
+    <div class="news-block">
+        @foreach (var news in lastNews)
+        {
+            <a class="news-block_card--main" action="NewsDetail" id="@news.Id" href="@Url.Action("NewsDetail", "News", new { id = news.Id })">
                 <div class="news-block_card--container">
                     <img class="news-block_card_img" src="/img/assets/@news.Img">
                     <div class="news-block_card_views">
@@ -64,10 +68,9 @@
                     <p class="news-block_card_text--black">@news.ShortDescription</p>
                 </div>
             </a>
-            }
-        </div>
-        
-    </section>
+        }
+    </div>
+</section>
 <div class="pagination-container">
     @{
         var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";

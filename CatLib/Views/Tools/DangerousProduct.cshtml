@@ -1,0 +1,76 @@
+﻿@model CatLib.Models.Products.Product
+@{
+    ViewData["Title"] = "Can Cats Eat " + Model.Name + "? | CatLib";
+}
+<div class="dng-main-product-container">
+    <h3 class="dng-product-title">Can cats eat @Model.Name ?</h3>
+    <div class="article-header">
+        <img src="~/img/assets/10.jpg" alt="img" class="dng-product-product-img">
+    </div>
+    <div class="dng-product-article-container">
+        <h3 class="dng-product-detail-header-name-value">Summary</h3>
+        <p class="dng-product-article-content">@Model.Summary</p>
+    </div>
+    <div>
+        <div class="product-article-container">
+            <h3 class="dng-product-detail-header-name-value">Quick Overview</h3>
+            <div class="dng-product-main-info">
+                <img class="dng-product-main-info-svg" src="~/img/svg/dangerous.svg" />
+                <label class="dng-product-article-main-info-label">Dangerous:</label><h3 class="dng-product-aticle-main-info-value">@Model.Toxic </h3>
+            </div>
+            <div class="dng-product-main-info">
+                <img class="dng-product-main-info-svg" src="~/img/svg/allergic.svg" />
+                <label class="dng-product-main-info-label">Allergic:</label><h3 class="dng-product-main-info-value">@Model.Allergenic</h3>
+            </div>
+            <div class="dng-product-main-info">
+                <img class="dng-product-main-info-svg" src="~/img/svg/cat.svg" />
+                <label class="dng-product-main-info-label">Species Appropriate:</label><h3 class="dng-product-main-info-value">@Model.Appropriate</h3>
+            </div>
+            <div class="dng-product-main-info">
+                <img class="dng-product-main-info-svg" src="~/img/svg/bowl.svg" />
+                <label class="dng-product-main-info-label">How Much to Feed:</label><h3 class="dng-product-main-info-value">@Model.How_Much_to_Feed</h3>
+            </div>
+            <div class="dng-product-main-info">
+                <img class="dng-product-main-info-svg" src="~/img/svg/time.svg" />
+                <label class="dng-product-main-info-label">How Often to Feed:</label><h3 class="dng-product-main-info-value">@Model.How_Often_to_Feed</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="product-article-container">
+        <h3 class="product-article-header">Benefits Of @Model.Name For Cats</h3>
+        <p class="product-article-content">@Model.Nutritional_Benefits</p>
+    </div>
+    <div class="product-article-container">
+        <h3 class="product-article-header">@Model.Name Nutritional Stats</h3>
+        <p class="product-article-content">@Model.Nutrition_Stats</p>
+    </div>
+    <div class="product-article-container">
+        <h3 class="product-article-header">How Much @Model.Name Can A Cat Eat?</h3>
+        <p class="product-article-content">@Model.How_Much_to_Feed_description</p>
+    </div>
+    <div class="product-article-container">
+        <h3 class="product-article-header">The Risks Of Eating @Model.Name For Cats</h3>
+        <p class="product-article-content">@Model.Risks_for_Cats</p>
+    </div>
+    <div class="product-article-container">
+        <h3 class="product-article-header">Do Cats Like The Taste Of @Model.Name?</h3>
+        <p class="product-article-content">@Model.Good_for_Cats</p>
+    </div>
+
+    <div class="product-article-container">
+        <h3 class="product-article-header">How Often Can A Cat Eat @Model.Name?</h3>
+        <p class="product-article-content">@Model.Nutrition_Stats</p>
+    </div>
+    <div class="product-article-container">
+        <h3 class="product-article-header">Is @Model.Name Used In Commercial Cat Food?</h3>
+        <p class="product-article-content">@Model.Used_in_Commercial_Food</p>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="product-article-container">
+        <h3 class="product-article-header">Is @Model.Name Used In Commercial Cat Food?</h3>
+        <p class="product-article-content">@Model.Used_in_Commercial_Food</p>
+    </div>
+</div>

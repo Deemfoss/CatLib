@@ -1,10 +1,8 @@
 ﻿@model CatLib.Functionality.PaginatedList<CatLib.Models.Cat>
 
-
 @{
-    ViewData["Title"] = "List of Cat Breeds";
+    ViewData["Title"] = "Cat Breeds - The Complete List of Cat Breeds: Find Your Cat Breed Match | CatLib";
 }
-
 <div class="body-container">
     <div class="searching-container">
         <form asp-action="Index" asp-controller="home" method="post">
@@ -26,6 +24,16 @@
             <a class="sort-container-item-link" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
                 <div class="sort-container-item">
                     Name
+                </div>
+            </a>
+            <a class="sort-container-item-link" asp-action="Index" asp-route-sortOrder="@ViewData["ActivitySortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                <div class="sort-container-item">
+                    Activity
+                </div>
+            </a>
+            <a class="sort-container-item-link" asp-action="Index" asp-route-sortOrder="@ViewData["SheddingSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                <div class="sort-container-item">
+                    Shedding
                 </div>
             </a>
         </div>
@@ -116,6 +124,6 @@
                 }
             }
         }
-
+ 
     </script>
 }
