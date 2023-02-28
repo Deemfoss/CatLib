@@ -79,6 +79,7 @@ namespace CatLib.Controllers
         }
         public IActionResult DangerousProduct(int id )
         {
+            ViewData["Cats"] = _context.News.ToList();
             var dangerousProduct = _context.Products.Include(x => x.ProductCategory).FirstOrDefault(x=>x.Id==id);
             return View(dangerousProduct);
         }
@@ -121,6 +122,23 @@ namespace CatLib.Controllers
                 FirstOrDefault(a => a.Id == id);
                 
             return View(specificNemes);
+        }
+
+        [HttpGet]
+        public IActionResult DiseasessList()
+        {
+            var diseasesList = _context.Diseases.ToList();
+
+            return View(diseasesList);
+        }
+
+        [HttpGet]
+        public IActionResult DiseaseDetail(int id)
+        {
+            var specificDiseases = _context.Diseases.Include(x => x.Disease_Questions).
+                FirstOrDefault(a => a.Id == id);
+
+            return View(specificDiseases);
         }
     }
 }

@@ -1,42 +1,48 @@
 ﻿@model CatLib.Models.NameGenerator.Personality
+@{
+    ViewData["Title"] = "Popular and Unique " + Model.Name + " Cate names | CatLib";
+}
 <section class="article">
-    <h3 class="article_title">@Model.Name</h3>
-    <div class="article-header">
-        <img src="/img/Presonality-img/@Model.Img" alt="img" class="article_img">
+    <div class="calc-header">
+        <h3 class="cat-detail-header-name-value">Popular and Unique  @Model.Name  Cate names</h3>
     </div>
+    <div class="cat-name-categories">
+        <div class="article-header">
+            <img src="/img/Presonality-img/@Model.Img" alt="img" class="article_img">
+        </div>
 
-    <div class="calc-info">
-        <h3 class="calc-info-title-name">Description @Model.Name</h3>
+        <div class="calc-info">
+            <h3 class="calc-info-title-name">Description @Model.Name</h3>
+            <p class="calc-info-text">
+                @Model.Desctiption
+            </p>
+        </div>
+
+        <div class="calc-info">
+            <h3 class="calc-info-title-name">We collect for you best @Model.Name cat man names</h3>
+            <p class="calc-info-text">
+                @foreach (var menName in Model.CatGeneratorNames.Where(x => x.GenderId == 1))
+                {
+                    @menName.Name
+                    @menName.Description
+                }
+            </p>
+        </div>
+
+        <div class="calc-info">
+            <h3 class="calc-info-title-name">TWe collect for you best @Model.Name cat Famele names</h3>
+            <p class="calc-info-text">
+                @foreach (var menName in Model.CatGeneratorNames.Where(x => x.GenderId == 2))
+                {
+                    @menName.Name
+                    @menName.Description
+                }
+            </p>
+        </div>
+
         <p class="calc-info-text">
-            @Model.Desctiption
+            <a href="/tools/CatNameGenerator" class="nav-link-href">Cat Name Generator</a>
         </p>
     </div>
-
-    <div class="calc-info">
-        <h3 class="calc-info-title-name">We collect for you best @Model.Name cat man names</h3>
-        <p class="calc-info-text">
-           @foreach (var menName in Model.CatGeneratorNames.Where(x=>x.GenderId==1))
-           {
-               @menName.Name
-               @menName.Description
-            }
-        </p>
-    </div>
-
-    <div class="calc-info">
-        <h3 class="calc-info-title-name">TWe collect for you best @Model.Name cat Famele names</h3>
-        <p class="calc-info-text">
-            @foreach (var menName in Model.CatGeneratorNames.Where(x => x.GenderId == 2))
-            {
-                @menName.Name
-                @menName.Description
-            }
-        </p>
-    </div>
-
-    <p class="calc-info-text">
-        <a href="/tools/CatNameGenerator" class="nav-link-href">Cat Name Generator</a>
-    </p>
-    
 
 </section>
