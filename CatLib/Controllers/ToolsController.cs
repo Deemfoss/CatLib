@@ -132,8 +132,25 @@ namespace CatLib.Controllers
             return View(diseasesList);
         }
 
-        [HttpGet]
+       [HttpGet]
         public IActionResult DiseaseDetail(int id)
+        {
+            var specificDiseases = _context.Diseases.Include(x => x.Disease_Questions).
+                FirstOrDefault(a => a.Id == id);
+
+            return View(specificDiseases);
+        }
+
+        [HttpGet]
+        public IActionResult MedicationList()
+        {
+            var diseasesList = _context.Diseases.ToList();
+
+            return View(diseasesList);
+        }
+
+        [HttpGet]
+        public IActionResult MedicationDetail(int id)
         {
             var specificDiseases = _context.Diseases.Include(x => x.Disease_Questions).
                 FirstOrDefault(a => a.Id == id);

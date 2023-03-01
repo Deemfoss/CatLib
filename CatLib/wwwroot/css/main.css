@@ -602,7 +602,6 @@ div.nav-link-submenu-show {
 }
 
 
-
 .pagination-btn {
     margin: 0 10px;
     align-items: center;
@@ -875,7 +874,7 @@ div.nav-link-submenu-show {
 }
 /*dng-product*/
 
-.dng-main-product-container,.cat-name-categories {
+.dng-main-product-container,.cat-name-categories,.news-main-container {
     margin: 0 auto;
     max-width: 1290px;
 }
@@ -895,10 +894,10 @@ div.nav-link-submenu-show {
 }
 .dng-product-container {
     border: 1px solid transparent;
-   /* box-shadow: 0px 0px 25px -9px #108896;*/
+    /* box-shadow: 0px 0px 25px -9px #108896;*/
     box-shadow: 0px 9px 26px rgb(198 198 198 / 25%);
-    transform: scale(0.95);
     background-color: white;
+    transition: 0.5s;
 }
 .dng-product-img-container {
    /* width: 252px;*/
@@ -1025,4 +1024,73 @@ div.nav-link-submenu-show {
     /* text-decoration: underline #e9a02e 2px; */
     /* text-underline-offset: 5px; */
     padding: 15px 0;
+}
+.diseasess-product-aticle-main-info-value {
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 0;
+    padding-left: 10px;
+    color: rgb(16, 136, 150);
+    text-decoration: underline #e9a02e 2px;
+    text-underline-offset: 8px;
+    padding-bottom: 10px;
+}
+.diseasess-main-info {
+    padding: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    align-content: center;
+    border-bottom: 1px solid #1232;
+    color: #5f5f5f;
+    gap: 5px;
+    flex-direction: column;
+}
+.diseasess-desc-container {
+    border: 1px solid #e9a02e;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    box-shadow: 0 0 3px rgb(0 0 0 / 24%);
+    border-radius: 10px;
+    margin: 15px;
+    transition: 0.5s;
+    position: relative;
+}
+    .diseasess-desc-container:hover {
+        border: 1px solid #e9a02e;
+        box-shadow: 0 0 15px rgb(0 0 0 / 24%);
+        transform: scale(0.95);
+    }
+.diseasess-desc {
+    color: gray;
+    text-align: justify;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 1.1px;
+    line-height: 1.532;
+}
+
+.diseasess-product-main-info-svg {
+    width: 100px;
+}
+.diseasess-svg-container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.bsortletter-letter {
+    font-family: 'Mukta', sans-serif;
+    text-decoration: none;
+}
+.bsortletter {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
 }

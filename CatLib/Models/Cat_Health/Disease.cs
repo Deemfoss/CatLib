@@ -11,6 +11,7 @@ namespace CatLib.Models.Cat_Health
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Short_Desc { get; set; }
         public string Summary { get; set; }
         public string About { get; set; }
         public string Other_Names { get; set; }

@@ -4,14 +4,16 @@ using CatLib.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CatLib.Migrations
 {
     [DbContext(typeof(CatLibContext))]
-    partial class CatLibContextModelSnapshot : ModelSnapshot
+    [Migration("20230301212706_new-colum-for-desc")]
+    partial class newcolumfordesc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
