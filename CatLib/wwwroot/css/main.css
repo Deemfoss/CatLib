@@ -5,7 +5,6 @@
 }
 
 body {
-    /* background-color: #F4F4F4;*/
     background: #fff;
 }
 /*.news p {
@@ -13,6 +12,7 @@ body {
 }*/
 
 footer {
+    width: 100%;
     background-color: #363636;
     padding: 10px 70px;
     font-family: 'Mukta', sans-serif;
@@ -60,6 +60,7 @@ footer {
 
 main {
     padding: 20px 70px;
+    width: 100%;
 }
 .cat-header {
     height: 115px;

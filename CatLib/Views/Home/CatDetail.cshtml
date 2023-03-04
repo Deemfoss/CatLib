@@ -5,382 +5,300 @@
 <div>
     <div class="cat-detail-header-name"><h1 class="cat-detail-header-name-value"></h1>@Model.Name</div>
     <div class="cat-detail-header-name-short-description"><h2 class="cat-detail-description-name-value">@Model.OtherSpecification.Short_Description</h2></div>
-    <div class="cat-detail-header-container">
-        <div class="cat-detail-header-container-img">
-            <img class="cat-detail-breed-img" src="~/img/CatsProfile/@Model.Img" />
-        </div>
-        <div class="main-traits-container">
-            <div class="traits-container">
-                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Origin </span> @Model.Origin</h3></div>
-                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Weight </span>@Model.MainSpecification.Weight lbs</h3></div>
-                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Heigh </span>@Model.MainSpecification.Heigh inches</h3></div>
-                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Size </span>@Model.Size</h3></div>
-                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Hypoallergenic </span>@Model.Hypoallergenic</h3></div>
-            </div>
-            <div class="traits-container">
-                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Life Expectancy </span> @Model.MainSpecification.Life_Expectancy years</h3></div>
-                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Litter </span>@Model.MainSpecification.Litter</h3></div>
-                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Coat </span> @Model.Coat</h3></div>
-                <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Colors </span> @Model.MainSpecification.Colors</h3></div>
-            </div>
-        </div>
-    </div>
-    <div class="cat-detail-main">
-        <div class="cat-detail-article-list">
-            <a class="cat-detail-article-link" href="#history">History</a>
-            <a class="cat-detail-article-link" href="#temperament">Temperamet</a>
-            <a class="cat-detail-article-link" href="#description">Description</a>
-        </div>
-        <div class="cat-detail-blocks">
-            <div class="cat-detail-container" id="summary">
-                <h2 class="cat-detail-description-name">@Model.Name cat Summary</h2>
-                <p class="cat-detail-description-txt">
-                    @Model.OtherSpecification.Summary_desc
-                </p>
-            </div>
-            <div class="cat-detail-container" id="history">
-                <h2 class="cat-detail-description-name">@Model.Name cat History</h2>
-                <p class="cat-detail-description-txt">
-                    @Model.OtherSpecification.History_desc
-                </p>
-            </div>
-            <div class="cat-detail-container" id="charasteristics">
-                <h2 class="cat-detail-description-name">@Model.Name cat Charasteristics</h2>
-                <p class="cat-detail-description-txt">
-                    @Model.OtherSpecification.Characteristics_desc
-                </p>
-            </div>
-            <div class="cat-detail-traits-container" id="temperament">
-                <h2 class="cat-detail-description-name">Temperament of @Model.Name</h2>
-                <div class="cat-detail-temperaments-container-list">
-                    <div class="cat-detail-temperaments-container">
-                        <div class="cat-detail-temperaments-header">
-                            <img alt="cat" src="~/img/catDetail/cat2.png" class="cat-detail-temperaments-container-img" />
-                            <h3 class="cat-detail-temperaments-container-header">Affectionate</h3>
-                        </div>
-                        <div class="cat-detail-temperaments-container-procent">
-                            <div class="single-chart">
-                                <svg viewBox="0 0 36 36" class="circular-chart orange">
-                                    <path class="circle-bg"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle"
-                                          stroke-dasharray="@Model.Affection" , 100"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">@Model.Affection%</text>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="cat-detail-temperaments-container-body">
-                            <p>@Model.TemperamentDescription.Affection_Description</p>
-                        </div>
-                    </div>
-                    <div class="cat-detail-temperaments-container">
-                        <div class="cat-detail-temperaments-header">
-                            <img alt="cat" src="~/img/catDetail/cat3.png" class="cat-detail-temperaments-container-img" />
-                            <h3 class="cat-detail-temperaments-container-header">Intelligence</h3>
-                        </div>
-                        <div class="cat-detail-temperaments-container-procent">
-                            <div class="single-chart">
-                                <svg viewBox="0 0 36 36" class="circular-chart orange">
-                                    <path class="circle-bg"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle"
-                                          stroke-dasharray="@Model.Intelligence" , 100"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">@Model.Intelligence%</text>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="cat-detail-temperaments-container-body">
-                            <p>@Model.TemperamentDescription.Intelligence_Description</p>
-                        </div>
-                    </div>
-                    <div class="cat-detail-temperaments-container">
-                        <div class="cat-detail-temperaments-header">
-                            <img alt="cat" src="~/img/catDetail/cat4.png" class="cat-detail-temperaments-container-img" />
-                            <h3 class="cat-detail-temperaments-container-header">Playfulness</h3>
-                        </div>
-                        <div class="cat-detail-temperaments-container-procent">
-                            <div class="single-chart">
-                                <svg viewBox="0 0 36 36" class="circular-chart orange">
-                                    <path class="circle-bg"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle"
-                                          stroke-dasharray="@Model.Playfulness" , 100"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">@Model.Playfulness%</text>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="cat-detail-temperaments-container-body">
-                            <p>@Model.TemperamentDescription.Playfulness_Description</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="cat-detail-container" id="personality">
-                <h2 class="cat-detail-description-name">@Model.Name cat Personality</h2>
-                <p class="cat-detail-description-txt">
-                    @Model.OtherSpecification.Persinality_desc
-                </p>
-            </div>
-            <div class="cat-detail-traits-container">
-                <h2 class="cat-detail-description-name">Grooming and Vocality of @Model.Name</h2>
-                <div class="cat-detail-temperaments-container-list">
-                    <div class="cat-detail-temperaments-container">
-                        <div class="cat-detail-temperaments-header">
-                            <img alt="cat" src="~/img/catDetail/cat8.png" class="cat-detail-temperaments-container-img" />
-                            <h3 class="cat-detail-temperaments-container-header">Activity</h3>
-                        </div>
-
-                        <div class="cat-detail-temperaments-container-procent">
-                            <div class="single-chart">
-                                <svg viewBox="0 0 36 36" class="circular-chart orange">
-                                    <path class="circle-bg"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle"
-                                          stroke-dasharray="@Model.Activity" , 100"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">@Model.Activity%</text>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="cat-detail-temperaments-container-body">
-                            <p>@Model.TemperamentDescription.Activity_Description</p>
-                        </div>
-                    </div>
-                    <div class="cat-detail-temperaments-container">
-                        <div class="cat-detail-temperaments-header">
-                            <img alt="cat" src="~/img/catDetail/cat9.png" class="cat-detail-temperaments-container-img" />
-                            <h3 class="cat-detail-temperaments-container-header">Vocality</h3>
-                        </div>
-                        <div class="cat-detail-temperaments-container-procent">
-                            <div class="single-chart">
-                                <svg viewBox="0 0 36 36" class="circular-chart orange">
-                                    <path class="circle-bg"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle"
-                                          stroke-dasharray="@Model.OtherSpecification.Vocality" , 100"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Vocality%</text>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="cat-detail-temperaments-container-body">
-                            <p>@Model.CompatibilityDescription.Vocality_Description</p>
-                        </div>
-                    </div>
-                    <div class="cat-detail-temperaments-container">
-                        <div class="cat-detail-temperaments-header">
-                            <img alt="cat" src="~/img/catDetail/cat10.png" class="cat-detail-temperaments-container-img" />
-                            <h3 class="cat-detail-temperaments-container-header">Grooming</h3>
-                        </div>
-                        <div class="cat-detail-temperaments-container-procent">
-                            <div class="single-chart">
-                                <svg viewBox="0 0 36 36" class="circular-chart orange">
-                                    <path class="circle-bg"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle"
-                                          stroke-dasharray="@Model.OtherSpecification.Grooming" , 100"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Grooming%</text>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="cat-detail-temperaments-container-body">
-                            <p>@Model.CompatibilityDescription.Grooming_Description</p>
-                        </div>
+    <div class="cat-detail">
+        <div class="cat-detail-wrapper">
+            <div class="cat-detail-header-container">
+                <div class="main-traits-container">
+                    <div class="traits-container">
+                        <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Origin </span> @Model.Origin</h3></div>
+                        <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Weight </span>@Model.MainSpecification.Weight lbs</h3></div>
+                        <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Heigh </span>@Model.MainSpecification.Heigh inches</h3></div>
+                        <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Size </span>@Model.Size</h3></div>
+                        <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Hypoallergenic </span>@Model.Hypoallergenic</h3></div>
+                        <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Life Expectancy </span> @Model.MainSpecification.Life_Expectancy years</h3></div>
+                        <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Litter </span>@Model.MainSpecification.Litter</h3></div>
+                        <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Coat </span> @Model.Coat</h3></div>
+                        <div class="cat-detail-main-trait"><h3 class="cat-detail-main-trait-labels"><span class="cat-detail-span">Colors </span> @Model.MainSpecification.Colors</h3></div>
                     </div>
                 </div>
-
-            </div>
-            <div class="cat-detail-container" id="health">
-                <h2 class="cat-detail-header-container-history">How long do @Model.Name cats Live</h2>
-                <p class="cat-detail-description-txt">
-                    @Model.OtherSpecification.Live_desc
-                </p>
-            </div>
-            <div class="cat-detail-container">
-                <div class="cat-detail-header-container-history">
-                    <h2 class="cat-detail-description-name">How to choose a kitten @Model.Name</h2>
-                    <p class="cat-detail-description-txt">@Model.OtherSpecification.Choosing_Kitten_desc</p>
+                <div class="cat-detail-header-container-img">
+                        <img class="cat-detail-breed-img" src="~/img/CatsProfile/@Model.Img" />
+                    </div>
+                <div class="cat-detail-article-list">
+                    <h3 class="cat-detail-article-title">Learn more</h3>
+                    <a class="cat-detail-article-link" href="#history">
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg"/>
+                        <span class="cat-detail-article-span">History</span>
+                    </a>
+                    <a class="cat-detail-article-link" href="#characteristics">
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg" />
+                        <span class="cat-detail-article-span">Characteristics</span>
+                    </a>
+                    <a class="cat-detail-article-link" href="#temperamet">
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg" />
+                        <span class="cat-detail-article-span">Temperamet</span>
+                    </a>
+                    <a class="cat-detail-article-link" href="#personality">
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg"/>
+                        <span class="cat-detail-article-span">Personality</span>
+                    </a>
+                    <a class="cat-detail-article-link" href="#grooming">
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg" />
+                        <span class="cat-detail-article-span">Grooming and vocality</span>
+                    </a>
+                    <a class="cat-detail-article-link" href="#compability">
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg" />
+                        <span class="cat-detail-article-span">Compability</span>
+                    </a>
+                    <a class="cat-detail-article-link" href="#health">
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg"/>
+                        <span class="cat-detail-article-span">health</span>
+                    </a>
+                    <a class="cat-detail-article-link" href="#care">
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg" />
+                        <span class="cat-detail-article-span">Care</span>
+                    </a>
+                    <a class="cat-detail-article-link" href="#price">
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg" />
+                        <span class="cat-detail-article-span">Price</span>
+                    </a>
                 </div>
             </div>
-            <div class="cat-detail-traits-container">
-                <h2 class="cat-detail-description-name">Compability of @Model.Name</h2>
-                <div class="cat-detail-temperaments-container-list">
-                    <div class="cat-detail-temperaments-container">
-                        <div class="cat-detail-temperaments-header">
-                            <img alt="cat" src="~/img/catDetail/cat1.png" class="cat-detail-temperaments-container-img" />
-                            <h3 class="cat-detail-temperaments-container-header">Friendliness To Cat</h3>
-                        </div>
-                        <div class="cat-detail-temperaments-container-procent">
-                            <div class="single-chart">
-                                <svg viewBox="0 0 36 36" class="circular-chart orange">
-                                    <path class="circle-bg"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle"
-                                          stroke-dasharray="@Model.OtherSpecification.Friendliness_To_Cat" , 100"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Friendliness_To_Cat%</text>
-                                </svg>
+            <div class="cat-detail-main">
+                
+                <div class="cat-detail-blocks">
+                    <div class="cat-detail-container" id="summary">
+                        <h2 class="cat-detail-description-name">@Model.Name cat Summary</h2>
+                        <p class="cat-detail-description-txt">
+                            @Model.OtherSpecification.Summary_desc
+                        </p>
+                    </div>
+                    <div class="cat-detail-container" id="history">
+                        <h2 class="cat-detail-description-name">@Model.Name cat History</h2>
+                        <p class="cat-detail-description-txt">
+                            @Model.OtherSpecification.History_desc
+                        </p>
+                    </div>
+                    <div class="cat-detail-container" id="characteristics">
+                        <h2 class="cat-detail-description-name">@Model.Name cat Charasteristics</h2>
+                        <p class="cat-detail-description-txt">
+                            @Model.OtherSpecification.Characteristics_desc
+                        </p>
+                    </div>
+                    <div class="cat-detail-traits-container" id="temperamet">
+                        <h2 class="cat-detail-description-name">Temperament of @Model.Name</h2>
+                        <div class="cat-detail-temperaments-container-list">
+                            <div class="cat-detail-temperaments-container">
+                                <div class="cat-detail-temperaments-header">
+                                    <img alt="cat" src="~/img/catDetail/cat2.png" class="cat-detail-temperaments-container-img" />
+                                    <h3 class="cat-detail-temperaments-container-header">Affectionate</h3>
+                                </div>
+                                <div class="chart">
+                                    <div class="circle">@Model.Affection</div>
+                                    <p class="persent">@Model.Affection%</p>
+                                </div>
+                                <div class="cat-detail-temperaments-container-body">
+                                    <p>@Model.TemperamentDescription.Affection_Description</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="cat-detail-temperaments-container-body">
-                            <p>@Model.CompatibilityDescription.Friendliness_To_Cat_Description</p>
+                            <div class="cat-detail-temperaments-container">
+                                <div class="cat-detail-temperaments-header">
+                                    <img alt="cat" src="~/img/catDetail/cat3.png" class="cat-detail-temperaments-container-img" />
+                                    <h3 class="cat-detail-temperaments-container-header">Intelligence</h3>
+                                </div>
+                                <div class="chart">
+                                    <div class="circle">@Model.Intelligence</div>
+                                    <p class="persent">@Model.Intelligence%</p>
+                                </div>
+                                <div class="cat-detail-temperaments-container-body">
+                                    <p>@Model.TemperamentDescription.Intelligence_Description</p>
+                                </div>
+                            </div>
+                            <div class="cat-detail-temperaments-container">
+                                <div class="cat-detail-temperaments-header">
+                                    <img alt="cat" src="~/img/catDetail/cat4.png" class="cat-detail-temperaments-container-img" />
+                                    <h3 class="cat-detail-temperaments-container-header">Playfulness</h3>
+                                </div>
+                                <div class="chart">
+                                    <div class="circle">@Model.Playfulness</div>
+                                    <p class="persent">@Model.Playfulness%</p>
+                                </div>
+                                <div class="cat-detail-temperaments-container-body">
+                                    <p>@Model.TemperamentDescription.Playfulness_Description</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="cat-detail-temperaments-container">
-                        <div class="cat-detail-temperaments-header">
-                            <img alt="cat" src="~/img/catDetail/cat5.png" class="cat-detail-temperaments-container-img" />
-                            <h3 class="cat-detail-temperaments-container-header">Friendliness to childern</h3>
-                        </div>
-                        <div class="cat-detail-temperaments-container-procent">
-                            <div class="single-chart">
-                                <svg viewBox="0 0 36 36" class="circular-chart orange">
-                                    <path class="circle-bg"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle"
-                                          stroke-dasharray="@Model.OtherSpecification.Friendliness_To_Childern" , 100"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Friendliness_To_Childern%</text>
-                                </svg>
+                    <div class="cat-detail-container" id="personality">
+                        <h2 class="cat-detail-description-name">@Model.Name cat Personality</h2>
+                        <p class="cat-detail-description-txt">
+                            @Model.OtherSpecification.Persinality_desc
+                        </p>
+                    </div>
+                    <div class="cat-detail-traits-container" id="grooming">
+                        <h2 class="cat-detail-description-name">Grooming and Vocality of @Model.Name</h2>
+                        <div class="cat-detail-temperaments-container-list">
+                            <div class="cat-detail-temperaments-container">
+                                <div class="cat-detail-temperaments-header">
+                                    <img alt="cat" src="~/img/catDetail/cat8.png" class="cat-detail-temperaments-container-img" />
+                                    <h3 class="cat-detail-temperaments-container-header">Activity</h3>
+                                </div>
+                                <div class="chart">
+                                    <div class="circle">@Model.Activity</div>
+                                    <p class="persent">@Model.Activity%</p>
+                                </div>
+                                <div class="cat-detail-temperaments-container-body">
+                                    <p>@Model.TemperamentDescription.Activity_Description</p>
+                                </div>
+                            </div>
+                            <div class="cat-detail-temperaments-container">
+                                <div class="cat-detail-temperaments-header">
+                                    <img alt="cat" src="~/img/catDetail/cat9.png" class="cat-detail-temperaments-container-img" />
+                                    <h3 class="cat-detail-temperaments-container-header">Vocality</h3>
+                                </div>
+                                <div class="chart">
+                                    <div class="circle">@Model.OtherSpecification.Vocality</div>
+                                    <p class="persent">@Model.OtherSpecification.Vocality%</p>
+                                </div>
+                                <div class="cat-detail-temperaments-container-body">
+                                    <p>@Model.CompatibilityDescription.Vocality_Description</p>
+                                </div>
+                            </div>
+                            <div class="cat-detail-temperaments-container">
+                                <div class="cat-detail-temperaments-header">
+                                    <img alt="cat" src="~/img/catDetail/cat10.png" class="cat-detail-temperaments-container-img" />
+                                    <h3 class="cat-detail-temperaments-container-header">Grooming</h3>
+                                </div>
+                                <div class="chart">
+                                    <div class="circle">@Model.OtherSpecification.Grooming</div>
+                                    <p class="persent">@Model.OtherSpecification.Grooming%</p>
+                                </div>
+                                <div class="cat-detail-temperaments-container-body">
+                                    <p>@Model.CompatibilityDescription.Grooming_Description</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="cat-detail-temperaments-container-body">
-                            <p>@Model.CompatibilityDescription.Friendliness_To_Childern_Description</p>
+
+                    </div>
+
+                    <div class="cat-detail-container">
+                        <h2 class="cat-detail-description-name">How long do @Model.Name cats Live</h2>
+                        <p class="cat-detail-description-txt">
+                            @Model.OtherSpecification.Live_desc
+                        </p>
+                    </div>
+                    <div class="cat-detail-container">
+                        <div class="cat-detail-header-container-history">
+                            <h2 class="cat-detail-description-name">How to choose a kitten @Model.Name</h2>
+                            <p class="cat-detail-description-txt">@Model.OtherSpecification.Choosing_Kitten_desc</p>
                         </div>
                     </div>
-                    <div class="cat-detail-temperaments-container">
-                        <div class="cat-detail-temperaments-header">
-                            <img alt="cat" src="~/img/catDetail/cat6.png" class="cat-detail-temperaments-container-img" />
-                            <h3 class="cat-detail-temperaments-container-header">Friendliness To Old</h3>
-                        </div>
-                        <div class="cat-detail-temperaments-container-procent">
-                            <div class="single-chart">
-                                <svg viewBox="0 0 36 36" class="circular-chart orange">
-                                    <path class="circle-bg"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle"
-                                          stroke-dasharray="@Model.OtherSpecification.Friendliness_To_Old" , 100"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Friendliness_To_Old%</text>
-                                </svg>
+                    <div class="cat-detail-traits-container" id="compability">
+                        <h2 class="cat-detail-description-name">Compability of @Model.Name</h2>
+                        <div class="cat-detail-temperaments-container-list">
+                            <div class="cat-detail-temperaments-container">
+                                <div class="cat-detail-temperaments-header">
+                                    <img alt="cat" src="~/img/catDetail/cat1.png" class="cat-detail-temperaments-container-img" />
+                                    <h3 class="cat-detail-temperaments-container-header">Friendliness To Cat</h3>
+                                </div>
+                                <div class="chart">
+                                    <div class="circle">@Model.OtherSpecification.Friendliness_To_Cat</div>
+                                    <p class="persent">@Model.OtherSpecification.Friendliness_To_Cat%</p>
+                                </div>
+                                <div class="cat-detail-temperaments-container-body">
+                                    <p>@Model.CompatibilityDescription.Friendliness_To_Cat_Description</p>
+                                </div>
+                            </div>
+                            <div class="cat-detail-temperaments-container">
+                                <div class="cat-detail-temperaments-header">
+                                    <img alt="cat" src="~/img/catDetail/cat5.png" class="cat-detail-temperaments-container-img" />
+                                    <h3 class="cat-detail-temperaments-container-header">Friendliness to childern</h3>
+                                </div>
+                                <div class="chart">
+                                    <div class="circle">@Model.OtherSpecification.Friendliness_To_Childern</div>
+                                    <p class="persent">@Model.OtherSpecification.Friendliness_To_Childern%</p>
+                                </div>
+                                <div class="cat-detail-temperaments-container-body">
+                                    <p>@Model.CompatibilityDescription.Friendliness_To_Childern_Description</p>
+                                </div>
+                            </div>
+                            <div class="cat-detail-temperaments-container">
+                                <div class="cat-detail-temperaments-header">
+                                    <img alt="cat" src="~/img/catDetail/cat6.png" class="cat-detail-temperaments-container-img" />
+                                    <h3 class="cat-detail-temperaments-container-header">Friendliness To Old</h3>
+                                </div>
+                                <div class="chart">
+                                    <div class="circle">@Model.OtherSpecification.Friendliness_To_Old</div>
+                                    <p class="persent">@Model.OtherSpecification.Friendliness_To_Old%</p>
+                                </div>
+                                <div class="cat-detail-temperaments-container-body">
+                                    <p>@Model.CompatibilityDescription.Friendliness_To_Old_Description</p>
+                                </div>
+                            </div>
+                            <div class="cat-detail-temperaments-container">
+                                <div class="cat-detail-temperaments-header">
+                                    <img alt="cat" src="~/img/catDetail/cat7.png" class="cat-detail-temperaments-container-img" />
+                                    <h3 class="cat-detail-temperaments-container-header">Friendliness To Dog</h3>
+                                </div>
+                                <div class="chart">
+                                    <div class="circle">@Model.OtherSpecification.Friendliness_To_Dog</div>
+                                    <p class="persent">@Model.OtherSpecification.Friendliness_To_Dog%</p>
+                                </div>
+                                <div class="cat-detail-temperaments-container-body">
+                                    <p>@Model.CompatibilityDescription.Friendliness_To_Dog_Description</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="cat-detail-temperaments-container-body">
-                            <p>@Model.CompatibilityDescription.Friendliness_To_Old_Description</p>
-                        </div>
+
                     </div>
-                    <div class="cat-detail-temperaments-container">
-                        <div class="cat-detail-temperaments-header">
-                            <img alt="cat" src="~/img/catDetail/cat7.png" class="cat-detail-temperaments-container-img" />
-                            <h3 class="cat-detail-temperaments-container-header">Friendliness To Dog</h3>
-                        </div>
-                        <div class="cat-detail-temperaments-container-procent">
-                            <div class="single-chart">
-                                <svg viewBox="0 0 36 36" class="circular-chart orange">
-                                    <path class="circle-bg"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle"
-                                          stroke-dasharray="@Model.OtherSpecification.Friendliness_To_Dog" , 100"
-                                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">@Model.OtherSpecification.Friendliness_To_Dog%</text>
-                                </svg>
+                    <div class="cat-detail-container" id="health">
+                        <h2 class="cat-detail-description-name">@Model.Name health</h2>
+                        <p class="cat-detail-description-txt">@Model.OtherSpecification.Health_desc</p>
+                    </div>
+                    <div class="cat-detail-container" id="care">
+                        <h2 class="cat-detail-description-name">@Model.Name cats care</h2>
+                        <p class="cat-detail-description-txt">@Model.OtherSpecification.Care_desc</p>
+                    </div>
+                    <div class="cat-detail-container">
+                        <h2 class="cat-detail-description-name">@Model.Name cats popular names</h2>
+                        <p class="cat-detail-description-txt">@Model.OtherSpecification.Nicknames</p>
+                    </div>
+                    <div class="cat-detail-container">
+                        <h2 class="cat-detail-description-name">@Model.Name cats colors  </h2>
+                        <p class="cat-detail-description-txt">@Model.Name @Model.OtherSpecification.Color_desc</p>
+                    </div>
+                    <div class="cat-detail-container">
+                        <h2 class="cat-detail-description-name">@Model.Name cats size </h2>
+                        <p class="cat-detail-description-txt">@Model.OtherSpecification.Size_desc</p>
+                    </div>
+                    <div class="cat-detail-container">
+                        <h2 class="cat-detail-description-name">@Model.Name cats other names</h2>
+                        <p class="cat-detail-description-txt">@Model.OtherSpecification.Other_Names</p>
+                    </div>
+                    <div class="cat-detail-container" id="price">
+                        <h2 class="cat-detail-description-name">@Model.Name cats price</h2>
+                        <p class="cat-detail-description-txt">@Model.OtherSpecification.Price_desc/p>
+                    </div>
+                    <div class="">
+                        <h2 class="cat-detail-description-name">Frequently asked questions about @Model.Name cats</h2>
+                        @foreach (var question in Model.Answers)
+                        {
+                            <div class="cat-detail-container">
+                                <h2 class="cat-detail-description-name">@question.Question.Name</h2>
+                                <p class="cat-detail-description-txt">@question.Name</p>
                             </div>
-                        </div>
-                        <div class="cat-detail-temperaments-container-body">
-                            <p>@Model.CompatibilityDescription.Friendliness_To_Dog_Description</p>
-                        </div>
+                        }
                     </div>
                 </div>
-
             </div>
-            <div class="cat-detail-container">
-                <h2 class="cat-detail-container">@Model.Name health</h2>
-                <p class="cat-detail-description-txt">@Model.OtherSpecification.Health_desc</p>
-            </div>
-            <div class="cat-detail-container">
-                <h2 class="cat-detail-description-name">@Model.Name cats care</h2>
-                <p class="cat-detail-description-txt">@Model.OtherSpecification.Care_desc</p>
-            </div>
-            <div class="cat-detail-container">
-                <h2 class="cat-detail-description-name">@Model.Name cats popular names</h2>
-                <p class="cat-detail-description-txt">@Model.OtherSpecification.Nicknames</p>
-            </div>
-            <div class="cat-detail-container">
-                <h2 class="cat-detail-description-name">@Model.Name cats colors  </h2>
-                <p class="cat-detail-description-txt">@Model.Name @Model.OtherSpecification.Color_desc</p>
-            </div>
-            <div class="cat-detail-container">
-                <h2 class="cat-detail-description-name">@Model.Name cats size </h2>
-                <p class="cat-detail-description-txt">@Model.OtherSpecification.Size_desc</p>
-            </div>
-            <div class="cat-detail-container">
-                <h2 class="cat-detail-description-name">@Model.Name cats other names</h2>
-                <p class="cat-detail-description-txt">@Model.OtherSpecification.Other_Names</p>
-            </div>
-            <div class="cat-detail-container">
-                <h2 class="cat-detail-description-name">@Model.Name cats price</h2>
-                <p class="cat-detail-description-txt">@Model.OtherSpecification.Price_desc/p>
-            </div>
-            <div class="">
-                <h2 class="cat-detail-description-name">Frequently asked questions about @Model.Name cats</h2>
-                @foreach (var question in Model.Answers)
-                {<div class="cat-detail-container">
-                        <h2 class="cat-detail-description-name">@question.Question.Name</h2>
-                        <p class="cat-detail-description-txt">@question.Name</p>
-                    </div>
+            <div class="owl-carousel owl-theme">
+                @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+                {
+                    <div><img src="/img/assets/@cats.Img"></div>
                 }
             </div>
         </div>
-    </div>
-    <div class="owl-carousel owl-theme">
-        @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
-        {
-            <div><img src="/img/assets/@cats.Img"></div>
-        }
     </div>
 </div>
 @section Scripts{
@@ -405,5 +323,15 @@
                 });
             })(jQuery);
         });
+        let Circle = function (sel) {
+            let circles = document.querySelectorAll(sel);
+            [].forEach.call(circles, function (el) {
+                let valEl = parseFloat(el.innerHTML);
+                valEl = valEl * 408 / 100;
+                el.innerHTML = '<svg width="160" height="160"><circle transform="rotate(-90)" r="65" cx="-80" cy="80" /><circle transform="rotate(-90)" style="stroke-dasharray:' + valEl + 'px 408px;" r="65" cx="-80" cy="80" /></svg>';
+
+            });
+        };
+        Circle('.circle');
     </script>
    } 
