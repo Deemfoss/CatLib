@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /CatLib/appsettings.json
 /CatLib/CatLib.csproj
+/CatLib/Migrations
+/.gitignore
