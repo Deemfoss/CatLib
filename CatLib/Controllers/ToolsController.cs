@@ -77,10 +77,10 @@ namespace CatLib.Controllers
 
             return Json(catNames);
         }
-        public IActionResult DangerousProduct(int id )
+        public IActionResult DangerousProduct(int id)
         {
             ViewData["Cats"] = _context.News.ToList();
-            var dangerousProduct = _context.Products.Include(x => x.ProductCategory).FirstOrDefault(x=>x.Id==id);
+            var dangerousProduct = _context.Products.Include(x => x.ProductCategory).FirstOrDefault(x => x.Id == id);
             return View(dangerousProduct);
         }
 
@@ -95,45 +95,54 @@ namespace CatLib.Controllers
         [HttpGet]
         public IActionResult CalcFood()
         {
-          
+
             return View();
         }
 
         [HttpPost]
-        public JsonResult CalcFood(int productCal, int catWeight, string weight_type, string type, int times )
+        public JsonResult CalcFood(int productCal, int catWeight, string weight_type, string type, int times)
         {
             var kCal = ToolServices.CaloriesCalc(catWeight, weight_type, type);
             var foodWeight = ToolServices.CalcFood(productCal, kCal);
-            var partional = (double)foodWeight /(double)times;
-            return Json(foodWeight,(int)partional);
+            var partional = (double)foodWeight / (double)times;
+            return Json(foodWeight, (int)partional);
         }
 
         [HttpGet]
         public IActionResult CatNamesCategories()
         {
-            var categories = _context.CategoryNames.Include(x=>x.Personalities).ToList();
+            var categories = _context.CategoryNames.Include(x => x.Personalities).ToList();
             return View(categories);
         }
 
         [HttpGet]
         public IActionResult SpecificCatNames(int id)
         {
-            var specificNemes = _context.Personality.Include(x=>x.CatGeneratorNames).
+            var specificNemes = _context.Personality.Include(x => x.CatGeneratorNames).
                 FirstOrDefault(a => a.Id == id);
-                
+
             return View(specificNemes);
         }
 
-        [HttpGet]
-        public IActionResult DiseasessList()
+        public IActionResult DiseasessList(char letter, string search)
         {
             var diseasesList = _context.Diseases.ToList();
 
+            if (!String.IsNullOrEmpty(search))
+            {
+               diseasesList = _context.Diseases.Where(s => s.Name.Contains(search.ToLower())).ToList();
+
+            }
+
+            if (letter != 0)
+            {
+                diseasesList = diseasesList.FindAll(x => x.Name.StartsWith(letter));
+            }
             return View(diseasesList);
         }
 
-       [HttpGet]
-        public IActionResult DiseaseDetail(int id)
+        [HttpGet]
+        public IActionResult DiseasesDetail(int id)
         {
             var specificDiseases = _context.Diseases.Include(x => x.Disease_Questions).
                 FirstOrDefault(a => a.Id == id);

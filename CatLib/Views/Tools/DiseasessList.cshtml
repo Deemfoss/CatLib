@@ -13,7 +13,7 @@
 <div class="dng-main-product-container">
     <div class="body-container">
         <div class="searching-container">
-            <form asp-action="Index" asp-controller="home" method="post">
+            <form asp-action="DiseasessList" asp-controller="Tools" method="post">
                 <input type="text" id="search" placeholder="Search" name="search" class="search-input" value="@ViewData["CurrentFilter"]" />
                 <button type="submit" class="submit-serach">
                     <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
@@ -26,41 +26,39 @@
     <h3 class="dng-product-detail-header-name-value"> Search for a disease checker by selecting a letter below</h3>
 
     <div class="bsortletter">
-        <a href="">ALL</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">A</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">B</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">C</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">D</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">E</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">F</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">G</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">H</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">I</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">J</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">K</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">L</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">M</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">N</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">O</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">P</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">Q</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">R</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">S</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">T</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">U</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">V</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">W</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">X</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">Y</a>
-        <a href="/tools/DiseasessList" class="bsortletter-letter">Z</a>
-
+        <a href="/tools/DiseasessList" class="bsortletter-letter">ALL</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "A" })" class="bsortletter-letter">A</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "B" })" class="bsortletter-letter">B</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "C" })" class="bsortletter-letter">C</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "D" })" class="bsortletter-letter">D</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "E" })" class="bsortletter-letter">E</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "F" })" class="bsortletter-letter">F</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "G" })" class="bsortletter-letter">G</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "H" })" class="bsortletter-letter">H</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "I" })" class="bsortletter-letter">I</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "J" })" class="bsortletter-letter">J</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "K" })" class="bsortletter-letter">K</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "L" })" class="bsortletter-letter">L</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "M" })" class="bsortletter-letter">M</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "N" })" class="bsortletter-letter">N</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "O" })" class="bsortletter-letter">O</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "P" })" class="bsortletter-letter">P</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "Q" })" class="bsortletter-letter">Q</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "R" })" class="bsortletter-letter">R</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "S" })" class="bsortletter-letter">S</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "T" })" class="bsortletter-letter">T</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "U" })" class="bsortletter-letter">U</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "V" })" class="bsortletter-letter">V</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "W" })" class="bsortletter-letter">W</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "X" })" class="bsortletter-letter">X</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "Y" })" class="bsortletter-letter">Y</a>
+        <a href="@Url.Action("DiseasessList", "tools", new { letter = "Z" })" class="bsortletter-letter">Z</a>
     </div>
     <h3 class="dng-product-detail-header-name-value">List Of DISEASES & INFECTIONS IN CATS</h3>
     @foreach (var disease in Model)
     {
-
         <div class="diseasess-desc-container">
-            @Html.ActionLink("", "DiseaseDetail", new { id = disease.Id }, new { @class = "breed-container-link" })
+            @Html.ActionLink("", "DiseasesDetail", new { id = disease.Id }, new { @class = "breed-container-link" })
             <div class="diseasess-main-info">
                 <h4 class="diseasess-product-aticle-main-info-value">@disease.Name </h4>
                 <p class="diseasess_desc">@disease.Short_Desc</p>
@@ -72,5 +70,8 @@
     }
 
 </div>
-
+<div class="side-content-container">
+    <h2>Test</h2>
+    <div></div>
+</div>
 

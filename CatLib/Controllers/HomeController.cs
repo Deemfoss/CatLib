@@ -66,8 +66,6 @@ namespace CatLib.Controllers
                 cats = filtrationList.Filtration(activity, size, playfulness, coat);
             }
 
-
-
             return View(PaginatedList<Cat>.Create(cats, pageNumber ?? 1, pageSize, type));
 
         }

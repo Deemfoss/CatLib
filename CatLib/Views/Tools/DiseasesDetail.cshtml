@@ -1,5 +1,83 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model CatLib.Models.Cat_Health.Disease
+
+@{ 
+    ViewData["Title"] = Model.Name +" Diagnosis, Prevention, Causes, Symptoms & Treatment | CatLib";
 }
+<div class="dng-main-product-container">
+    <h3 class="dng-product-title">@Model.Name " Diagnosis, Prevention, Causes, Symptoms & Treatment"</h3>
+    <div class="article-header">
+        <img src="~/img/assets/10.jpg" alt="img" class="dng-product-product-img">
+    </div>
+    <div class="dng-product-article-container">
+        <h3 class="dng-product-detail-header-name-value">@Model.Name in Cats</h3>
+        <p class="dng-product-article-content">@Model.Summary</p>
+    </div>
+    <div class="product-article-container">
+        <h3 class="dng-product-detail-header-name-value">Quick Overview</h3>
+        <div class="product-article-quick-container">
+            <div class="dng-product-main-info">
+                <img class="dng-product-main-info-svg" src="~/img/svg/dangerous.svg" />
+                <label class="dng-product-article-main-info-label">Dangerous:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names </h3>
+            </div>
+            <div class="dng-product-main-info">
+                <img class="dng-product-main-info-svg" src="~/img/svg/allergic.svg" />
+                <label class="dng-product-article-main-info-label">Allergic:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
+            </div>
+            <div class="dng-product-main-info">
+                <img class="dng-product-main-info-svg" src="~/img/svg/cat.svg" />
+                <label class="dng-product-article-main-info-label">Species Appropriate:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
+            </div>
+            <div class="dng-product-main-info">
+                <img class="dng-product-main-info-svg" src="~/img/svg/bowl.svg" />
+                <label class="dng-product-article-main-info-label">How Much to Feed:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
+            </div>
+            <div class="dng-product-main-info">
+                <img class="dng-product-main-info-svg" src="~/img/svg/time.svg" />
+                <label class="dng-product-article-main-info-label">How Often to Feed:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
+            </div>
+        </div>
+    </div>
+    <div class="dng-product-article-container">
+        <h3 class="dng-product-detail-header-name-value">Description Of @Model.Name In Cats</h3>
+        <p class="dng-product-article-content">@Model.About</p>
+    </div>
+    <div class="dng-product-article-container">
+        <h3 class="dng-product-detail-header-name-value">Symptoms and Types @Model.Name in Cats</h3>
+        <p class="dng-product-article-content">@Model.Symptoms</p>
+    </div>
+    <div class="dng-product-article-container">
+        <h3 class="dng-product-detail-header-name-value">Couses @Model.Name in Cats</h3>
+        <p class="dng-product-article-content">@Model.Causes</p>
+    </div>
+    <div class="dng-product-article-container">
+        <h3 class="dng-product-detail-header-name-value">Diagnosis @Model.Name in Cats</h3>
+        <p class="dng-product-article-content">@Model.Diagnosis</p>
+    </div>
+    <div class="dng-product-article-container">
+        <h3 class="dng-product-detail-header-name-value">Treatment @Model.Name</h3>
+        <p class="dng-product-article-content">@Model.Treatment</p>
+    </div>
+    <div class="dng-product-article-container">
+        <h3 class="dng-product-detail-header-name-value">Living and Management</h3>
+        <p class="dng-product-article-content">@Model.Living_Management</p>
+    </div>
+    <div class="dng-product-article-container">
+        <h3 class="dng-product-detail-header-name-value">Prevention @Model.Name</h3>
+        <p class="dng-product-article-content">@Model.Prevention</p>
+    </div>
+    <h3 class="calc-info-title-name">Frequently Asked Questions</h3>
+    <div class="dng-product-article-container">
+        @foreach (var quest in Model.Disease_Questions)
+        {
+            <h3 class="calc-info-title-name">@quest.Question</h3>
+            <p class="dng-product-article-content">@quest.Answer</p>
+        }
+    </div>
+    @*<div class="owl-carousel owl-theme">
+        @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+        {
+            <div><img src="/img/assets/@cats.Img"></div>
+        }
+    </div>*@
+
+</div>
