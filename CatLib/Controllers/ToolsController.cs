@@ -126,6 +126,7 @@ namespace CatLib.Controllers
 
         public IActionResult DiseasessList(char letter, string search)
         {
+            ViewData["Cats"] = _context.News.Take(5).ToList();
             var diseasesList = _context.Diseases.ToList();
 
             if (!String.IsNullOrEmpty(search))

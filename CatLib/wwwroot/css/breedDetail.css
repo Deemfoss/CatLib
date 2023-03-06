@@ -61,7 +61,7 @@
     justify-content: start;
     align-items: center;
     align-content: center;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 300;
     text-underline-offset: 4px;
     color: #4b4949;
@@ -71,6 +71,7 @@
     font-size: 18px;
     color: rgb(16, 136, 150);
     padding-right: 8px;
+    line-height: 1.44;
 }
 .traits-container {
     flex-direction: column;

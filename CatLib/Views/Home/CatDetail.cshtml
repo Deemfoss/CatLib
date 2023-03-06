@@ -22,12 +22,12 @@
                     </div>
                 </div>
                 <div class="cat-detail-header-container-img">
-                        <img class="cat-detail-breed-img" src="~/img/CatsProfile/@Model.Img" />
-                    </div>
+                    <img class="cat-detail-breed-img" src="~/img/CatsProfile/@Model.Img" />
+                </div>
                 <div class="cat-detail-article-list">
                     <h3 class="cat-detail-article-title">Learn more</h3>
                     <a class="cat-detail-article-link" href="#history">
-                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg"/>
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg" />
                         <span class="cat-detail-article-span">History</span>
                     </a>
                     <a class="cat-detail-article-link" href="#characteristics">
@@ -39,7 +39,7 @@
                         <span class="cat-detail-article-span">Temperamet</span>
                     </a>
                     <a class="cat-detail-article-link" href="#personality">
-                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg"/>
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg" />
                         <span class="cat-detail-article-span">Personality</span>
                     </a>
                     <a class="cat-detail-article-link" href="#grooming">
@@ -51,7 +51,7 @@
                         <span class="cat-detail-article-span">Compability</span>
                     </a>
                     <a class="cat-detail-article-link" href="#health">
-                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg"/>
+                        <img class="cat-detail-article-svg" alt="arrow" src="~/img/svg/icon-arrow-right-white-small.svg" />
                         <span class="cat-detail-article-span">health</span>
                     </a>
                     <a class="cat-detail-article-link" href="#care">
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="cat-detail-main">
-                
+
                 <div class="cat-detail-blocks">
                     <div class="cat-detail-container" id="summary">
                         <h2 class="cat-detail-description-name">@Model.Name cat Summary</h2>
@@ -292,12 +292,44 @@
                     </div>
                 </div>
             </div>
-            <div class="owl-carousel owl-theme">
-                @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
-                {
-                    <div><img src="/img/assets/@cats.Img"></div>
-                }
+        </div>
+        <div class="side-main-content-container">
+            <div class="side-content-container">
+                <h2 class="side-content-container-title">Popular in Diseases & Infections</h2>
+                <div class="side-content-container-carousel">
+
+                    @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+                    {
+                        <div class="side-content-container-carousel-container">
+                            <a href="@Url.Action("DiseasessList", "tools", new { id = cats.Id })" class="side-content-container-carousel-link">
+                                <img class="side-content-container-carousel-container-img" src="~/img/CatsProfile/1.jpg" />
+                                <div class="side-content-container-carousel-container-data">
+                                    <p class="side-content-container-carousel-container-data-title">@cats.Title</p>
+                                </div>
+                            </a>
+
+                        </div>
+                    }
+                </div>
             </div>
+            <div class="side-content-container-main-links">
+                <h2 class="side-content-container-title">Popular Tools for Cats</h2>
+                <div class="side-content-container-carousel">
+                    <div class="side-content-container-links">
+                        <a href="/tools/CalcAge" class="side-content-container-carousel-link-href">Age Calculator</a>
+                        <a href="/tools/CalorieCalc" class="side-content-container-carousel-link-href">Calorie Calculator</a>
+                        <a href="/tools/CatNameGenerator" class="side-content-container-carousel-link-href">Cat Name Generator</a>
+                        <a href="/tools/CalcFood" class="side-content-container-carousel-link-href">Food Calculator</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel owl-theme carousel-border">
+            @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+            {
+                <div><img src="/img/assets/@cats.Img"></div>
+            }
         </div>
     </div>
 </div>
@@ -334,4 +366,4 @@
         };
         Circle('.circle');
     </script>
-   } 
+} 
