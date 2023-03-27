@@ -1,57 +1,104 @@
 ﻿@{
     ViewData["Title"] = "Converting a cat's age to human years";
 }
-<div class="calc-wrapper">
-    <div class="calc-header">
-        <h3 class="cat-detail-header-name-value">Converting a cat's age to human years</h3>
-        <p class="calc-text">
-            The main reason for having a tool to convert a cat's age to human years is to better understand the cat's age and life stage, which can help with making decisions about their health and care.
 
-            Cats age faster than humans in their first couple of years, so by the time a cat is 2 years old, it is already an adult. Understanding their age in human years can help you to identify when they are reaching important milestones in their life such as the age at which they should be spayed or neutered or when they may be considered a senior cat.
-
-            Also, understanding your cat's age in human years can help you to identify when they may be at increased risk for certain diseases or health problems. For example, a cat that is considered "senior" in human years may be at a higher risk for certain age-related health problems such as arthritis or kidney disease.
-
-            Therefore, it is important to know the age of your cat in human years to properly care for them.
-        </p>
-    </div>
-    <div class="calc-main">
-        <div class="calc-container-age">
-            <h3 class="calc-container-title">Calculate Cat's Age to human years</h3>
-            <div class="calc-data">
-                <input class="calc-input" id="calc-age-input" type="text" name="Age" placeholder="Enter Age" />
-                <input class="calc-input" id="calc-month-input" type="text" name="month"  placeholder="Enter Month" />
+<div class="calc-header">
+    <h3 class="cat-detail-header-name-value">Converting a cat's age to human years</h3>
+    <p class="calc-text">
+        The main reason for having a tool to convert a cat's age to human years is to better understand the cat's age and life stage, which can help with making decisions about their health and care.
+    </p>
+</div>
+<div class="side-main-container">
+    <div class="calc-wrapper">
+        <div class="calc-main">
+            <div class="calc-container-age">
+                <h3 class="calc-container-title">Calculate Cat's Age to human years</h3>
+                <div class="calc-data">
+                    <input class="calc-input" id="calc-age-input" type="text" name="Age" placeholder="Enter Age" />
+                    <input class="calc-input" id="calc-month-input" type="text" name="month" placeholder="Enter Month" />
+                </div>
+                <div class="calc-button-block">
+                    <button class="calc-age-button" id="calc-age-button" type="submit">Calculate</button>
+                </div>
             </div>
-            <div class="calc-button-block">
-                <button class="calc-age-button" id="calc-age-button" type="submit">Calculate</button>
+            <div class="result-container">
+                <h1 class="result-container-header-age">Age of your cat</h1>
+                <div class="circular-progress-age">
+                    <p class="circular-progress-value-age">Years</p>
+                    <p class="circular-progress-kg"></p>
+                </div>
             </div>
         </div>
-        <div class="result-container">
-            <h1 class="result-container-header-age">Age of your cat</h1>
-            <div class="circular-progress-age">
-                <p class="circular-progress-value-age">Years</p>
-                <p class="circular-progress-kg"></p>
+        <div class="calc-info">
+            <h3 class="calc-info-title-age">Converting a cat's age to human years</h3>
+            <p class="calc-info-text">
+                Converting a cat's age to human years can be helpful in a variety of ways. For one, it allows pet owners to better understand the aging process of their cat and what to expect as they get older. For example, a cat that is 7 years old in cat years is considered middle-aged, while a cat that is 14 years old in cat years is considered senior. Knowing this information can help pet owners to provide proper care and attention to their aging cat.
+                Additionally, converting a cat's age to human years can also be helpful in determining a cat's life expectancy. A cat's life expectancy can vary greatly depending on factors such as breed, genetics, and overall health, but on average, cats can live for around 15-20 years. By converting a cat's age to human years, pet owners can get a better idea of how much time they have left with their beloved companion.
+                Lastly, converting a cat's age to human years can also be helpful for veterinarians, as it allows them to better understand a cat's health and any age-related issues that may arise. This can be helpful in determining a treatment plan and determining if any age-related conditions are present.
+            </p>
+            <button class="calc-age-info-open-block">
+                <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
+                <h3 class="calc-info-open">How to calculate Cat's Age to human years ?</h3>
+                <span class="calc-info-span-age">+</span>
+            </button>
+            <p class="calc-age-info-hidden">
+                The process of calculating a cat's age in human years is not an exact science. However, one common method is to use a conversion factor of 15 human years for the first year of a cat's life, The second year is equal to an additional 9.  and then add 4 human years for each additional year. Therefore, a 2-year-old cat would be considered 24 in human years (15+9). A 3-year-old cat would be considered 28 in human years (15+9+4) and so on.
+                It is important to note that this is a rough estimate and actual cats age can vary depending on their breed, genetics, and overall health.
+            </p>
+        </div>
+
+    </div>
+    <div class="side-main-content-container">
+        <div class="side-content-container">
+            <h2 class="side-content-container-title">Latest Added Articles</h2>
+            <div class="side-content-container-carousel">
+
+                @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+                {
+                    <div class="side-content-container-carousel-container">
+                        <a href="@Url.Action("DiseasessList", "tools", new { id = cats.Id })" class="side-content-container-carousel-link">
+                            <img class="side-content-container-carousel-container-img" src="~/img/CatsProfile/1.jpg" />
+                            <div class="side-content-container-carousel-container-data">
+                                <p class="side-content-container-carousel-container-data-title">@cats.Title</p>
+                            </div>
+                        </a>
+
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="side-content-container-main-links">
+            <h2 class="side-content-container-title">Popular Tools for Cats</h2>
+            <div class="side-content-container-carousel">
+                <div class="side-content-container-links">
+                    <a href="/tools/CalcAge" class="side-content-container-carousel-link-href">Age Calculator</a>
+                    <a href="/tools/CalorieCalc" class="side-content-container-carousel-link-href">Calorie Calculator</a>
+                    <a href="/tools/CatNameGenerator" class="side-content-container-carousel-link-href">Cat Name Generator</a>
+                    <a href="/tools/CalcFood" class="side-content-container-carousel-link-href">Food Calculator</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="calc-info">
-    <h3 class="calc-info-title-age">Converting a cat's age to human years</h3>
-    <p class="calc-info-text">
-        Converting a cat's age to human years can be helpful in a variety of ways. For one, it allows pet owners to better understand the aging process of their cat and what to expect as they get older. For example, a cat that is 7 years old in cat years is considered middle-aged, while a cat that is 14 years old in cat years is considered senior. Knowing this information can help pet owners to provide proper care and attention to their aging cat.
-        Additionally, converting a cat's age to human years can also be helpful in determining a cat's life expectancy. A cat's life expectancy can vary greatly depending on factors such as breed, genetics, and overall health, but on average, cats can live for around 15-20 years. By converting a cat's age to human years, pet owners can get a better idea of how much time they have left with their beloved companion.
-        Lastly, converting a cat's age to human years can also be helpful for veterinarians, as it allows them to better understand a cat's health and any age-related issues that may arise. This can be helpful in determining a treatment plan and determining if any age-related conditions are present.
-    </p>
-    <button class="calc-age-info-open-block">
-        <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
-        <h3 class="calc-info-open">How to calculate Cat's Age to human years ?</h3>
-        <span class="calc-info-span-age">+</span>
-    </button>
-    <p class="calc-age-info-hidden">
-        The process of calculating a cat's age in human years is not an exact science. However, one common method is to use a conversion factor of 15 human years for the first year of a cat's life, The second year is equal to an additional 9.  and then add 4 human years for each additional year. Therefore, a 2-year-old cat would be considered 24 in human years (15+9). A 3-year-old cat would be considered 28 in human years (15+9+4) and so on.
-        It is important to note that this is a rough estimate and actual cats age can vary depending on their breed, genetics, and overall health.
-    </p>
-</div>
+<h3 class="dng-product-detail-header-name-value">Popular in Cats</h3>
+<div class="owl-carousel owl-theme carousel-border">
 
+
+    @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+    {
+        <div class="carousel-container">
+            <a href=''>
+                <img class="img-carousel" src="/img/assets/@cats.Img">
+                @*<div class="carousel-container-title-container">
+                        <p class="carousel-title">@cats.Title</p>
+                    </div>*@
+                <div class="carousel-container-short-dsc-container">
+                    <p class="carousel-short-dsc">@cats.ShortDescription</p>
+                </div>
+            </a>
+        </div>
+    }
+</div>
 @section Scripts{
     <script type="text/javascript">
         let buttonCalcAge = document.querySelector(".calc-age-button");
@@ -106,5 +153,25 @@
         });
 
         calcAgeBtn.addEventListener('click', () => calcAgeText.classList.toggle("calc-age-info-active"));
+        $(document).ready(function () {
+            (function ($) {
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 5
+                        }
+                    }
+                });
+            })(jQuery);
+        });
     </script>
 }

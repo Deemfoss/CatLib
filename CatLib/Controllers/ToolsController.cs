@@ -22,6 +22,7 @@ namespace CatLib.Controllers
         [HttpGet]
         public IActionResult CalorieCalc()
         {
+            ViewData["Cats"] = _context.News.Take(5).ToList();
             return View();
         }
 
@@ -35,12 +36,14 @@ namespace CatLib.Controllers
         [HttpGet]
         public IActionResult CalcAge()
         {
+            ViewData["Cats"] = _context.News.Take(5).ToList();
             return View();
         }
 
         [HttpPost]
         public JsonResult CalcAge(string age, string month)
         {
+            ;
             int ageValue, monthValue, fullAge = 0;
             bool ageNumber = int.TryParse(age, out ageValue);
             bool monthNumber = int.TryParse(month, out monthValue);
@@ -62,7 +65,7 @@ namespace CatLib.Controllers
         [HttpGet]
         public IActionResult CatNameGenerator()
         {
-
+            ViewData["Cats"] = _context.News.Take(5).ToList();
             return View();
         }
 
@@ -84,11 +87,9 @@ namespace CatLib.Controllers
             return View(dangerousProduct);
         }
 
-
-
         public IActionResult DangerousProductsList()
         {
-            ViewData["Cats"] = _context.News.Take(3).OrderByDescending(x=>x.Date).ToList();
+            ViewData["Cats"] = _context.News.Take(3).OrderByDescending(x => x.Date).ToList();
             var dangerousProductsList = _context.Products.Include(x => x.ProductCategory).ToList();
             return View(dangerousProductsList);
         }
@@ -96,7 +97,7 @@ namespace CatLib.Controllers
         [HttpGet]
         public IActionResult CalcFood()
         {
-
+            ViewData["Cats"] = _context.News.Take(5).ToList();
             return View();
         }
 
@@ -106,7 +107,7 @@ namespace CatLib.Controllers
             var kCal = ToolServices.CaloriesCalc(catWeight, weight_type, type);
             var foodWeight = ToolServices.CalcFood(productCal, kCal);
             var partional = (double)foodWeight / (double)times;
-            return Json(foodWeight, (int)partional);
+            return Json(foodWeight);
         }
 
         [HttpGet]
@@ -119,6 +120,7 @@ namespace CatLib.Controllers
         [HttpGet]
         public IActionResult SpecificCatNames(int id)
         {
+            ViewData["Cats"] = _context.News.Take(5).ToList();
             var specificNemes = _context.Personality.Include(x => x.CatGeneratorNames).
                 FirstOrDefault(a => a.Id == id);
 

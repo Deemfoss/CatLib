@@ -913,6 +913,8 @@ div.nav-link-submenu-show {
     box-shadow: 0px 9px 26px rgb(198 198 198 / 25%);
     background-color: white;
     transition: 0.5s;
+    position:relative;
+        
 }
 
 .dng-product-img-container {
@@ -1014,6 +1016,7 @@ div.nav-link-submenu-show {
 }
 
 .dng-product-article-content,
+.article-specific-name-content,
 .diseasess-product-article-content {
     color: gray;
     text-align: justify;
@@ -1601,7 +1604,7 @@ div.nav-link-submenu-show {
 .carousel-short-dsc {
     padding: 15px 0px;
     color: #000000;
-    font-size: 20px;
+    font-size: 15px;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
@@ -1630,7 +1633,8 @@ div.nav-link-submenu-show {
    /* margin-bottom: 20px;*/
 }
 .dng-product-info-title-name,
-.diseasess-product-info-title-name {
+.diseasess-product-info-title-name,
+.article-title-name {
     text-transform: uppercase;
     text-align: center;
     width: 100%;
@@ -1684,4 +1688,11 @@ div.nav-link-submenu-show {
     padding: 0px 5px 20px 5px;
     gap: 5px;
     background-color: white;
+}
+.calc-header{
+    margin-bottom:10px;
+}
+
+.owl-carousel.owl-loaded{
+    margin-top:10px;
 }

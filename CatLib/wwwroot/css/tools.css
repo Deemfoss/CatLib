@@ -230,9 +230,11 @@
     text-align: center;
     width: 100%;
     letter-spacing: 2px;
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 20px;
+    font-weight: 600;
     line-height: 1.214;
+    color: #108896;
+    margin: 10px 0;
 }
 .calc-info-title {
     color: #108896;
@@ -302,12 +304,12 @@
 .calc-cal-info-active, .calc-age-info-active {
     display: flex;
     font-size: 16px;
-    background-color: #798486a1;
-    color: white;
+    background-color: #ffffffa1;
+    color: #828282;
     padding: 20px 60px;
     border-radius: 5px;
     box-shadow: 0px 0px 40px -5px #798486a1;
-    max-width: 800px;
+    /* max-width: 800px; */
     text-align: center;
 }
 /*Name-generator*/

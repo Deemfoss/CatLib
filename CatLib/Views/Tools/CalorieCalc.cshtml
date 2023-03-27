@@ -1,98 +1,149 @@
 ﻿@{
     ViewData["Title"] = "Calorie calculator for cats";
 }
-
-<div class="calc-wrapper">
-    <div class="calc-header">
-        <h3 class="cat-detail-header-name-value">Calorie calculator for cats</h3>
-        <p class="calc-text">
-            A calorie calculator for cats is a tool that helps to determine the appropriate amount of food to give a cat based on their weight, age and activity level. It is typically used to calculate the daily caloric requirements for a cat, and can help to create a customized diet plan that meets the individual needs of each cat. To use a calorie calculator for cats, you need to input information such as the cat's weight and any health conditions they may have. The calculator will then use this information to determine the appropriate calorie intake for the cat, which can help to ensure they are getting the proper amount of nutrition and staying at a healthy weight.
-        </p>
-    </div>
-    <div class="calc-main">
-        <div class="calc-container">
-            <h3 class="calc-container-title">Calculate calories for your cat</h3>
-            <div class="calc-data">
-                <div class="calc-weight-input-container">
-                    <input class="calc-input" id="calc-weight-input" placeholder="Enter Weight" type="text" name="weight" />
-                    <select class="calc-weight-select--small" id="weight_type" name="weight_type">
-                        <option class="calc-weight-select-option" value="lb" selected>Pounds (lbs)</option>
-                        <option class="calc-weight-select-option" value="kg">Kilograms (kg)</option>
-                    </select>
+<div class="calc-header">
+    <h3 class="cat-detail-header-name-value">Calorie calculator for cats</h3>
+    <p class="calc-text">
+        A calorie calculator for cats is a tool that helps to determine the appropriate amount of food to give a cat based on their weight, age and activity level.
+        @*It is typically used to calculate the daily caloric requirements for a cat, and can help to create a customized diet plan that meets the individual needs of each cat.*@
+    </p>
+</div>
+<div class="side-main-container">
+    <div class="calc-wrapper">
+        <div class="calc-main">
+            <div class="calc-container">
+                <h3 class="calc-container-title">Calculate calories for your cat</h3>
+                <div class="calc-data">
+                    <div class="calc-weight-input-container">
+                        <input class="calc-input" id="calc-weight-input" placeholder="Enter Weight" type="text" name="weight" />
+                        <select class="calc-weight-select--small" id="weight_type" name="weight_type">
+                            <option class="calc-weight-select-option" value="lb" selected>Pounds (lbs)</option>
+                            <option class="calc-weight-select-option" value="kg">Kilograms (kg)</option>
+                        </select>
+                    </div>
+                </div>
+                <select class="calc-weight-select" id="type" name="type">
+                    <option class="calc-weight-select-option" value="neutered">Neutered adult</option>
+                    <option class="calc-weight-select-option" value="intact">Intact adult</option>
+                    <option class="calc-weight-select-option" value="loss">Weight loss</option>
+                    <option class="calc-weight-select-option" value="obesse">Obesse prone</option>
+                    <option class="calc-weight-select-option" value="kitten">Growing kittens</option>
+                    <option class="calc-weight-select-option" value="over">Over 7 years old</option>
+                    <option class="calc-weight-select-option" value="highActivity">High physical activity</option>
+                    <option class="calc-weight-select-option" value="pregnancy">Pregnancy</option>
+                </select>
+                <div class="calc-button-block">
+                    <button class="calc-weight-button" id="calc-weight-button" type="submit">Calculate</button>
                 </div>
             </div>
-            <select class="calc-weight-select" id="type" name="type">
-                <option class="calc-weight-select-option" value="neutered">Neutered adult</option>
-                <option class="calc-weight-select-option" value="intact">Intact adult</option>
-                <option class="calc-weight-select-option" value="loss">Weight loss</option>
-                <option class="calc-weight-select-option" value="obesse">Obesse prone</option>
-                <option class="calc-weight-select-option" value="kitten">Growing kittens</option>
-                <option class="calc-weight-select-option" value="over">Over 7 years old</option>
-                <option class="calc-weight-select-option" value="highActivity">High physical activity</option>
-                <option class="calc-weight-select-option" value="pregnancy">Pregnancy</option>
-            </select>
-            <div class="calc-button-block">
-                <button class="calc-weight-button" id="calc-weight-button" type="submit">Calculate</button>
+            <div class="result-container">
+                <h1 class="result-container-header">Estimated Initial Daily Calories</h1>
+                <div class="circular-progress">
+                    <p class="circular-progress-value">kcal/day</p>
+                    <p class="circular-progress-kcal"></p>
+                </div>
             </div>
         </div>
-        <div class="result-container">
-            <h1 class="result-container-header">Estimated Initial Daily Calories</h1>
-            <div class="circular-progress">
-                <p class="circular-progress-value">kcal/day</p>
-                <p class="circular-progress-kcal"></p>
+        <div class="calc-info">
+            <h3 class="calc-info-title">
+                Cat Diet
+            </h3>
+            <p class="calc-info-text">
+                Cats are obligate carnivores, which means that they require a diet that is high in animal protein. The ideal diet for a cat should consist of:
+
+                Meat, poultry, or fish: This should make up the majority of a cat's diet, as cats require high levels of protein to maintain their health.
+
+                Taurine: This is an amino acid that is essential for a cat's health, as they cannot produce it on their own. Taurine is found in meat, poultry, and fish.
+
+                Fat: Cats also require a source of fat in their diet to provide them with energy and to maintain a healthy skin and coat.
+
+                Vitamins and minerals: A balanced diet for a cat should also include vitamins and minerals, such as vitamins A and D, and calcium.
+
+                It is best to feed cats a balanced and complete commercial cat food diet formulated to meet their specific nutritional requirements, rather than feeding them a diet based solely on human food. However, it's important to choose a high-quality cat food that meets the nutritional needs of your cat, and to avoid giving them foods that are toxic to them, such as onions, chocolate, or grapes.
+
+                It's also important to monitor your cat's food intake and to adjust their diet as needed to maintain a healthy weight. If you have any concerns about your cat's diet, it's best to consult with a veterinarian.
+            </p>
+        </div>
+        <div class="calc-info">
+            <h3 class="calc-info-title">
+                how heavy should my cat be ?
+            </h3>
+            <p class="calc-info-text">
+                The ideal weight for a cat can vary depending on its breed, age, and activity level. In general, a healthy weight for an adult cat ranges from 8 to 10 pounds for a small breed, to 15 to 20 pounds for a larger breed. However, this is just a rough estimate, and it's best to consult with a veterinarian to determine the ideal weight for your cat.
+
+                A veterinarian can perform a physical examination and take into consideration other factors, such as your cat's body condition, overall health, and muscle tone, to determine if your cat is at a healthy weight. Additionally, a veterinarian can advise you on how much food to feed your cat and how to adjust their diet as needed to maintain a healthy weight.
+
+                It's important to monitor your cat's weight and to address any weight gain or loss promptly, as carrying excess weight can lead to a number of health problems, such as diabetes, joint problems, and decreased mobility.
+            </p>
+        </div>
+        <div class="calc-info">
+            <h3 class="calc-info-title">Why is it important to use a calorie calculator?</h3>
+            <p class="calc-info-text">Сalorie calculator for cats helps to ensure that they are getting the proper amount of nutrition. Cats have specific dietary needs, and overfeeding or underfeeding can lead to health problems such as obesity or malnutrition. A calorie calculator can help to determine the appropriate amount of food to give a cat based on their weight, age, and activity level, which can help to keep them healthy and at a healthy weight. Additionally, using a calorie calculator can help to create a customized diet plan that meets the individual needs of each cat, which can help to improve their overall health and well-being.</p>
+            <button class="calc-cal-info-open-block">
+                <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
+                <h3 class="calc-info-open">How to calculate daily calorie for cat</h3>
+                <span class="calc-info-span">+</span>
+            </button>
+            <p class="calc-cal-info-hidden">
+                To correctly determine how many calories your pet needs, you first need to take into account his lifestyle, age, activity level, and many other factors.
+                All these parameters are calculated using RER (Resting Energy Requirement).
+                Let's take an intact adult neutered cat as an example.
+                using the following formula, we calculate RER = 70 x (ideal weight in kilograms) 3/4.
+                Then you must multiply the resulting razulatate by 1.4, which is the multiplier for a neutered cat. However, in order not to count calories manually, our calculator will do it automatically for you.
+            </p>
+        </div>
+
+    </div>
+    <div class="side-main-content-container">
+        <div class="side-content-container">
+            <h2 class="side-content-container-title">Latest Added Articles</h2>
+            <div class="side-content-container-carousel">
+
+                @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+                {
+                    <div class="side-content-container-carousel-container">
+                        <a href="@Url.Action("DiseasessList", "tools", new { id = cats.Id })" class="side-content-container-carousel-link">
+                            <img class="side-content-container-carousel-container-img" src="~/img/CatsProfile/1.jpg" />
+                            <div class="side-content-container-carousel-container-data">
+                                <p class="side-content-container-carousel-container-data-title">@cats.Title</p>
+                            </div>
+                        </a>
+
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="side-content-container-main-links">
+            <h2 class="side-content-container-title">Popular Tools for Cats</h2>
+            <div class="side-content-container-carousel">
+                <div class="side-content-container-links">
+                    <a href="/tools/CalcAge" class="side-content-container-carousel-link-href">Age Calculator</a>
+                    <a href="/tools/CalorieCalc" class="side-content-container-carousel-link-href">Calorie Calculator</a>
+                    <a href="/tools/CatNameGenerator" class="side-content-container-carousel-link-href">Cat Name Generator</a>
+                    <a href="/tools/CalcFood" class="side-content-container-carousel-link-href">Food Calculator</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="calc-info">
-    <h3 class="calc-info-title">
-        Cat Diet
-    </h3>
-    <p class="calc-info-text">
-        Cats are obligate carnivores, which means that they require a diet that is high in animal protein. The ideal diet for a cat should consist of:
+<h3 class="dng-product-detail-header-name-value">Popular in Cats</h3>
+<div class="owl-carousel owl-theme carousel-border">
 
-        Meat, poultry, or fish: This should make up the majority of a cat's diet, as cats require high levels of protein to maintain their health.
-
-        Taurine: This is an amino acid that is essential for a cat's health, as they cannot produce it on their own. Taurine is found in meat, poultry, and fish.
-
-        Fat: Cats also require a source of fat in their diet to provide them with energy and to maintain a healthy skin and coat.
-
-        Vitamins and minerals: A balanced diet for a cat should also include vitamins and minerals, such as vitamins A and D, and calcium.
-
-        It is best to feed cats a balanced and complete commercial cat food diet formulated to meet their specific nutritional requirements, rather than feeding them a diet based solely on human food. However, it's important to choose a high-quality cat food that meets the nutritional needs of your cat, and to avoid giving them foods that are toxic to them, such as onions, chocolate, or grapes.
-
-        It's also important to monitor your cat's food intake and to adjust their diet as needed to maintain a healthy weight. If you have any concerns about your cat's diet, it's best to consult with a veterinarian.
-    </p>
+    @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+    {
+        <div class="carousel-container">
+            <a href=''>
+                <img class="img-carousel" src="/img/assets/@cats.Img">
+                @*<div class="carousel-container-title-container">
+                        <p class="carousel-title">@cats.Title</p>
+                    </div>*@
+                <div class="carousel-container-short-dsc-container">
+                    <p class="carousel-short-dsc">@cats.ShortDescription</p>
+                </div>
+            </a>
+        </div>
+    }
 </div>
-<div class="calc-info">
-    <h3 class="calc-info-title">
-        how heavy should my cat be ?
-    </h3>
-    <p class="calc-info-text">
-        The ideal weight for a cat can vary depending on its breed, age, and activity level. In general, a healthy weight for an adult cat ranges from 8 to 10 pounds for a small breed, to 15 to 20 pounds for a larger breed. However, this is just a rough estimate, and it's best to consult with a veterinarian to determine the ideal weight for your cat.
-
-        A veterinarian can perform a physical examination and take into consideration other factors, such as your cat's body condition, overall health, and muscle tone, to determine if your cat is at a healthy weight. Additionally, a veterinarian can advise you on how much food to feed your cat and how to adjust their diet as needed to maintain a healthy weight.
-
-        It's important to monitor your cat's weight and to address any weight gain or loss promptly, as carrying excess weight can lead to a number of health problems, such as diabetes, joint problems, and decreased mobility.
-    </p>
-</div>
-<div class="calc-info">
-    <h3 class="calc-info-title">Why is it important to use a calorie calculator?</h3>
-    <p class="calc-info-text">Сalorie calculator for cats helps to ensure that they are getting the proper amount of nutrition. Cats have specific dietary needs, and overfeeding or underfeeding can lead to health problems such as obesity or malnutrition. A calorie calculator can help to determine the appropriate amount of food to give a cat based on their weight, age, and activity level, which can help to keep them healthy and at a healthy weight. Additionally, using a calorie calculator can help to create a customized diet plan that meets the individual needs of each cat, which can help to improve their overall health and well-being.</p>
-    <button class="calc-cal-info-open-block">
-        <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
-        <h3 class="calc-info-open">How to calculate daily calorie for cat</h3>
-        <span class="calc-info-span">+</span>
-    </button>
-    <p class="calc-cal-info-hidden">
-        To correctly determine how many calories your pet needs, you first need to take into account his lifestyle, age, activity level, and many other factors.
-        All these parameters are calculated using RER (Resting Energy Requirement).
-        Let's take an intact adult neutered cat as an example.
-        using the following formula, we calculate RER = 70 x (ideal weight in kilograms) 3/4.
-        Then you must multiply the resulting razulatate by 1.4, which is the multiplier for a neutered cat. However, in order not to count calories manually, our calculator will do it automatically for you.
-    </p>
-</div>
-
 @section Scripts{
     <script type="text/javascript">
         let kcal;
@@ -102,13 +153,13 @@
             progressValue = document.querySelector(".circular-progress-value"),
             progressKcal = document.querySelector(".circular-progress-kcal");
 
-      
+
 
         const calcCaloriesBtn = document.querySelector('.calc-cal-info-open-block');
         const calcCaloriesText = document.querySelector('.calc-cal-info-hidden');
 
         calcCaloriesBtn.addEventListener('click', () => calcCaloriesText.classList.toggle("calc-cal-info-active"));
-       
+
         //buttonCalcCalories.addEventListener('click', progress);
         $(function () {
             $("#calc-weight-button").click(function () {
@@ -123,7 +174,7 @@
                     success: function (response) {
                         let res = JSON.stringify(response);
                         kcal = parseInt(res)
-                       // setTimeout(progress, 10);
+                        // setTimeout(progress, 10);
                         progress()
                     }
                 });
@@ -136,7 +187,7 @@
             let progressStartValue = test,
                 progressEndValue = kcal,
                 speed = 20;
-            
+
             let id = setInterval(() => {
                 progressStartValue++;
                 //progressValue.textContent = `${kcal}`;
@@ -151,7 +202,26 @@
             }, speed);
 
         }
-       
+        $(document).ready(function () {
+            (function ($) {
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 5
+                        }
+                    }
+                });
+            })(jQuery);
+        });
 
     </script>
 }

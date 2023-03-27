@@ -2,25 +2,24 @@
 @{
     ViewData["Title"] = "Popular and Unique " + Model.Name + " Cate names | CatLib";
 }
-<section class="article">
-    <div class="calc-header">
-        <h3 class="cat-detail-header-name-value">Popular and Unique  @Model.Name  Cate names</h3>
-    </div>
+<div class="calc-header">
+    <h3 class="cat-detail-header-name-value">Popular and Unique  @Model.Name  Cate names</h3>
+</div>
+<div class="side-main-container">
     <div class="cat-name-categories">
         <div class="article-header">
             <img src="/img/Presonality-img/@Model.Img" alt="img" class="article_img">
         </div>
 
         <div class="calc-info">
-            <h3 class="calc-info-title-name">Description @Model.Name</h3>
-            <p class="calc-info-text">
+            <h3 class="article-title-name">Description @Model.Name</h3>
+            <p class="article-specific-name-content">
                 @Model.Desctiption
             </p>
         </div>
-
         <div class="calc-info">
-            <h3 class="calc-info-title-name">We collect for you best @Model.Name cat man names</h3>
-            <p class="calc-info-text">
+            <h3 class="article-title-name">Best @Model.Name cat man names</h3>
+            <p class="article-specific-name-content">
                 @foreach (var menName in Model.CatGeneratorNames.Where(x => x.GenderId == 1))
                 {
                     @menName.Name
@@ -30,8 +29,8 @@
         </div>
 
         <div class="calc-info">
-            <h3 class="calc-info-title-name">TWe collect for you best @Model.Name cat Famele names</h3>
-            <p class="calc-info-text">
+            <h3 class="article-title-name">Best @Model.Name cat Famele names</h3>
+            <p class="article-specific-name-content">
                 @foreach (var menName in Model.CatGeneratorNames.Where(x => x.GenderId == 2))
                 {
                     @menName.Name
@@ -40,9 +39,86 @@
             </p>
         </div>
 
+        <div class="calc-info">
+            <h3 class="article-title-name">Funny @Model.Name cat names</h3>
+            <p class="article-specific-name-content">
+
+            </p>
+        </div>
+        <div class="calc-info">
+            <h3 class="article-title-name">Popular @Model.Name cat names</h3>
+            <p class="article-specific-name-content">
+
+            </p>
+        </div>
+
         <p class="calc-info-text">
             <a href="/tools/CatNameGenerator" class="nav-link-href">Cat Name Generator</a>
         </p>
+        <h3 class="dng-product-detail-header-name-value">Popular in Cat Names</h3>
+    </div>
+    <div class="side-content-container">
+        <h2 class="side-content-container-title">Latest Added Articles</h2>
+        <div class="side-content-container-carousel">
+
+            @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+            {
+                <div class="side-content-container-carousel-container">
+                    <a href="@Url.Action("DiseasessList", "tools", new { id = cats.Id })" class="side-content-container-carousel-link">
+                        <img class="side-content-container-carousel-container-img" src="~/img/CatsProfile/1.jpg" />
+                        <div class="side-content-container-carousel-container-data">
+                            <p class="side-content-container-carousel-container-data-title">@cats.Title</p>
+                        </div>
+                    </a>
+
+                </div>
+            }
+        </div>
     </div>
 
-</section>
+</div>
+<div class="owl-carousel owl-theme carousel-border">
+    @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+    {
+        <div class="carousel-container">
+            <a href=''>
+                <img class="img-carousel" src="/img/assets/@cats.Img">
+                @*<div class="carousel-container-title-container">
+                        <p class="carousel-title">@cats.Title</p>
+                    </div>*@
+                <div class="carousel-container-short-dsc-container">
+                    <p class="carousel-short-dsc">@cats.ShortDescription</p>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            (function ($) {
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 5
+                        }
+                    }
+                });
+            })(jQuery);
+        });
+
+        const calcCaloriesBtn = document.querySelector('.calc-cal-info-open-block');
+        const calcCaloriesText = document.querySelector('.calc-cal-info-hidden');
+
+        calcCaloriesBtn.addEventListener('click', () => calcCaloriesText.classList.toggle("calc-cal-info-active"));
+    </script>
+} 
