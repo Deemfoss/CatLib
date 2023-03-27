@@ -83,9 +83,6 @@ namespace CatLib.Controllers
 
         public async Task<IActionResult> CatDetail(int id)
         {
-
-            // ViewData["Cats"] = _context.Cats.ToList();
-
             ViewData["Cats"] = _context.News.ToList();
 
             var cat = await _context.Cats

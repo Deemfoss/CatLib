@@ -1,83 +1,165 @@
 ﻿@model CatLib.Models.Cat_Health.Disease
 
-@{ 
-    ViewData["Title"] = Model.Name +" Diagnosis, Prevention, Causes, Symptoms & Treatment | CatLib";
+@{
+    ViewData["Title"] = Model.Name + " Diagnosis, Prevention, Causes, Symptoms & Treatment | CatLib";
 }
-<div class="dng-main-product-container">
-    <h3 class="dng-product-title">@Model.Name " Diagnosis, Prevention, Causes, Symptoms & Treatment"</h3>
-    <div class="article-header">
-        <img src="~/img/assets/10.jpg" alt="img" class="dng-product-product-img">
+<div class="calc-header">
+    <h3 class="diseases-prd-title">@Model.Name " Diagnosis, Prevention, Causes, Symptoms & Treatment"</h3>
+    <p class="calc-text">
+        We have prepared for you the largest library of food that contain i. Which will allow you to choose the perfect name for your pet
+    </p>
+</div>
+<div class="side-main-container">
+    <div class="dng-main-product-container">
+        <div class="article-header">
+            <img src="~/img/assets/10.jpg" alt="img" class="dng-product-product-img">
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="diseasess-product-info-title-name">@Model.Name in Cats</h3>
+            <p class="diseasess-product-article-content">@Model.Summary</p>
+        </div>
+        @*<div class="product-article-container">
+            <h3 class="diseasess-product-info-title-name">Quick Overview</h3>
+            <div class="product-article-quick-container">
+                <div class="dng-product-main-info">
+                    <img class="dng-product-main-info-svg" src="~/img/svg/dangerous.svg" />
+                    <label class="dng-product-article-main-info-label">Dangerous:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names </h3>
+                </div>
+                <div class="dng-product-main-info">
+                    <img class="dng-product-main-info-svg" src="~/img/svg/allergic.svg" />
+                    <label class="dng-product-article-main-info-label">Allergic:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
+                </div>
+                <div class="dng-product-main-info">
+                    <img class="dng-product-main-info-svg" src="~/img/svg/cat.svg" />
+                    <label class="dng-product-article-main-info-label">Species Appropriate:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
+                </div>
+                <div class="dng-product-main-info">
+                    <img class="dng-product-main-info-svg" src="~/img/svg/bowl.svg" />
+                    <label class="dng-product-article-main-info-label">How Much to Feed:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
+                </div>
+                <div class="dng-product-main-info-last">
+                    <img class="dng-product-main-info-svg" src="~/img/svg/time.svg" />
+                    <label class="dng-product-article-main-info-label">How Often to Feed:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
+                </div>
+            </div>
+        </div>*@
+        <div class="dng-product-article-container">
+            <h3 class="diseasess-product-info-title-name">Description Of @Model.Name In Cats</h3>
+            <p class="diseasess-product-article-content">@Model.About</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="diseasess-product-info-title-name">Symptoms and Types @Model.Name in Cats</h3>
+            <p class="diseasess-product-article-content">@Model.Symptoms</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="diseasess-product-info-title-name">Couses @Model.Name in Cats</h3>
+            <p class="diseasess-product-article-content">@Model.Causes</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="diseasess-product-info-title-name">Diagnosis @Model.Name in Cats</h3>
+            <p class="diseasess-product-article-content">@Model.Diagnosis</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="diseasess-product-info-title-name">Treatment @Model.Name</h3>
+            <p class="diseasess-product-article-content">@Model.Treatment</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="diseasess-product-info-title-name">Living and Management</h3>
+            <p class="diseasess-product-article-content">@Model.Living_Management</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="diseasess-product-info-title-name">Prevention @Model.Name</h3>
+            <p class="diseasess-product-article-content">@Model.Prevention</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="diseasess-product-info-title-name">Other Names</h3>
+            <p class="diseasess-product-article-content">@Model.Other_Names</p>
+        </div>
+        <h3 class="calc-info-title-name">Frequently Asked Questions</h3>
+        <div class="dng-product-article-container">
+            @foreach (var quest in Model.Disease_Questions)
+            {
+                <h3 class="calc-info-title-name">@quest.Question</h3>
+                <p class="dng-product-article-content">@quest.Answer</p>
+            }
+        </div>
+        <h3 class="dng-product-detail-header-name-value">Popular in Diseases </h3>
+
     </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">@Model.Name in Cats</h3>
-        <p class="dng-product-article-content">@Model.Summary</p>
-    </div>
-    <div class="product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Quick Overview</h3>
-        <div class="product-article-quick-container">
-            <div class="dng-product-main-info">
-                <img class="dng-product-main-info-svg" src="~/img/svg/dangerous.svg" />
-                <label class="dng-product-article-main-info-label">Dangerous:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names </h3>
+    <div class="side-main-content-container">
+        <div class="side-content-container">
+            <h2 class="side-content-container-title">Latest Added Articles</h2>
+            <div class="side-content-container-carousel">
+
+                @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+                {
+                    <div class="side-content-container-carousel-container">
+                        <a href="@Url.Action("DiseasessList", "tools", new { id = cats.Id })" class="side-content-container-carousel-link">
+                            <img class="side-content-container-carousel-container-img" src="~/img/CatsProfile/1.jpg" />
+                            <div class="side-content-container-carousel-container-data">
+                                <p class="side-content-container-carousel-container-data-title">@cats.Title</p>
+                            </div>
+                        </a>
+
+                    </div>
+                }
             </div>
-            <div class="dng-product-main-info">
-                <img class="dng-product-main-info-svg" src="~/img/svg/allergic.svg" />
-                <label class="dng-product-article-main-info-label">Allergic:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
-            </div>
-            <div class="dng-product-main-info">
-                <img class="dng-product-main-info-svg" src="~/img/svg/cat.svg" />
-                <label class="dng-product-article-main-info-label">Species Appropriate:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
-            </div>
-            <div class="dng-product-main-info">
-                <img class="dng-product-main-info-svg" src="~/img/svg/bowl.svg" />
-                <label class="dng-product-article-main-info-label">How Much to Feed:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
-            </div>
-            <div class="dng-product-main-info">
-                <img class="dng-product-main-info-svg" src="~/img/svg/time.svg" />
-                <label class="dng-product-article-main-info-label">How Often to Feed:</label><h3 class="dng-product-aticle-main-info-value">@Model.Other_Names</h3>
+        </div>
+        <div class="side-content-container-main-links">
+            <h2 class="side-content-container-title">Popular Tools for Cats</h2>
+            <div class="side-content-container-carousel">
+                <div class="side-content-container-links">
+                    <a href="/tools/CalcAge" class="side-content-container-carousel-link-href">Age Calculator</a>
+                    <a href="/tools/CalorieCalc" class="side-content-container-carousel-link-href">Calorie Calculator</a>
+                    <a href="/tools/CatNameGenerator" class="side-content-container-carousel-link-href">Cat Name Generator</a>
+                    <a href="/tools/CalcFood" class="side-content-container-carousel-link-href">Food Calculator</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Description Of @Model.Name In Cats</h3>
-        <p class="dng-product-article-content">@Model.About</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Symptoms and Types @Model.Name in Cats</h3>
-        <p class="dng-product-article-content">@Model.Symptoms</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Couses @Model.Name in Cats</h3>
-        <p class="dng-product-article-content">@Model.Causes</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Diagnosis @Model.Name in Cats</h3>
-        <p class="dng-product-article-content">@Model.Diagnosis</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Treatment @Model.Name</h3>
-        <p class="dng-product-article-content">@Model.Treatment</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Living and Management</h3>
-        <p class="dng-product-article-content">@Model.Living_Management</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Prevention @Model.Name</h3>
-        <p class="dng-product-article-content">@Model.Prevention</p>
-    </div>
-    <h3 class="calc-info-title-name">Frequently Asked Questions</h3>
-    <div class="dng-product-article-container">
-        @foreach (var quest in Model.Disease_Questions)
-        {
-            <h3 class="calc-info-title-name">@quest.Question</h3>
-            <p class="dng-product-article-content">@quest.Answer</p>
-        }
-    </div>
-    @*<div class="owl-carousel owl-theme">
-        @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
-        {
-            <div><img src="/img/assets/@cats.Img"></div>
-        }
-    </div>*@
-
 </div>
+<div class="owl-carousel owl-theme carousel-border">
+    @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+    {
+        <div class="carousel-container">
+            <a href=''>
+                <img class="img-carousel" src="/img/assets/@cats.Img">
+                @*<div class="carousel-container-title-container">
+                        <p class="carousel-title">@cats.Title</p>
+                    </div>*@
+                <div class="carousel-container-short-dsc-container">
+                    <p class="carousel-short-dsc">@cats.ShortDescription</p>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            (function ($) {
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 5
+                        }
+                    }
+                });
+            })(jQuery);
+        });
+
+        const calcCaloriesBtn = document.querySelector('.calc-cal-info-open-block');
+        const calcCaloriesText = document.querySelector('.calc-cal-info-hidden');
+
+        calcCaloriesBtn.addEventListener('click', () => calcCaloriesText.classList.toggle("calc-cal-info-active"));
+    </script>
+} 

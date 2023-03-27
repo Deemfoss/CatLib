@@ -2,84 +2,140 @@
 @{
     ViewData["Title"] = "Can Cats Eat " + Model.Name + "? | CatLib";
 }
-<div class="dng-main-product-container">
-    <h3 class="dng-product-title">Can cats eat @Model.Name ?</h3>
-    <div class="article-header">
-        <img src="~/img/assets/10.jpg" alt="img" class="dng-product-product-img">
+<div class="calc-header">
+    <h3 class="cat-detail-header-name-value">Can cats eat @Model.Name ?</h3>
+    <p class="calc-text">
+        We have prepared for you the largest library of food that contain i. Which will allow you to choose the perfect name for your pet
+    </p>
+</div>
+<div class="side-main-container">
+    <div class="dng-main-product-container">
+
+        <div class="article-header">
+            <img src="~/img/assets/10.jpg" alt="img" class="dng-product-product-img">
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="dng-product-info-title-name">Summary</h3>
+            <p class="dng-product-article-content">@Model.Summary</p>
+        </div>
+        <div class="product-article-container">
+            <h3 class="dng-product-info-title-name">Quick Overview</h3>
+            <div class="product-article-quick-container">
+                <div class="dng-product-main-info">
+                    <img class="dng-product-main-info-svg" src="~/img/svg/dangerous.svg" />
+                    <label class="dng-product-article-main-info-label">Dangerous:</label><h3 class="dng-product-aticle-main-info-value">@Model.Toxic </h3>
+                </div>
+                <div class="dng-product-main-info">
+                    <img class="dng-product-main-info-svg" src="~/img/svg/allergic.svg" />
+                    <label class="dng-product-article-main-info-label">Allergic:</label><h3 class="dng-product-aticle-main-info-value">@Model.Allergenic</h3>
+                </div>
+                <div class="dng-product-main-info">
+                    <img class="dng-product-main-info-svg" src="~/img/svg/cat.svg" />
+                    <label class="dng-product-article-main-info-label">Species Appropriate:</label><h3 class="dng-product-aticle-main-info-value">@Model.Appropriate</h3>
+                </div>
+                <div class="dng-product-main-info">
+                    <img class="dng-product-main-info-svg" src="~/img/svg/bowl.svg" />
+                    <label class="dng-product-article-main-info-label">How Much to Feed:</label><h3 class="dng-product-aticle-main-info-value">@Model.How_Much_to_Feed</h3>
+                </div>
+                <div class="dng-product-main-info-last">
+                    <img class="dng-product-main-info-svg" src="~/img/svg/time.svg" />
+                    <label class="dng-product-article-main-info-label">How Often to Feed:</label><h3 class="dng-product-aticle-main-info-value">@Model.How_Often_to_Feed</h3>
+                </div>
+            </div>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="dng-product-info-title-name">Benefits Of @Model.Name For Cats</h3>
+            <p class="dng-product-article-content">@Model.Nutritional_Benefits</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="dng-product-info-title-name">@Model.Name Nutritional Stats</h3>
+            <p class="dng-product-article-content">@Model.Nutrition_Stats</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="dng-product-info-title-name">How Much @Model.Name Can A Cat Eat?</h3>
+            <p class="dng-product-article-content">@Model.How_Much_to_Feed_description</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="dng-product-info-title-name">How Offen @Model.Name Can A Cat Eat?</h3>
+            <p class="dng-product-article-content">@Model.How_Offen_to_Feed_description</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="dng-product-info-title-name">The Risks Of Eating @Model.Name For Cats</h3>
+            <p class="dng-product-article-content">@Model.Risks_for_Cats</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="dng-product-info-title-name">Do Cats Like The Taste Of @Model.Name?</h3>
+            <p class="dng-product-article-content">@Model.Good_for_Cats</p>
+        </div>
+        <div class="dng-product-article-container">
+            <h3 class="dng-product-info-title-name">Is @Model.Name Used In Commercial Cat Food?</h3>
+            <p class="dng-product-article-content">@Model.Used_in_Commercial_Food</p>
+        </div>
+        @*<h3 class="dng-product-info-title-name">Frequently Asked Questions</h3>
+        <div class="calc-info">
+            <button class="calc-cal-info-open-block">
+                <img src="~/img/assets/cat.png" alt="cat" class="calc-info-open-img" />
+                <h3 class="calc-info-open">How to calculate daily calorie for cat</h3>
+                <span class="calc-info-span">+</span>
+            </button>
+            <p class="calc-cal-info-hidden">
+                To correctly determine how many calories your pet needs, you first need to take into account his lifestyle, age, activity level, and many other factors.
+                All these parameters are calculated using RER (Resting Energy Requirement).
+                Let's take an intact adult neutered cat as an example.
+                using the following formula, we calculate RER = 70 x (ideal weight in kilograms) 3/4.
+                Then you must multiply the resulting razulatate by 1.4, which is the multiplier for a neutered cat. However, in order not to count calories manually, our calculator will do it automatically for you.
+            </p>
+        </div>*@
+        <h3 class="dng-product-detail-header-name-value">Popular in Dangerous Products</h3>
+
     </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Summary</h3>
-        <p class="dng-product-article-content">@Model.Summary</p>
-    </div>
-    <div class="product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Quick Overview</h3>
-        <div class="product-article-quick-container">
-            <div class="dng-product-main-info">
-                <img class="dng-product-main-info-svg" src="~/img/svg/dangerous.svg" />
-                <label class="dng-product-article-main-info-label">Dangerous:</label><h3 class="dng-product-aticle-main-info-value">@Model.Toxic </h3>
+    <div class="side-main-content-container">
+        <div class="side-content-container">
+            <h2 class="side-content-container-title">Latest Added Articles</h2>
+            <div class="side-content-container-carousel">
+
+                @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+                {
+                    <div class="side-content-container-carousel-container">
+                        <a href="@Url.Action("DiseasessList", "tools", new { id = cats.Id })" class="side-content-container-carousel-link">
+                            <img class="side-content-container-carousel-container-img" src="~/img/CatsProfile/1.jpg" />
+                            <div class="side-content-container-carousel-container-data">
+                                <p class="side-content-container-carousel-container-data-title">@cats.Title</p>
+                            </div>
+                        </a>
+
+                    </div>
+                }
             </div>
-            <div class="dng-product-main-info">
-                <img class="dng-product-main-info-svg" src="~/img/svg/allergic.svg" />
-                <label class="dng-product-article-main-info-label">Allergic:</label><h3 class="dng-product-aticle-main-info-value">@Model.Allergenic</h3>
-            </div>
-            <div class="dng-product-main-info">
-                <img class="dng-product-main-info-svg" src="~/img/svg/cat.svg" />
-                <label class="dng-product-article-main-info-label">Species Appropriate:</label><h3 class="dng-product-aticle-main-info-value">@Model.Appropriate</h3>
-            </div>
-            <div class="dng-product-main-info">
-                <img class="dng-product-main-info-svg" src="~/img/svg/bowl.svg" />
-                <label class="dng-product-article-main-info-label">How Much to Feed:</label><h3 class="dng-product-aticle-main-info-value">@Model.How_Much_to_Feed</h3>
-            </div>
-            <div class="dng-product-main-info">
-                <img class="dng-product-main-info-svg" src="~/img/svg/time.svg" />
-                <label class="dng-product-article-main-info-label">How Often to Feed:</label><h3 class="dng-product-aticle-main-info-value">@Model.How_Often_to_Feed</h3>
+        </div>
+        <div class="side-content-container-main-links">
+            <h2 class="side-content-container-title">Popular Tools for Cats</h2>
+            <div class="side-content-container-carousel">
+                <div class="side-content-container-links">
+                    <a href="/tools/CalcAge" class="side-content-container-carousel-link-href">Age Calculator</a>
+                    <a href="/tools/CalorieCalc" class="side-content-container-carousel-link-href">Calorie Calculator</a>
+                    <a href="/tools/CatNameGenerator" class="side-content-container-carousel-link-href">Cat Name Generator</a>
+                    <a href="/tools/CalcFood" class="side-content-container-carousel-link-href">Food Calculator</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Benefits Of @Model.Name For Cats</h3>
-        <p class="dng-product-article-content">@Model.Nutritional_Benefits</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">@Model.Name Nutritional Stats</h3>
-        <p class="dng-product-article-content">@Model.Nutrition_Stats</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">How Much @Model.Name Can A Cat Eat?</h3>
-        <p class="dng-product-article-content">@Model.How_Much_to_Feed_description</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">How Offen @Model.Name Can A Cat Eat?</h3>
-        <p class="dng-product-article-content">@Model.How_Offen_to_Feed_description</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">The Risks Of Eating @Model.Name For Cats</h3>
-        <p class="dng-product-article-content">@Model.Risks_for_Cats</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Do Cats Like The Taste Of @Model.Name?</h3>
-        <p class="dng-product-article-content">@Model.Good_for_Cats</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">How Often Can A Cat Eat @Model.Name?</h3>
-        <p class="dng-product-article-content">@Model.Nutrition_Stats</p>
-    </div>
-    <div class="dng-product-article-container">
-        <h3 class="dng-product-detail-header-name-value">Is @Model.Name Used In Commercial Cat Food?</h3>
-        <p class="dng-product-article-content">@Model.Used_in_Commercial_Food</p>
-    </div>
-    <h3 class="calc-info-title-name">Frequently Asked Questions</h3>
-    <div class="dng-product-article-container">
-        <h3 class="calc-info-title-name">Is @Model.Name Used In Commercial Cat Food?</h3>
-        <p class="dng-product-article-content">@Model.Used_in_Commercial_Food</p>
-    </div>
-    <div class="owl-carousel owl-theme">
-        @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
-        {
-            <div><img src="/img/assets/@cats.Img"></div>
-        }
-    </div>
-
+</div>
+<div class="owl-carousel owl-theme carousel-border">
+    @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+    {
+        <div class="carousel-container">
+            <a href=''>
+                <img class="img-carousel" src="/img/assets/@cats.Img">
+                @*<div class="carousel-container-title-container">
+                        <p class="carousel-title">@cats.Title</p>
+                    </div>*@
+                <div class="carousel-container-short-dsc-container">
+                    <p class="carousel-short-dsc">@cats.ShortDescription</p>
+                </div>
+            </a>
+        </div>
+    }
 </div>
 @section Scripts{
     <script type="text/javascript">
@@ -103,5 +159,10 @@
                 });
             })(jQuery);
         });
+
+        const calcCaloriesBtn = document.querySelector('.calc-cal-info-open-block');
+        const calcCaloriesText = document.querySelector('.calc-cal-info-hidden');
+
+        calcCaloriesBtn.addEventListener('click', () => calcCaloriesText.classList.toggle("calc-cal-info-active"));
     </script>
 } 

@@ -1,0 +1,92 @@
+﻿@*@model CatLib.Models.Product_Reviews.ProductArticle*@
+@{
+    ViewData["Title"] = "Can Cats Eat ? | CatLib";
+}
+<div class="calc-header">
+    <h3 class="cat-detail-header-name-value">Top 10 Products for cats</h3>
+    <p class="calc-text">
+        The large base Diseases & Infections in Cats
+    </p>
+</div>
+<div>
+    <div>
+        <div class="dng-product-article-container">
+            <h3 class="prd-reviewt-detail-header-name-value">Overview</h3>
+            <p class="dng-product-article-content">
+                Whether wet, dry, raw, or freshly-cooked, the best cat food honors your cat’s needs as an obligate carnivore.
+                It’s rich in animal-sourced protein, has the right amount of fatty acids, and doesn’t spike your cat’s blood sugar with excessive carbohydrates
+            </p>
+        </div>
+        <div class="prd-review-schort-container">
+            <div class="prd-review-schort-container-top-label"><p>1 asdasda dsad</p></div>
+            <div class="prd-review-schort-desc-title-link-container">
+                        <a href="" class="prd-review-schort-desc-title-link">
+                     <h4 class="prd-review-schort-desc-title">Whether wet, dry, raw,</h4>
+                </a>
+            </div>
+    <div class="prd-review-schort-container-desc">
+           <div class="prd-review-schort-container-img"><a href="">
+                <img  class="prd-review-img" src="~/img/assets/9.jpg" />
+               </a>
+             </div>
+            <div class="prd-review-schort-desc">
+                <div class="prd-review-schort-desc-txt">
+                <ul class="prd-review-schort-desc-txt-ul">
+                    <li class="prd-review-schort-desc-txt-li">Whether wet</li>
+                     <li class="prd-review-schort-desc-txt-li">our cat’s needs</li>
+                     <li class="prd-review-schort-desc-txt-li">Whether wet</li>
+                     <li class="prd-review-schort-desc-txt-li"> obligate carnivore</li>
+                     </ul></div>
+            </div>
+            <div class="prd-review-schort-container-price">
+                <a href=""  class="prd-review-schort-container-price-link"><p>Amazon 50$</p></a>
+                 <a href=""  class="prd-review-schort-container-price-link"><p>Chewy 120$</p></a>
+            </div>
+    </div> 
+        </div>
+        
+        <h3 class="prd-reviewt-detail-header-name-value">The our top 10</h3>
+        <div class="prd-review-main-container">
+            <div class="prd-review-main-container-name"><h3 class="prd-review-main-container-name-title"><span class="prd-review-main-container-name-number">1</span>asdasda dsad</h3></div>
+            <div class="prd-review-main-container-img"> <img  class="prd-review-main-img" src="~/img/assets/9.jpg" /></div>
+            <div class="prd-review-main-container-price">  
+            <a href=""  class="prd-review-main-container-price-link"><p>Amazon 50$</p></a>
+             <a href=""  class="prd-review-main-container-price-link"><p>Chewy 120$</p></a></div>
+            <div class="prd-review-main-container-desc"><p class="prd-review-main-container-desc-text">Whether wet asda  sd  as as Whether wet asda  sd  as as Whether wet asda  sd  as as Whether wet asda  sd  as as</p></div>
+            <div class="prd-review-main-desc-pros-cons-container">
+
+            <div class="prd-review-main-container-pros">   
+                <h4 class="prd-review-main-desc-pros-cons-container-header">What people don't like</h4>
+            <ul class="prd-review-main-desc-txt-ul">
+                    <li class="prd-review-main-desc-txt-cons">Whether wet</li>
+                     <li class="prd-review-main-desc-txt-cons">our cat’s needs</li>
+                     <li class="prd-review-main-desc-txt-cons">Whether wet</li>
+                     <li class="prd-review-main-desc-txt-cons"> obligate carnivore</li>
+                     </ul>
+            </div>
+            <div class="prd-review-main-container-pros">
+                <h4 class="prd-review-main-desc-pros-cons-container-header">What people like</h4>
+                <ul class="prd-review-main-desc-txt-ul">
+                    <li class="prd-review-main-desc-txt-pros">Whether wet</li>
+                     <li class="prd-review-main-desc-txt-pros">our cat’s needs</li>
+                     <li class="prd-review-main-desc-txt-pros">Whether wet</li>
+                     <li class="prd-review-main-desc-txt-pros"> obligate carnivore</li>
+                     </ul>
+            </div>
+            </div>
+
+        </div>
+        <div class="">
+            <h2 class="cat-detail-description-name">Frequently asked questions about </h2>
+            @*@foreach (var question in Model.ProductReviews)
+            {
+                <div class="cat-detail-container">
+                    <h2 class="cat-detail-description-name">@question.Question.Name</h2>
+                    <p class="cat-detail-description-txt">@question.Name</p>
+                </div>
+            }*@
+        </div>
+    </div>
+    <div></div>
+</div>
+    </div>

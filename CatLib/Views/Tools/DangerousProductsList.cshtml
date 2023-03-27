@@ -10,76 +10,166 @@
         We have prepared for you the largest library of food that contain i. Which will allow you to choose the perfect name for your pet
     </p>
 </div>
-<div class="dng-main-product-container">
-    <div class="body-container">
-        <div class="searching-container">
-            <form asp-action="Index" asp-controller="home" method="post">
-                <input type="text" id="search" placeholder="Search" name="search" class="search-input" value="@ViewData["CurrentFilter"]" />
-                <button type="submit" class="submit-serach">
-                    <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
-                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"></path>
+<div class="side-main-container">
+    <div class="dng-main-product-container">
+        <div class="body-container">
+            <div class="searching-container">
+                <form asp-action="Index" asp-controller="home" method="post">
+                    <input type="text" id="search" placeholder="Search" name="search" class="search-input" value="@ViewData["CurrentFilter"]" />
+                    <button type="submit" class="submit-serach">
+                        <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
+                        <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"></path>
                 </svg>
-                </button>
-            </form>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <h3 class="dng-product-detail-header-name-value">List Of Foods Cats Can And Cannot Eat</h3>
+        <div class="dng-product-list-container">
+
+            @foreach (var product in Model)
+            {
+                <div class="dng-product-container">
+                    @Html.ActionLink("", "DangerousProduct", new { id = product.Id }, new { @class = "breed-container-link" })
+                    <div class="dng-product-img-container">
+                        <img class="dng-product-img" alt="@product.Name" src="@product.Img" />
+                    </div>
+                    <div class="dng-product-name">
+                        <span class="dng-product-name-container">@product.Name</span>
+                    </div>
+                    <div class="dng-product-main-info">
+                        <img class="dng-product-main-info-svg" src="~/img/svg/dangerous.svg" />
+                        <label class="dng-product-main-info-label">Dangerous:</label><h3 class="dng-product-main-info-value">@product.Toxic </h3>
+                    </div>
+                    <div class="dng-product-main-info">
+                        <img class="dng-product-main-info-svg" src="~/img/svg/allergic.svg" />
+                        <label class="dng-product-main-info-label">Allergic:</label><h3 class="dng-product-main-info-value">@product.Allergenic</h3>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="dng-product-info">
+            <h3 class="dng-product-info-title-name">Why is it important to know about dangerous foods for cats?</h3>
+            <p class="dng-product-info-text">
+                It is important to know which foods are dangerous for cats because ingesting them can lead to serious health problems or even death. Some reasons why it is important to know dangerous foods for cats include: Prevention of poisoning: By knowing which foods are toxic to cats, you can take steps to prevent your cat from accidentally ingesting them. Identification of symptoms: If your cat does accidentally ingest a toxic food, knowing what it is can help you to identify the symptoms and get your cat the appropriate treatment as soon as possible. Protection of health: Eating toxic food can lead to serious health problems such as organ damage, seizures, and even death. By avoiding these foods, you can help to protect your cat's health. Avoiding expensive treatment: If a cat eats something toxic, the treatment can be costly. By knowing what to avoid, you can prevent your cat from getting sick, and save on unnecessary medical expenses. Showing love and care: By providing a safe and healthy environment for your cat, you are showing that you care about their well-being. It is important to note that it's not only the food but also the human products that are harmful for cats, such as cleaning products, medications, and plants. Therefore, it's important to keep these items out of reach and to monitor your cat's behavior and health regularly.
+            </p>
+        </div>
+
+        <div class="dng-product-info">
+            <h3 class="dng-product-info-title-name">If you think your cat eaten something toxic:</h3>
+            <p class="dng-product-info-text">
+                If you suspect that your cat has ingested a toxic product, it is important to act quickly to minimize the risk of injury or death.
+                Here are some steps you should take:
+                Call your veterinarian or a pet poison control hotline immediately. They will be able to advise you on the best course of action based on the specific product and the amount that your cat has consumed.
+                Try to determine what the cat ate, how much and when, it will help the veterinarian to determine the treatment.
+                If the product is still in the cat's mouth or on its skin, wipe it away with a damp cloth and try to keep the cat from licking it.
+                If the cat is showing signs of distress such as vomiting, diarrhea, or difficulty breathing, try to keep it calm and comfortable.
+                Follow the veterinarian's instructions carefully.
+                Depending on the product, the veterinarian may recommend that you induce vomiting, administer activated charcoal or other medications, or bring the cat in for treatment.
+                Bring the container or package of the product with you to the vet, it will help the veterinarian to identify the product and the amount of toxicity.
+                It is important to remember that time is of the essence in these situations, so the faster you act, the better the chances of a good outcome.
+            </p>
+        </div>
+        <div class="dng-product-info">
+            <h3 class="dng-product-info-title-name">what can cats eat besides cat food ?</h3>
+            <p class="dng-product-info-text">
+                While cats are obligate carnivores and require a diet that is rich in animal-based protein, there are some human foods that can be fed to cats in moderation.
+                Here are some examples:
+                Cooked meat: Cats can eat cooked chicken, turkey, beef, or pork, as long as it's boneless and cooked thoroughly to eliminate any harmful bacteria.
+                Cooked fish: Cats can eat cooked fish such as salmon or tuna, as long as it's boneless and cooked thoroughly to eliminate any harmful bacteria.
+                Small amounts of vegetables: Some cats may enjoy small amounts of cooked vegetables such as peas, carrots, or green beans. However, vegetables should not be a significant part of a cat's diet.
+                Plain cooked eggs: Cats can eat plain cooked eggs, but it's important to avoid feeding them raw eggs or eggs that are cooked with added ingredients such as oil or salt.
+                Small amounts of cheese: Some cats may enjoy small amounts of cheese, but it should not be a significant part of their diet.
+                It's important to remember that while some human foods can be fed to cats in moderation, they should not be used as a substitute for a well-balanced, species-appropriate cat food that meets all of their nutritional needs. Additionally, certain human foods can be harmful to cats and should be avoided, such as chocolate, garlic, onions, and grapes or raisins. If you have any concerns about your cat's diet, it's always best to consult with your veterinarian.
+            </p>
+        </div>
+        <div class="dng-product-info">
+            <h3 class="dng-product-info-title-name">what veggies can cats eat ?</h3>
+            <p class="dng-product-info-text">
+                Cats are obligate carnivores, which means that their diet should primarily consist of meat. However, some vegetables can be a healthy addition to a cat's diet in small amounts.
+                Here are some veggies that cats can eat:
+                Cooked and mashed pumpkin - it is a good source of fiber and can help with digestion.
+                Cooked carrots - they are a good source of beta-carotene and can provide some vitamins and minerals.
+                Cooked and mashed sweet potato - it is a good source of fiber, vitamins A and C, and potassium.
+                Cooked green beans - they are a good source of fiber, vitamins A and C, and some minerals.
+                Cooked broccoli - it is a good source of vitamins A and C, and fiber, but should be fed in small amounts as too much can cause digestive upset.
+                It is important to note that vegetables should not make up a significant portion of a cat's diet, and any new foods should be introduced gradually to avoid stomach upset. Always consult with a veterinarian before making any changes to your cat's diet.
+            </p>
+        </div>
+        <h3 class="dng-product-detail-header-name-value">Popular in Dangerous Products</h3>
+    </div>
+    <div class="side-main-content-container">
+        <div class="side-content-container">
+            <h2 class="side-content-container-title">Last Added Articles </h2>
+            <div class="side-content-container-carousel">
+
+                @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+                {
+                    <div class="side-content-container-carousel-container">
+                        <a href="@Url.Action("DiseasessList", "tools", new { id = cats.Id })" class="side-content-container-carousel-link">
+                            <img class="side-content-container-carousel-container-img" src="~/img/CatsProfile/1.jpg" />
+                            <div class="side-content-container-carousel-container-data">
+                                <p class="side-content-container-carousel-container-data-title">@cats.Title</p>
+                            </div>
+                        </a>
+
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="side-content-container-main-links">
+            <h2 class="side-content-container-title">Popular Tools for Cats</h2>
+            <div class="side-content-container-carousel">
+                <div class="side-content-container-links">
+                    <a href="/tools/CalcAge" class="side-content-container-carousel-link-href">Age Calculator</a>
+                    <a href="/tools/CalorieCalc" class="side-content-container-carousel-link-href">Calorie Calculator</a>
+                    <a href="/tools/CatNameGenerator" class="side-content-container-carousel-link-href">Cat Name Generator</a>
+                    <a href="/tools/CalcFood" class="side-content-container-carousel-link-href">Food Calculator</a>
+                </div>
+            </div>
         </div>
     </div>
-
-
-    <h3 class="dng-product-detail-header-name-value">List Of Foods Cats Can And Cannot Eat</h3>
-    <div class="dng-product-list-container">
-
-        @foreach (var product in Model)
-        {
-            <div class="dng-product-container">
-                @Html.ActionLink("", "DangerousProduct", new { id = product.Id }, new { @class = "breed-container-link" })
-                <div class="dng-product-img-container">
-                    <img class="dng-product-img" src="@product.Img" />
-                </div>
-                <div class="dng-product-name">
-                    <span class="dng-product-name-container">@product.Name</span>
-                </div>
-                <div class="dng-product-main-info">
-                    <img class="dng-product-main-info-svg" src="~/img/svg/dangerous.svg" />
-                    <label class="dng-product-main-info-label">Dangerous:</label><h3 class="dng-product-main-info-value">@product.Toxic </h3>
-                </div>
-                <div class="dng-product-main-info">
-                    <img class="dng-product-main-info-svg" src="~/img/svg/allergic.svg" />
-                    <label class="dng-product-main-info-label">Allergic:</label><h3 class="dng-product-main-info-value">@product.Allergenic</h3>
-                </div>
-                @*<div class="dng-product-main-info">
-                    <img class="dng-product-main-info-svg" src="~/img/svg/cat.svg" />
-                    <label class="dng-product-main-info-label">Species Appropriate:</label><h3 class="dng-product-main-info-value">@product.Appropriate</h3>
-                </div>
-                <div class="dng-product-main-info">
-                    <img class="dng-product-main-info-svg" src="~/img/svg/bowl.svg" />
-                    <label class="dng-product-main-info-label">How Much to Feed:</label><h3 class="dng-product-main-info-value">@product.How_Much_to_Feed</h3>
-                </div>
-                <div class="dng-product-main-info">
-                    <img class="dng-product-main-info-svg" src="~/img/svg/time.svg" />
-                    <label class="dng-product-main-info-label">How Often to Feed:</label><h3 class="dng-product-main-info-value">@product.How_Often_to_Feed</h3>
-                </div>*@
-            </div>
-        }
-    </div>
-    <div class="calc-info">
-        <h3 class="calc-info-title-name">Why is it important to know about dangerous foods for cats?</h3>
-        <p class="calc-info-text">
-            It is important to know which foods are dangerous for cats because ingesting them can lead to serious health problems or even death. Some reasons why it is important to know dangerous foods for cats include: Prevention of poisoning: By knowing which foods are toxic to cats, you can take steps to prevent your cat from accidentally ingesting them. Identification of symptoms: If your cat does accidentally ingest a toxic food, knowing what it is can help you to identify the symptoms and get your cat the appropriate treatment as soon as possible. Protection of health: Eating toxic food can lead to serious health problems such as organ damage, seizures, and even death. By avoiding these foods, you can help to protect your cat's health. Avoiding expensive treatment: If a cat eats something toxic, the treatment can be costly. By knowing what to avoid, you can prevent your cat from getting sick, and save on unnecessary medical expenses. Showing love and care: By providing a safe and healthy environment for your cat, you are showing that you care about their well-being. It is important to note that it's not only the food but also the human products that are harmful for cats, such as cleaning products, medications, and plants. Therefore, it's important to keep these items out of reach and to monitor your cat's behavior and health regularly.
-        </p>
-    </div>
-
-    <div class="calc-info">
-        <h3 class="calc-info-title-name">If you think your cat eaten something toxic:</h3>
-        <p class="calc-info-text">
-            If you suspect that your cat has ingested a toxic product, it is important to act quickly to minimize the risk of injury or death. Here are some steps you should take: Call your veterinarian or a pet poison control hotline immediately. They will be able to advise you on the best course of action based on the specific product and the amount that your cat has consumed. Try to determine what the cat ate, how much and when, it will help the veterinarian to determine the treatment. If the product is still in the cat's mouth or on its skin, wipe it away with a damp cloth and try to keep the cat from licking it. If the cat is showing signs of distress such as vomiting, diarrhea, or difficulty breathing, try to keep it calm and comfortable. Follow the veterinarian's instructions carefully. Depending on the product, the veterinarian may recommend that you induce vomiting, administer activated charcoal or other medications, or bring the cat in for treatment. Bring the container or package of the product with you to the vet, it will help the veterinarian to identify the product and the amount of toxicity. It is important to remember that time is of the essence in these situations, so the faster you act, the better the chances of a good outcome.
-        </p>
-    </div>
 </div>
-@*<script type="text/javascript">
-        $(function () {
-            GetCustomers();
-            $("#search").keyup(function () {
-                GetCustomers();
-            });
+
+<div class="owl-carousel owl-theme carousel-border">
+    @foreach (var cats in ViewData["Cats"] as IEnumerable<CatLib.Models.News>)
+    {
+        <div class="carousel-container">
+            <a href=''>
+                <img class="img-carousel" src="/img/assets/@cats.Img">
+                @*<div class="carousel-container-title-container">
+                        <p class="carousel-title">@cats.Title</p>
+                    </div>*@
+                <div class="carousel-container-short-dsc-container">
+                    <p class="carousel-short-dsc">@cats.ShortDescription</p>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            (function ($) {
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 5
+                        }
+                    }
+                });
+            })(jQuery);
         });
-    </script>*@
+    </script>
+}

@@ -79,7 +79,7 @@ namespace CatLib.Controllers
         }
         public IActionResult DangerousProduct(int id)
         {
-            ViewData["Cats"] = _context.News.ToList();
+            ViewData["Cats"] = _context.News.Take(5).ToList();
             var dangerousProduct = _context.Products.Include(x => x.ProductCategory).FirstOrDefault(x => x.Id == id);
             return View(dangerousProduct);
         }
@@ -88,6 +88,7 @@ namespace CatLib.Controllers
 
         public IActionResult DangerousProductsList()
         {
+            ViewData["Cats"] = _context.News.Take(3).OrderByDescending(x=>x.Date).ToList();
             var dangerousProductsList = _context.Products.Include(x => x.ProductCategory).ToList();
             return View(dangerousProductsList);
         }
@@ -131,7 +132,7 @@ namespace CatLib.Controllers
 
             if (!String.IsNullOrEmpty(search))
             {
-               diseasesList = _context.Diseases.Where(s => s.Name.Contains(search.ToLower())).ToList();
+                diseasesList = _context.Diseases.Where(s => s.Name.Contains(search.ToLower())).ToList();
 
             }
 
@@ -145,6 +146,7 @@ namespace CatLib.Controllers
         [HttpGet]
         public IActionResult DiseasesDetail(int id)
         {
+            ViewData["Cats"] = _context.News.Take(5).ToList();
             var specificDiseases = _context.Diseases.Include(x => x.Disease_Questions).
                 FirstOrDefault(a => a.Id == id);
 

@@ -37,8 +37,8 @@ namespace CatLib
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/News/Login");
-        options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/News/Login");
+        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/adminPanel/Login");
+        options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/adminPanel/Login");
     });
 
         }

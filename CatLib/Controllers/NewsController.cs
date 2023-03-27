@@ -47,6 +47,22 @@ namespace CatLib.Controllers
             return View(news);
         }
 
+
+        public async Task<IActionResult> BestProductsList()
+        {
+            var news = _context.News.OrderByDescending(x => x.Date).ToList();
+            int pageSize = 11;
+            string type = "pagination";
+            return View();
+        }
+        public async Task<IActionResult> BestProductDetail()
+        {
+            var news = _context.News.OrderByDescending(x => x.Date).ToList();
+            int pageSize = 11;
+            string type = "pagination";
+            return View();
+        }
+
     }
 
 }

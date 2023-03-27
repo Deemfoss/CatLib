@@ -2,14 +2,14 @@
 @{
     ViewData["Title"] = "Cate names by category | CatLib";
 }
-
+<div class="calc-header">
+    <h3 class="cat-detail-header-name-value">List of Cat Names by Category</h3>
+    <p class="calc-text">
+        You're looking for a unique name or something inspired by your favorite Disney movies, our guide to the best cat names we have prepared for you the largest list of cat names by popular categories.
+    </p>
+</div>
 <div class="cat-name-categories">
-    <div class="calc-header">
-        <h3 class="cat-detail-header-name-value">List of Cat Names by Category</h3>
-        <p class="calc-text">
-            You're looking for a unique name or something inspired by your favorite Disney movies, our guide to the best cat names we have prepared for you the largest list of cat names by popular categories.
-        </p>
-    </div>
+
     <div class="news-block">
         @foreach (var category in Model)
         {

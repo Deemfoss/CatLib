@@ -44,7 +44,7 @@ namespace CatLib.Controllers
                 {
                     await Authenticate(user);
 
-                    return RedirectToAction("AdminPanel", "News");
+                    return RedirectToAction("AdminPanel", "AdminPanel");
                 }
                 ModelState.AddModelError("", "wrong password");
             }
@@ -70,7 +70,6 @@ namespace CatLib.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult AdminPanel()
         {
-
             return View();
         }
 
@@ -78,7 +77,6 @@ namespace CatLib.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult ProductNewsPanel()
         {
-         
             return View();
         }
 
@@ -94,24 +92,23 @@ namespace CatLib.Controllers
             return View();
         }
 
-        [HttpPost]
-        [Authorize(Roles = "admin")]
-        public IActionResult ProductNewsPanel(int productReview)
-        {
-            var removedPeoduct = _context.ProductReviews.FirstOrDefault(x => x.Id == productReview);
-            if (removedPeoduct != null)
-            {
-                _context.ProductReviews.Remove(removedPeoduct);
-                _context.SaveChanges();
-            }
-            return View();
-        }
+        //[HttpPost]
+        //[Authorize(Roles = "admin")]
+        //public IActionResult ProductNewsPanel(int productReview)
+        //{
+        //    var removedPeoduct = _context.ProductReviews.FirstOrDefault(x => x.Id == productReview);
+        //    if (removedPeoduct != null)
+        //    {
+        //        _context.ProductReviews.Remove(removedPeoduct);
+        //        _context.SaveChanges();
+        //    }
+        //    return View();
+        //}
 
         [HttpGet]
         [Authorize(Roles = "admin")]
         public IActionResult ArticleNewsPanel()
         {
-
             //var productArticle = _context.ProductArticles.Include(x => x.ProductReviews).FirstOrDefault();
             return View();
         }
